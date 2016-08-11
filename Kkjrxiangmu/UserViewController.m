@@ -7,6 +7,7 @@
 //
 
 #import "UserViewController.h"
+#import "Masonry.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -59,6 +60,8 @@
     UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/3-22,SCREEN_WIDTH, 2)];
     view.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view];
+    
+    //
     
     
     
