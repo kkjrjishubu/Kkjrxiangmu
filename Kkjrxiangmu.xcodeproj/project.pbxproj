@@ -15,6 +15,17 @@
 		7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4C71D5C2497003A75EB /* LaunchScreen.storyboard */; };
 		7202E4D41D5C2497003A75EB /* KkjrxiangmuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4D31D5C2497003A75EB /* KkjrxiangmuTests.m */; };
 		7202E4DF1D5C2497003A75EB /* KkjrxiangmuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4DE1D5C2497003A75EB /* KkjrxiangmuUITests.m */; };
+		7202E4EF1D5C24D3003A75EB /* MassageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4ED1D5C24D3003A75EB /* MassageViewController.m */; };
+		7202E4F01D5C24D3003A75EB /* MassageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4EE1D5C24D3003A75EB /* MassageViewController.xib */; };
+		7202E4F41D5C24F8003A75EB /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4F21D5C24F8003A75EB /* CollectionViewController.m */; };
+		7202E4F51D5C24F8003A75EB /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4F31D5C24F8003A75EB /* CollectionViewController.xib */; };
+		7202E4F91D5C2521003A75EB /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4F71D5C2521003A75EB /* UserViewController.m */; };
+		7202E4FA1D5C2521003A75EB /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4F81D5C2521003A75EB /* UserViewController.xib */; };
+		7202E4FE1D5C253C003A75EB /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4FC1D5C253C003A75EB /* MoreViewController.m */; };
+		7202E4FF1D5C253C003A75EB /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4FD1D5C253C003A75EB /* MoreViewController.xib */; };
+		7202E5031D5C2556003A75EB /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E5011D5C2556003A75EB /* HomepageViewController.m */; };
+		7202E5041D5C2556003A75EB /* HomepageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7202E5021D5C2556003A75EB /* HomepageViewController.xib */; };
+		E9EB12F4358C3116B2657E01 /* libPods-Kkjrxiangmu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66EE9E7475653004018857B8 /* Pods-Kkjrxiangmu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kkjrxiangmu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu.debug.xcconfig"; sourceTree = "<group>"; };
 		7202E4B61D5C2497003A75EB /* Kkjrxiangmu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kkjrxiangmu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202E4BA1D5C2497003A75EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7202E4BC1D5C2497003A75EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +63,23 @@
 		7202E4DA1D5C2497003A75EB /* KkjrxiangmuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KkjrxiangmuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202E4DE1D5C2497003A75EB /* KkjrxiangmuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KkjrxiangmuUITests.m; sourceTree = "<group>"; };
 		7202E4E01D5C2497003A75EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7202E4EC1D5C24D3003A75EB /* MassageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MassageViewController.h; sourceTree = "<group>"; };
+		7202E4ED1D5C24D3003A75EB /* MassageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MassageViewController.m; sourceTree = "<group>"; };
+		7202E4EE1D5C24D3003A75EB /* MassageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MassageViewController.xib; sourceTree = "<group>"; };
+		7202E4F11D5C24F8003A75EB /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		7202E4F21D5C24F8003A75EB /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		7202E4F31D5C24F8003A75EB /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewController.xib; sourceTree = "<group>"; };
+		7202E4F61D5C2521003A75EB /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		7202E4F71D5C2521003A75EB /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		7202E4F81D5C2521003A75EB /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		7202E4FB1D5C253C003A75EB /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		7202E4FC1D5C253C003A75EB /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		7202E4FD1D5C253C003A75EB /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		7202E5001D5C2556003A75EB /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageViewController.h; sourceTree = "<group>"; };
+		7202E5011D5C2556003A75EB /* HomepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageViewController.m; sourceTree = "<group>"; };
+		7202E5021D5C2556003A75EB /* HomepageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepageViewController.xib; sourceTree = "<group>"; };
+		898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kkjrxiangmu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu.release.xcconfig"; sourceTree = "<group>"; };
+		E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kkjrxiangmu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9EB12F4358C3116B2657E01 /* libPods-Kkjrxiangmu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +108,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23038F0C9ABDED14D8DE09B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66EE9E7475653004018857B8 /* Pods-Kkjrxiangmu.debug.xcconfig */,
+				898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5C5B3B42D4F19DB69C80F240 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7202E4AD1D5C2497003A75EB = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +132,8 @@
 				7202E4D21D5C2497003A75EB /* KkjrxiangmuTests */,
 				7202E4DD1D5C2497003A75EB /* KkjrxiangmuUITests */,
 				7202E4B71D5C2497003A75EB /* Products */,
+				23038F0C9ABDED14D8DE09B2 /* Pods */,
+				5C5B3B42D4F19DB69C80F240 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +154,11 @@
 				7202E4BD1D5C2497003A75EB /* AppDelegate.m */,
 				7202E4BF1D5C2497003A75EB /* ViewController.h */,
 				7202E4C01D5C2497003A75EB /* ViewController.m */,
+				7202E5051D5C255D003A75EB /* massage */,
+				7202E5061D5C257C003A75EB /* collec */,
+				7202E5071D5C2596003A75EB /* user */,
+				7202E5081D5C25A9003A75EB /* more */,
+				7202E5091D5C25CF003A75EB /* homepage */,
 				7202E4C21D5C2497003A75EB /* Main.storyboard */,
 				7202E4C51D5C2497003A75EB /* Assets.xcassets */,
 				7202E4C71D5C2497003A75EB /* LaunchScreen.storyboard */,
@@ -140,6 +194,56 @@
 			path = KkjrxiangmuUITests;
 			sourceTree = "<group>";
 		};
+		7202E5051D5C255D003A75EB /* massage */ = {
+			isa = PBXGroup;
+			children = (
+				7202E4EC1D5C24D3003A75EB /* MassageViewController.h */,
+				7202E4ED1D5C24D3003A75EB /* MassageViewController.m */,
+				7202E4EE1D5C24D3003A75EB /* MassageViewController.xib */,
+			);
+			name = massage;
+			sourceTree = "<group>";
+		};
+		7202E5061D5C257C003A75EB /* collec */ = {
+			isa = PBXGroup;
+			children = (
+				7202E4F11D5C24F8003A75EB /* CollectionViewController.h */,
+				7202E4F21D5C24F8003A75EB /* CollectionViewController.m */,
+				7202E4F31D5C24F8003A75EB /* CollectionViewController.xib */,
+			);
+			name = collec;
+			sourceTree = "<group>";
+		};
+		7202E5071D5C2596003A75EB /* user */ = {
+			isa = PBXGroup;
+			children = (
+				7202E4F61D5C2521003A75EB /* UserViewController.h */,
+				7202E4F71D5C2521003A75EB /* UserViewController.m */,
+				7202E4F81D5C2521003A75EB /* UserViewController.xib */,
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
+		7202E5081D5C25A9003A75EB /* more */ = {
+			isa = PBXGroup;
+			children = (
+				7202E4FB1D5C253C003A75EB /* MoreViewController.h */,
+				7202E4FC1D5C253C003A75EB /* MoreViewController.m */,
+				7202E4FD1D5C253C003A75EB /* MoreViewController.xib */,
+			);
+			name = more;
+			sourceTree = "<group>";
+		};
+		7202E5091D5C25CF003A75EB /* homepage */ = {
+			isa = PBXGroup;
+			children = (
+				7202E5001D5C2556003A75EB /* HomepageViewController.h */,
+				7202E5011D5C2556003A75EB /* HomepageViewController.m */,
+				7202E5021D5C2556003A75EB /* HomepageViewController.xib */,
+			);
+			name = homepage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7202E4E31D5C2497003A75EB /* Build configuration list for PBXNativeTarget "Kkjrxiangmu" */;
 			buildPhases = (
+				69F2AC452C53A7CB387EBEED /* [CP] Check Pods Manifest.lock */,
 				7202E4B21D5C2497003A75EB /* Sources */,
 				7202E4B31D5C2497003A75EB /* Frameworks */,
 				7202E4B41D5C2497003A75EB /* Resources */,
+				A36FEC2947752399B1FEAE6C /* [CP] Embed Pods Frameworks */,
+				36493226422FA930108BC23C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,8 +350,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7202E5041D5C2556003A75EB /* HomepageViewController.xib in Resources */,
 				7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */,
+				7202E4FA1D5C2521003A75EB /* UserViewController.xib in Resources */,
+				7202E4F51D5C24F8003A75EB /* CollectionViewController.xib in Resources */,
 				7202E4C61D5C2497003A75EB /* Assets.xcassets in Resources */,
+				7202E4FF1D5C253C003A75EB /* MoreViewController.xib in Resources */,
+				7202E4F01D5C24D3003A75EB /* MassageViewController.xib in Resources */,
 				7202E4C41D5C2497003A75EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,13 +377,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36493226422FA930108BC23C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69F2AC452C53A7CB387EBEED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A36FEC2947752399B1FEAE6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7202E4B21D5C2497003A75EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7202E5031D5C2556003A75EB /* HomepageViewController.m in Sources */,
 				7202E4C11D5C2497003A75EB /* ViewController.m in Sources */,
 				7202E4BE1D5C2497003A75EB /* AppDelegate.m in Sources */,
+				7202E4EF1D5C24D3003A75EB /* MassageViewController.m in Sources */,
+				7202E4F91D5C2521003A75EB /* UserViewController.m in Sources */,
+				7202E4F41D5C24F8003A75EB /* CollectionViewController.m in Sources */,
+				7202E4FE1D5C253C003A75EB /* MoreViewController.m in Sources */,
 				7202E4BB1D5C2497003A75EB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +574,7 @@
 		};
 		7202E4E41D5C2497003A75EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66EE9E7475653004018857B8 /* Pods-Kkjrxiangmu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
@@ -420,6 +586,7 @@
 		};
 		7202E4E51D5C2497003A75EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
@@ -496,6 +663,7 @@
 				7202E4E51D5C2497003A75EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7202E4E61D5C2497003A75EB /* Build configuration list for PBXNativeTarget "KkjrxiangmuTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +672,7 @@
 				7202E4E81D5C2497003A75EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7202E4E91D5C2497003A75EB /* Build configuration list for PBXNativeTarget "KkjrxiangmuUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +681,7 @@
 				7202E4EB1D5C2497003A75EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
+#import "HomepageViewController.h"
+#import "MoreViewController.h"
+#import "MassageViewController.h"
+#import "UserViewController.h"
+#import "CollectionViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +20,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
+    //首页
+    HomepageViewController*_homepageViewcontroll = [[HomepageViewController alloc]init];
+    _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:nil tag:0];
+    
+    //更多
+    MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
+    _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:nil tag:0];
+    
+    MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
+    _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:nil tag:0];
+    
+    CollectionViewController *_collectionViewcontroll = [[CollectionViewController alloc]init];
+    _collectionViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"收款" image:nil tag:0];
+    
+    UserViewController*_userViewcontroll = [[UserViewController alloc]init];
+    _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:nil tag:0];
+    
+    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_userViewcontroll,_massageViewcontroll,_userViewcontroll,_moreViewcontroll];
+    self.window.rootViewController = _tabbarcontroll;
+    [self.window makeKeyWindow];
+
     return YES;
 }
 
