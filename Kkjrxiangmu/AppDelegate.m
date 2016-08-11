@@ -40,7 +40,7 @@
     UserViewController*_userViewcontroll = [[UserViewController alloc]init];
     _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:nil tag:0];
     
-    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_userViewcontroll,_massageViewcontroll,_userViewcontroll,_moreViewcontroll];
+    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_massageViewcontroll,_collectionViewcontroll,_userViewcontroll,_moreViewcontroll];
     self.window.rootViewController = _tabbarcontroll;
     [self.window makeKeyWindow];
 
