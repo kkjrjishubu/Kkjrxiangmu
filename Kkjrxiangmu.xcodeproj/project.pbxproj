@@ -958,7 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/star/Documents/Kkjrxiangmu/Kkjrxiangmu/AppDelegate/Helper/PchHeader.pch;
+				GCC_PREFIX_HEADER = /Users/jiazenghuijiazenghui/Kkjrxiangmu/Kkjrxiangmu/AppDelegate/Helper/PchHeader.pch;
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -973,7 +973,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/star/Documents/Kkjrxiangmu/Kkjrxiangmu/AppDelegate/Helper/PchHeader.pch;
+				GCC_PREFIX_HEADER = /Users/jiazenghuijiazenghui/Kkjrxiangmu/Kkjrxiangmu/AppDelegate/Helper/PchHeader.pch;
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
