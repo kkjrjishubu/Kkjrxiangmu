@@ -7,7 +7,7 @@
 //
 
 #import "MassageViewController.h"
-#import "PchHeader.pch"
+
 @interface MassageViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
