@@ -22,25 +22,33 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
     //首页
     HomepageViewController*_homepageViewcontroll = [[HomepageViewController alloc]init];
-    _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:nil tag:0];
+    _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
     
     //更多
     MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
-    _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:nil tag:0];
+    _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"gengduo1@2x"] tag:0];
     
     MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
-    _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:nil tag:0];
+    _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:[UIImage imageNamed:@"xiaoxi@2x"] tag:0];
     
     CollectionViewController *_collectionViewcontroll = [[CollectionViewController alloc]init];
-    _collectionViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"收款" image:nil tag:0];
+    _collectionViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"收款" image:[UIImage imageNamed:@"shoukuan@2x"] tag:0];
+    UINavigationController *collectionNAV = [[UINavigationController alloc]initWithRootViewController:_collectionViewcontroll];
+    
+    
     
     UserViewController*_userViewcontroll = [[UserViewController alloc]init];
-    _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:nil tag:0];
+    _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:[UIImage imageNamed:@"yonghu@2x"] tag:0];
     
-    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_massageViewcontroll,_collectionViewcontroll,_userViewcontroll,_moreViewcontroll];
+    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_massageViewcontroll,collectionNAV,_userViewcontroll,_moreViewcontroll];
+    
+    _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
     self.window.rootViewController = _tabbarcontroll;
     [self.window makeKeyWindow];
 

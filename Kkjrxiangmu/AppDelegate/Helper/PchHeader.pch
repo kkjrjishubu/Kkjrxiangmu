@@ -1,0 +1,19 @@
+
+//
+//  PchHeader.pch
+//  Kkjrxiangmu
+//
+//  Created by Star's mac on 16/8/12.
+//  Copyright © 2016年 kkjr. All rights reserved.
+//
+
+#ifndef PchHeader_pch
+#define PchHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PchHeader_pch */
+
+// 宏
+#import "MacroHelp.h"
