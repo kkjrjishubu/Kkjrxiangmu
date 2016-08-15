@@ -50,7 +50,7 @@
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3 ; j++) {
                 //设置自定义键盘上的按钮
-                UIButton *_numberButton = [ UIButton buttonWithType:UIButtonTypeRoundedRect];
+                _numberButton = [ UIButton buttonWithType:UIButtonTypeRoundedRect];
                 _numberButton.frame = CGRectMake(1 + (86 + 1) * j, 1 + (85 + 1) * i, 86, 85);
                 _numberButton.backgroundColor = [UIColor whiteColor];
                 //设置键盘上按钮的数字颜色
@@ -123,29 +123,31 @@
 - (void)numberButtonAction:(UIButton *)sender {
     NSLog(@"数字");
     
-    if ([sender.titleLabel.text  isEqual: @"0"]) {
-        NSLog(@"0");
-    }else if ([sender.titleLabel.text  isEqual: @"1"]) {
-        NSLog(@"1");
-    }else if ([sender.titleLabel.text  isEqual: @"2"]) {
-        NSLog(@"2");
-    }else if ([sender.titleLabel.text  isEqual: @"3"]) {
-        NSLog(@"3");
-    }else if ([sender.titleLabel.text  isEqual: @"4"]) {
-        NSLog(@"4");
-    }else if ([sender.titleLabel.text  isEqual: @"5"]) {
-        NSLog(@"5");
-    }else if ([sender.titleLabel.text  isEqual: @"6"]) {
-        NSLog(@"6");
-    }else if ([sender.titleLabel.text  isEqual: @"7"]) {
-        NSLog(@"7");
-    }else if ([sender.titleLabel.text  isEqual: @"8"]) {
-        NSLog(@"8");
-    }else if ([sender.titleLabel.text  isEqual: @"9"]) {
-        NSLog(@"9");
+//    if ([sender.titleLabel.text  isEqual: @"0"]) {
+//        NSLog(@"0");
+//    }else if ([sender.titleLabel.text  isEqual: @"1"]) {
+//        NSLog(@"1");
+//    }else if ([sender.titleLabel.text  isEqual: @"2"]) {
+//        NSLog(@"2");
+//    }else if ([sender.titleLabel.text  isEqual: @"3"]) {
+//        NSLog(@"3");
+//    }else if ([sender.titleLabel.text  isEqual: @"4"]) {
+//        NSLog(@"4");
+//    }else if ([sender.titleLabel.text  isEqual: @"5"]) {
+//        NSLog(@"5");
+//    }else if ([sender.titleLabel.text  isEqual: @"6"]) {
+//        NSLog(@"6");
+//    }else if ([sender.titleLabel.text  isEqual: @"7"]) {
+//        NSLog(@"7");
+//    }else if ([sender.titleLabel.text  isEqual: @"8"]) {
+//        NSLog(@"8");
+//    }else if ([sender.titleLabel.text  isEqual: @"9"]) {
+//        NSLog(@"9");
+//    }
+    
+    if (self.numberBlock != nil) {
+        self.numberBlock();
     }
-    
-    
     
 }
 
@@ -156,6 +158,61 @@
 - (void)butsureAction:(UIButton *)sener {
     NSLog(@"确定");
 }
+
+
+// 1-9
+- (void)numberbut:(NumberbutBlock)block {
+    self.numberBlock = block;
+    
+}
+
+// 点
+- (void)donebut:(DonebutBlock)block {
+    self.doneBlock = block;
+    
+}
+
+
+// 零
+- (void)zerobut:(ZerobutBlock)block {
+    self.zeroBlock = block;
+}
+
+
+// 确定
+- (void)surebut:(SurebutBlock)block {
+    self.sureBlock = block;
+}
+
+// 取消
+- (void)cancelbut:(CancelbutBlcok)block {
+    self.cancelBlock = block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
