@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HomepageViewController.h"
+#import "HomePageViewController.h"
 #import "MoreViewController.h"
 #import "MassageViewController.h"
 #import "UserViewController.h"
@@ -27,8 +27,10 @@
     
     UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
     //首页
-    HomepageViewController*_homepageViewcontroll = [[HomepageViewController alloc]init];
+    HomePageViewController*_homepageViewcontroll = [[HomePageViewController alloc]init];
     _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
+    UINavigationController *homepageNAV = [[UINavigationController alloc]initWithRootViewController:_homepageViewcontroll];
+    
     
     //更多
     MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
@@ -46,7 +48,7 @@
     UserViewController*_userViewcontroll = [[UserViewController alloc]init];
     _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:[UIImage imageNamed:@"yonghu@2x"] tag:0];
     
-    _tabbarcontroll.viewControllers = @[_homepageViewcontroll,_massageViewcontroll,collectionNAV,_userViewcontroll,_moreViewcontroll];
+    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,_userViewcontroll,_moreViewcontroll];
     
     _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
     self.window.rootViewController = _tabbarcontroll;
