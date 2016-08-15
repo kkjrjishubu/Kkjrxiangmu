@@ -65,7 +65,7 @@
         [cell.contentView addSubview:view2];
         UILabel *_datalable = [[UILabel alloc]initWithFrame:CGRectMake(2, 300, 80, 40)];
         _datalable.text = @"08-08 17:17:17";
-        if (indexPath.row==0||indexPath.row==3||indexPath.row==5) {
+        if (indexPath.row==0) {
             UIView *view1 =[[UIView alloc]initWithFrame:CGRectMake(0, 0,screenWidth, 1)];
             view1.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
             [cell.contentView addSubview:view1];
@@ -75,6 +75,8 @@
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     cell.textLabel.text =@"其他消息";
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     cell.detailTextLabel.text = @"您好! 你推荐的188888888888...";
     
     
