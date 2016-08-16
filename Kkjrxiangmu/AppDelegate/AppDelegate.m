@@ -47,8 +47,10 @@
     
     UserViewController*_userViewcontroll = [[UserViewController alloc]init];
     _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:[UIImage imageNamed:@"yonghu@2x"] tag:0];
+    UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
     
-    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,_userViewcontroll,_moreViewcontroll];
+    
+    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,userviewCNAV,_moreViewcontroll];
     
     _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
     self.window.rootViewController = _tabbarcontroll;

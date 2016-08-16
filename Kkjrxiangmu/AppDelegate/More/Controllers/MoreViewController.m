@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self oncilck];
-    [self following];
 }
 -(void)oncilck{
     
@@ -183,6 +182,7 @@
     }];
     UILabel *_Xlab = [[UILabel alloc]init];
     _Xlab.text =@"下级商户";
+    _Xlab.font = [UIFont systemFontOfSize:13];
     _Xlab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [_imView addSubview:_Xlab];
     [_Xlab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -265,6 +265,7 @@
     UILabel *Xlab2= [[UILabel alloc]init];
     Xlab2.font = [UIFont systemFontOfSize:13];
     Xlab2.text = @"使用帮助";
+    
   Xlab2.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:Xlab2];
     [Xlab2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -275,25 +276,21 @@
     }];
     
     
-}
-
-
--(void)following{
-    //灰色的条
-    UIView *_view = [[UIView alloc]init];
-    _view.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:100];
-    [self.view addSubview:_view];
-    [_view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(480*SCALE);
+//下半部分灰色的条
+    UIView *_viewhui = [[UIView alloc]init];
+    _viewhui.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:100];
+    [self.view addSubview:_viewhui];
+    [_viewhui mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_imView.mas_bottom).offset(20*SCALE);
         make.width.mas_equalTo(screenWidth);
         make.height.mas_equalTo(60.5*SCALE);
     }];
 
-    UIView *_xianView = [[UIView alloc]init];
-    _xianView.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:_xianView];
-    [_xianView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_view.mas_centerY).with.offset(0);
+    UIView *_XxianView = [[UIView alloc]init];
+    _XxianView.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_XxianView];
+    [_XxianView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_viewhui.mas_centerY).with.offset(0);
         make.left.equalTo(self.view.mas_left).offset(0);
         make.height.mas_equalTo(1);
         make.width.mas_equalTo(150*SCALE);
@@ -302,11 +299,11 @@
 
     
     
-    UIView *_xianView1 =[[UIView alloc]init];
-    _xianView1.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:_xianView1];
-    [_xianView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_view.mas_centerY).with.offset(0);
+    UIView *_XxianView1 =[[UIView alloc]init];
+    _XxianView1.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_XxianView1];
+    [_XxianView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_viewhui.mas_centerY).with.offset(0);
         make.height.mas_equalTo(1);
         make.width.mas_equalTo(150*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
@@ -318,58 +315,61 @@
     _fenGView.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:_fenGView];
     [_fenGView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_view.mas_bottom).offset(71.2*SCALE);
+        make.top.equalTo(_viewhui.mas_bottom).offset(60.2*SCALE);
         make.width.mas_equalTo(353*SCALE);
         make.height.mas_equalTo(1);
         make.right.mas_equalTo(self.view.mas_right).offset(0);
     }];
     
     
-    UIImageView *ZhuceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 555, 30, 40)];
+    UIImageView *ZhuceImageView = [[UIImageView alloc]init];
     
     ZhuceImageView.image = [UIImage imageNamed:@"xieyi.png"];
     
     [self.view addSubview:ZhuceImageView];
     [ZhuceImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_view.mas_bottom).offset(16*SCALE);
+        make.top.equalTo(_viewhui.mas_bottom).offset(25*SCALE);
         make.left.equalTo(self.view.mas_left).offset(20*SCALE);
+        make.height.mas_equalTo(25*SCALE);
+        make.width.mas_equalTo(24*SCALE);
     }];
     
     
     
-    UIImageView *MeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 630, 40, 40)];
-    
+    UIImageView *MeImageView = [[UIImageView alloc]init];
     MeImageView.image = [UIImage imageNamed:@"guanyuwomen.png"];
     
     [self.view addSubview:MeImageView];
     
     [MeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_view.mas_bottom).offset(89*SCALE);
-        make.left.equalTo(self.view.mas_left).offset(16*SCALE);
-        
-        
-        
+        make.top.equalTo(ZhuceImageView.mas_bottom).offset(25*SCALE);
+        make.left.equalTo(self.view.mas_left).offset(20*SCALE);
+        make.height.mas_equalTo(24*SCALE);
+        make.width.mas_equalTo(24*SCALE);
     }];
     
     
     //两个lab
     UILabel*Zlab = [[UILabel alloc]init];
-    Zlab.frame = CGRectMake(0, 0, 80, 40);
-    Zlab.center = CGPointMake(120, ZhuceImageView.center.y);
     Zlab.text = @"注册协议";
+    Zlab.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:Zlab];
     [Zlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_view.mas_bottom).offset(26.6*SCALE);
-        make.left.equalTo(ZhuceImageView.mas_left).offset(26.6*SCALE);
+        make.top.equalTo(_viewhui.mas_bottom).offset(23.6*SCALE);
+        make.left.equalTo(ZhuceImageView.mas_right).offset(26.6*SCALE);
         make.width.mas_equalTo(75.2*SCALE);
         make.height.mas_equalTo(23.2*SCALE);
     }];
     UILabel*Zlab1 = [[UILabel alloc]init];
-    Zlab1.frame = CGRectMake(0, 0, 80, 40);
-    Zlab1.center = CGPointMake(120, MeImageView.center.y);
     Zlab1.text = @"关于我们";
+    Zlab1.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:Zlab1];
-    
+    [Zlab1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(MeImageView.mas_right).offset(29.0*SCALE);
+        make.top.equalTo(_fenGView.mas_bottom).offset(15.2*SCALE);
+        make.width.mas_equalTo(75.2*SCALE);
+        make.height.mas_equalTo(23.2*SCALE);
+    }];
     
 }
 - (void)didReceiveMemoryWarning {
