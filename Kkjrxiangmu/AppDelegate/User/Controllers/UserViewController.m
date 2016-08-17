@@ -66,9 +66,7 @@
 }
 -(void)xianTiao{
     //蓝色到航条
-    UIView *_Naview = [[UIView alloc]init];//WithFrame:CGRectMake(0, 22, SCREEN_WIDTH,44)];
-   // _Naview.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
-    
+    UIView *_Naview = [[UIView alloc]init];
     [self.view addSubview:_Naview];
     
     [_Naview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -122,7 +120,7 @@
     UIView *view =[[UIView alloc]init];
     
     lineView = view;
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(0);

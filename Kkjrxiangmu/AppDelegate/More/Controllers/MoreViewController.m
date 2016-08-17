@@ -8,6 +8,7 @@
 
 #import "MoreViewController.h"
 #import "Masonry.h"
+#import "HelpViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define View_HEIGH 125
@@ -21,12 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    self.navigationItem.title = @"用户";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self oncilck];
 }
 -(void)oncilck{
     
-    UIView *_navView = [[UIView alloc]init];//WithFrame:CGRectMake(0, 22,SCREEN_WIDTH, 44)];
-    _navView.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
+    UIView *_navView = [[UIView alloc]init];
     [self.view addSubview:_navView];
     [_navView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -34,22 +38,8 @@
         make.width.equalTo(@(screenWidth));
         make.height.equalTo(@44.0);
     }];
-    UILabel *_lab = [[UILabel alloc]init];
-    _lab.frame = CGRectMake(0, 0, 40, 20);
-    _lab.center=CGPointMake(_navView.center.x, _navView.center.y-20);
-    _lab.textColor =[UIColor whiteColor];
-    _lab.font = [UIFont systemFontOfSize:20];
-    _lab.text = @"用户";
-    _lab.textAlignment = UITextAlignmentCenter;
-    [_navView addSubview:_lab];
-    [_lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(_lab.superview.center.x);
-        make.centerY.mas_equalTo(_lab.superview.center.y);
-        make.width.mas_equalTo(40.0);
-        make.height.mas_equalTo(20.0);
-    }];
     //两个方块
-    UIView *view=[[UIView alloc]init];//WithFrame:CGRectMake(20,86, View_WIDTH, View_HEIGH)];
+    UIView *view=[[UIView alloc]init];
     view.backgroundColor = [UIColor colorWithRed:243.0/225.0 green:197.0/225.0 blue:45.0/225.0 alpha:100];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 20.0;
@@ -113,7 +103,7 @@
         
     }];
 
-    UIImageView *_imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(60, 60, 40, 50)];
+    UIImageView *_imageView2 = [[UIImageView alloc]init];
     
     _imageView2.image = [UIImage imageNamed:@"tuiguang.png"];
     [view1 addSubview:_imageView2];
@@ -239,6 +229,15 @@
     _imView2.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:100];
     [self.view addSubview:_imView2];
     [_imView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_imView1.mas_bottom).offset(9.3*SCALE);
+        make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
+        make.width.mas_equalTo(SCALE*170.3);
+        make.height.mas_equalTo(SCALE*70.5);
+    }];
+    UIButton *BangZhuButton = [[UIButton alloc]init];
+    [self.view addSubview:BangZhuButton];
+    [BangZhuButton addTarget:self action:@selector(cilickBangzhu) forControlEvents:UIControlEventTouchUpInside];
+    [BangZhuButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_imView1.mas_bottom).offset(9.3*SCALE);
         make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
         make.width.mas_equalTo(SCALE*170.3);
@@ -371,6 +370,11 @@
         make.height.mas_equalTo(23.2*SCALE);
     }];
     
+}
+-(void)cilickBangzhu{
+    HelpViewController *help = [[HelpViewController alloc]init];
+    [self.navigationController pushViewController:help animated:YES];
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

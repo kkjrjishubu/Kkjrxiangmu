@@ -35,6 +35,7 @@
     //更多
     MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
     _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"gengduo1@2x"] tag:0];
+    UINavigationController *moreNavConrtoll = [[UINavigationController alloc]initWithRootViewController:_moreViewcontroll];
     
     MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
     _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:[UIImage imageNamed:@"xiaoxi@2x"] tag:0];
@@ -50,7 +51,7 @@
     UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
     
     
-    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,userviewCNAV,_moreViewcontroll];
+    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,userviewCNAV,moreNavConrtoll];
     
     _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
     self.window.rootViewController = _tabbarcontroll;
