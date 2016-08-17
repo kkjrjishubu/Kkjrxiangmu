@@ -8,6 +8,10 @@
 
 #import "UserViewController.h"
 #import "Masonry.h"
+#import  "IdentityViewController.h"
+#import "BankcardViewController.h"
+#import "PayPasswordViewController.h"
+#import "PaymentViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCALE SCREEN_WIDTH/375.0
@@ -34,20 +38,14 @@
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,  0,0, 0) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.rowHeight = 40;
-    /*UIView *view =[[UIView alloc]init];//WithFrame:CGRectMake(0, SCREEN_HEIGHT/3-22,SCREEN_WIDTH, 2)];
-     view.backgroundColor = [UIColor redColor];//colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-     [self.view addSubview:view];
-     [view mas_makeConstraints:^(MASConstraintMaker *make) {
-     make.left.equalTo(self.view.mas_left).offset(0);
-     // make.width.equalTo(@(SCREEN_WIDTH));
-     make.top.equalTo(self.view.mas_top).offset(screenWidth*0.53);
-     // make.bottom.equalTo(@(screenHeight*0.1));//.offset(screenHeight*0.1);
-     make.right.equalTo(self.view.mas_right).offset(0);
-     
-     make.height.equalTo(@2);
-     }];*/
+    _tableView.rowHeight = 45*SCALE;
     [self.view addSubview:_tableView];
+    
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    
+    self.navigationItem.title = @"用户";
+ //   self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _ImageArray=@[@[@"jiesuan.png",@"shenfen.png",@"yinhang.png"],@[@"denglu.png",@"zhifu.png"],@[@"gengxin.png",@"tuichu.png"]];
     _LabArray = @[@[@"结算记录",@"身份验证",@"银行卡验证"],@[@"修改登录密码",@"支付密码"],@[@"版本更新",@"退出登录"]];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -69,7 +67,7 @@
 -(void)xianTiao{
     //蓝色到航条
     UIView *_Naview = [[UIView alloc]init];//WithFrame:CGRectMake(0, 22, SCREEN_WIDTH,44)];
-    _Naview.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
+   // _Naview.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
     
     [self.view addSubview:_Naview];
     
@@ -77,27 +75,10 @@
         
         make.top.equalTo(self.view.mas_top).offset(22.0);
         make.width.equalTo(@(screenWidth));
-        make.height.equalTo(@44.0);
+        make.height.equalTo(@43.0);
         
         
     }];
-    
-    
-    UILabel *_lab = [[UILabel alloc]init];
-    //    _lab.frame = CGRectMake(0, 0, 40, 20);
-    //    _lab.center=CGPointMake(_Naview.center.x, _Naview.center.y-20);
-    _lab.textColor =[UIColor whiteColor];
-    _lab.font = [UIFont systemFontOfSize:20];
-    _lab.text = @"用户";
-    _lab.textAlignment = UITextAlignmentCenter;
-    [_Naview addSubview:_lab];
-    [_lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(_lab.superview.center.x);
-        make.centerY.mas_equalTo(_lab.superview.center.y);
-        make.width.mas_equalTo(40.0);
-        make.height.mas_equalTo(20.0);
-    }];
-    
     
     //用户的头像
     UIImageView *_headImage = [[UIImageView alloc]init];
@@ -286,12 +267,13 @@
         return 0;
     }
 }
+//TODO:线条未实现
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static  NSString *cellIdentfier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentfier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentfier];
-        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 39,SCREEN_WIDTH, 1)];
+        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 1)];
         view2.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
         view2.tag = 2015;
         [cell.contentView addSubview:view2];
@@ -325,7 +307,43 @@
     
     return 20;
 }
-
+//单元格点击事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIViewController*vc= nil;
+    if (indexPath.section==0) {
+        switch (indexPath.row) {
+            case 0:
+                NSLog(@"1111");
+                break;
+            case 1:
+                
+                vc = [[IdentityViewController alloc]init];
+                break;
+            case 2:
+                vc = [[BankcardViewController alloc]init];
+                break;
+            default:
+                break;
+        }
+    }
+    if (indexPath.section==1) {
+        switch (indexPath.row) {
+            case 0:
+                vc = [[PayPasswordViewController alloc]init];
+                break;
+                case 1:
+                vc = [[PaymentViewController alloc]init];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
 /*
 #pragma mark - Navigation
 
