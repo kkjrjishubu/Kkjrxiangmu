@@ -22,6 +22,14 @@
 @end
 
 @implementation CollectionViewController
+{
+    float collectionVCWidth;
+    float collectionVCHeight;
+    float butX;
+    float butY;
+    float butHeight;
+    float butWidth;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,20 +66,45 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
-    layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 - 1, 90);
+    if (screenHeight == 667) {
+        layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 - 1, 90);
+        
+        collectionVCWidth = self.keyView.frame.size.width - 2;
+        collectionVCHeight = self.keyView.frame.size.height - 66;
+        butX = screenWidth - self.keyView.frame.size.width/4 - 30;
+        butY = 180;
+        butHeight = 179;
+        butWidth = self.keyView.frame.size.width/4 - 1;
+        //NSLog(@"667 %f  %f", screenHeight ,collectionVCHeight);
+    }else if (screenHeight == 736) {
+        layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 + 8, 108);
+        collectionVCWidth = self.keyView.frame.size.width  + 35;
+        collectionVCHeight = self.keyView.frame.size.height + 2.5;
+        
+        butX = screenWidth - self.keyView.frame.size.width/4 - 40;
+        butY = 217;
+        butHeight = 210;
+        butWidth = self.keyView.frame.size.width/4 + 8;
+        
+        //NSLog(@"736");
+        
+    }
+    
+    
     
     layout.minimumInteritemSpacing = 0; // 左右间距
     layout.minimumLineSpacing = 1; //上下的间距 可以设置0看下效果
     
     //layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
     
-    UICollectionView *keyCollectionview = [[UICollectionView alloc]initWithFrame:CGRectMake(1, 1, self.keyView.frame.size.width - 2, self.keyView.frame.size.height - 63) collectionViewLayout:layout];
     
+    UICollectionView *keyCollectionview = [[UICollectionView alloc]initWithFrame:CGRectMake(1, 1, collectionVCWidth, collectionVCHeight) collectionViewLayout:layout];
+    
+    NSLog(@"%f  %f", keyCollectionview.frame.size.height , self.keyView.frame.size.height);
     keyCollectionview.delegate = self;
     
     keyCollectionview.dataSource =self;
-    
+    keyCollectionview.scrollEnabled = NO;
     keyCollectionview.showsVerticalScrollIndicator = NO;
     
     keyCollectionview.backgroundColor = qiangrayColor;
@@ -82,7 +115,7 @@
     NSArray *buttit = @[@"",@"确定"];
     for (int i = 0; i < 2; i++) {
         UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        but.frame = CGRectMake(screenWidth - self.keyView.frame.size.width/4 - 30, 2 + (180 + 1) * i, self.keyView.frame.size.width/4 - 1, 180);
+        but.frame = CGRectMake(butX, 2 + (butY + 1) * i, butWidth, butHeight);
         but.backgroundColor = [UIColor whiteColor];
         [but setImage:[UIImage imageNamed:butimage[i]] forState:UIControlStateNormal];
         [but setTitle:buttit[i] forState:UIControlStateNormal];
@@ -94,6 +127,7 @@
     }
     
     [keyCollectionview registerNib:[UINib nibWithNibName:@"KeyCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"keycell"];
+
     
     
 }

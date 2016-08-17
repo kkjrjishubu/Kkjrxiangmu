@@ -20,6 +20,14 @@
 @end
 
 @implementation HomePageViewController
+{
+    float collectionVCY;
+    float collectionVCHeigth;
+    float butX;
+    float butY;
+    float butHeight;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,14 +62,23 @@
 
     layout.sectionInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     
+    if (screenHeight == 667) {
+        collectionVCY =  self.viewy.frame.size.height * 3 - 40;
+        collectionVCHeigth = 265;
+    }else if (screenHeight == 736) {
+        collectionVCY =  self.viewy.frame.size.height * 3 - 10;
+        collectionVCHeigth = 300;
+        //NSLog(@"736");
+        
+    }
     
     
-    self.momentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(1,  self.scrollview.frame.size.height * 3 - 40, screenWidth, 265) collectionViewLayout:layout];
+    self.momentCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(1, collectionVCY, screenWidth, collectionVCHeigth) collectionViewLayout:layout];
     
     self.momentCollectionView.delegate = self;
     
     self.momentCollectionView.dataSource =self;
-    
+    self.momentCollectionView.scrollEnabled = NO;
     self.momentCollectionView.showsVerticalScrollIndicator = NO;
     
     self.momentCollectionView.backgroundColor = [UIColor whiteColor];

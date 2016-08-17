@@ -18,6 +18,11 @@
 		F81EA0BF1D5C887300214663 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BD1D5C887300214663 /* ViewController.m */; };
 		F8837DB21D61552B0056148C /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8837DB01D61552B0056148C /* TopUpViewController.m */; };
 		F8837DB31D61552B0056148C /* TopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8837DB11D61552B0056148C /* TopUpViewController.xib */; };
+		F887D9C31D62FCA300D88E0B /* PayMentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F887D9C21D62FCA300D88E0B /* PayMentView.m */; };
+		F887D9C51D62FCCC00D88E0B /* PayMentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F887D9C41D62FCCC00D88E0B /* PayMentView.xib */; };
+		F887D9CB1D630B3A00D88E0B /* NSMutableDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = F887D9CA1D630B3A00D88E0B /* NSMutableDictionary+Json.m */; };
+		F887D9D31D63122900D88E0B /* PayWayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F887D9D21D63122900D88E0B /* PayWayView.m */; };
+		F887D9D51D63123F00D88E0B /* PayWayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F887D9D41D63123F00D88E0B /* PayWayView.xib */; };
 		F8B65A1B1D5F276D001270A9 /* KeyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B65A191D5F276D001270A9 /* KeyCollectionViewCell.m */; };
 		F8B65A1C1D5F276D001270A9 /* KeyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B65A1A1D5F276D001270A9 /* KeyCollectionViewCell.xib */; };
 		F8BE8E5F1D5D5EC90053D464 /* chexiao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E2B1D5D5EC90053D464 /* chexiao@2x.png */; };
@@ -101,6 +106,14 @@
 		F8837DAF1D61552B0056148C /* TopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopUpViewController.h; sourceTree = "<group>"; };
 		F8837DB01D61552B0056148C /* TopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopUpViewController.m; sourceTree = "<group>"; };
 		F8837DB11D61552B0056148C /* TopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopUpViewController.xib; sourceTree = "<group>"; };
+		F887D9C11D62FCA300D88E0B /* PayMentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayMentView.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.h"; sourceTree = SOURCE_ROOT; };
+		F887D9C21D62FCA300D88E0B /* PayMentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayMentView.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.m"; sourceTree = SOURCE_ROOT; };
+		F887D9C41D62FCCC00D88E0B /* PayMentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayMentView.xib; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.xib"; sourceTree = SOURCE_ROOT; };
+		F887D9C91D630B3A00D88E0B /* NSMutableDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Json.h"; sourceTree = "<group>"; };
+		F887D9CA1D630B3A00D88E0B /* NSMutableDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Json.m"; sourceTree = "<group>"; };
+		F887D9D11D63122900D88E0B /* PayWayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayWayView.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.h"; sourceTree = SOURCE_ROOT; };
+		F887D9D21D63122900D88E0B /* PayWayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayWayView.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.m"; sourceTree = SOURCE_ROOT; };
+		F887D9D41D63123F00D88E0B /* PayWayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayWayView.xib; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.xib"; sourceTree = SOURCE_ROOT; };
 		F8B65A181D5F276D001270A9 /* KeyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCollectionViewCell.h; sourceTree = "<group>"; };
 		F8B65A191D5F276D001270A9 /* KeyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyCollectionViewCell.m; sourceTree = "<group>"; };
 		F8B65A1A1D5F276D001270A9 /* KeyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -398,6 +411,8 @@
 				F8BE8EEB1D5DBBE80053D464 /* WebViewController.h */,
 				F8BE8EEC1D5DBBE80053D464 /* WebViewController.m */,
 				F8BE8EBF1D5D6C310053D464 /* MacroHelp.h */,
+				F887D9C91D630B3A00D88E0B /* NSMutableDictionary+Json.h */,
+				F887D9CA1D630B3A00D88E0B /* NSMutableDictionary+Json.m */,
 			);
 			name = Helper;
 			path = AppDelegate/Helper;
@@ -440,6 +455,12 @@
 				F8BE8EF81D5DCE0E0053D464 /* FunctionCollectionViewCell.h */,
 				F8BE8EF91D5DCE0E0053D464 /* FunctionCollectionViewCell.m */,
 				F8BE8EFA1D5DCE0E0053D464 /* FunctionCollectionViewCell.xib */,
+				F887D9C11D62FCA300D88E0B /* PayMentView.h */,
+				F887D9C21D62FCA300D88E0B /* PayMentView.m */,
+				F887D9C41D62FCCC00D88E0B /* PayMentView.xib */,
+				F887D9D11D63122900D88E0B /* PayWayView.h */,
+				F887D9D21D63122900D88E0B /* PayWayView.m */,
+				F887D9D41D63123F00D88E0B /* PayWayView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -664,6 +685,8 @@
 				F8B65A1C1D5F276D001270A9 /* KeyCollectionViewCell.xib in Resources */,
 				7202E4C61D5C2497003A75EB /* Assets.xcassets in Resources */,
 				F8BE8E6C1D5D5EC90053D464 /* xieyi@2x.png in Resources */,
+				F887D9C51D62FCCC00D88E0B /* PayMentView.xib in Resources */,
+				F887D9D51D63123F00D88E0B /* PayWayView.xib in Resources */,
 				F8BE8E8B1D5D5EC90053D464 /* tuichu@2x.png in Resources */,
 				F8BE8E601D5D5EC90053D464 /* weixin.png in Resources */,
 				F8BE8EBB1D5D61C60053D464 /* UserViewController.xib in Resources */,
@@ -769,13 +792,16 @@
 				F8BE8EBE1D5D633A0053D464 /* KeyboardvView.m in Sources */,
 				F8BE8EB61D5D61C60053D464 /* MassageViewController.m in Sources */,
 				7202E4BB1D5C2497003A75EB /* main.m in Sources */,
+				F887D9C31D62FCA300D88E0B /* PayMentView.m in Sources */,
 				F8BE8EED1D5DBBE80053D464 /* Alert.m in Sources */,
+				F887D9D31D63122900D88E0B /* PayWayView.m in Sources */,
 				F8BE8EFB1D5DCE0E0053D464 /* FunctionCollectionViewCell.m in Sources */,
 				F8BE8EBA1D5D61C60053D464 /* UserViewController.m in Sources */,
 				F8BE8EB81D5D61C60053D464 /* MoreViewController.m in Sources */,
 				F8837DB21D61552B0056148C /* TopUpViewController.m in Sources */,
 				F8B65A1B1D5F276D001270A9 /* KeyCollectionViewCell.m in Sources */,
 				F81EA0BE1D5C887300214663 /* AppDelegate.m in Sources */,
+				F887D9CB1D630B3A00D88E0B /* NSMutableDictionary+Json.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
