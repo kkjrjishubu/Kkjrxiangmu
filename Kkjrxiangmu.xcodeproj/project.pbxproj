@@ -35,6 +35,14 @@
 		723D96A41D62FD25001B61CA /* ZFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96A21D62FD25001B61CA /* ZFViewController.xib */; };
 		723D96E71D63EF8D001B61CA /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96E51D63EF8D001B61CA /* HelpViewController.m */; };
 		723D96E81D63EF8D001B61CA /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96E61D63EF8D001B61CA /* HelpViewController.xib */; };
+		723D96EC1D640619001B61CA /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96EA1D640619001B61CA /* AgreementViewController.m */; };
+		723D96ED1D640619001B61CA /* AgreementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96EB1D640619001B61CA /* AgreementViewController.xib */; };
+		723D96F21D644450001B61CA /* AboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96F01D644450001B61CA /* AboutusViewController.m */; };
+		723D96F31D644450001B61CA /* AboutusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96F11D644450001B61CA /* AboutusViewController.xib */; };
+		723D96F91D64480C001B61CA /* tubiao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D96F81D64480C001B61CA /* tubiao@2x.png */; };
+		723D96FB1D645CCF001B61CA /* shoufuyi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D96FA1D645CCF001B61CA /* shoufuyi@2x.png */; };
+		723D970F1D659880001B61CA /* duihaohuise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D970E1D659880001B61CA /* duihaohuise@2x.png */; };
+		723D97111D659885001B61CA /* duihao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D97101D659885001B61CA /* duihao@2x.png */; };
 		E9EB12F4358C3116B2657E01 /* libPods-Kkjrxiangmu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */; };
 		F81EA0BE1D5C887300214663 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BB1D5C887300214663 /* AppDelegate.m */; };
 		F81EA0BF1D5C887300214663 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BD1D5C887300214663 /* ViewController.m */; };
@@ -145,6 +153,16 @@
 		723D96E41D63EF8D001B61CA /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		723D96E51D63EF8D001B61CA /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		723D96E61D63EF8D001B61CA /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
+		723D96E91D640619001B61CA /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
+		723D96EA1D640619001B61CA /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
+		723D96EB1D640619001B61CA /* AgreementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementViewController.xib; sourceTree = "<group>"; };
+		723D96EF1D644450001B61CA /* AboutusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutusViewController.h; sourceTree = "<group>"; };
+		723D96F01D644450001B61CA /* AboutusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutusViewController.m; sourceTree = "<group>"; };
+		723D96F11D644450001B61CA /* AboutusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutusViewController.xib; sourceTree = "<group>"; };
+		723D96F81D64480C001B61CA /* tubiao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tubiao@2x.png"; sourceTree = "<group>"; };
+		723D96FA1D645CCF001B61CA /* shoufuyi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shoufuyi@2x.png"; sourceTree = "<group>"; };
+		723D970E1D659880001B61CA /* duihaohuise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duihaohuise@2x.png"; sourceTree = "<group>"; };
+		723D97101D659885001B61CA /* duihao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duihao@2x.png"; sourceTree = "<group>"; };
 		898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kkjrxiangmu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu.release.xcconfig"; sourceTree = "<group>"; };
 		E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kkjrxiangmu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81EA0BA1D5C887300214663 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -387,6 +405,10 @@
 		F8BE8E281D5D5EC90053D464 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				723D97101D659885001B61CA /* duihao@2x.png */,
+				723D970E1D659880001B61CA /* duihaohuise@2x.png */,
+				723D96FA1D645CCF001B61CA /* shoufuyi@2x.png */,
+				723D96F81D64480C001B61CA /* tubiao@2x.png */,
 				723D96981D62F45E001B61CA /* duanxin@2x.png */,
 				723D96961D62F451001B61CA /* shouji@2x.png */,
 				723D968F1D62EB35001B61CA /* mima@2x.png */,
@@ -608,6 +630,12 @@
 				723D96E41D63EF8D001B61CA /* HelpViewController.h */,
 				723D96E51D63EF8D001B61CA /* HelpViewController.m */,
 				723D96E61D63EF8D001B61CA /* HelpViewController.xib */,
+				723D96E91D640619001B61CA /* AgreementViewController.h */,
+				723D96EA1D640619001B61CA /* AgreementViewController.m */,
+				723D96EB1D640619001B61CA /* AgreementViewController.xib */,
+				723D96EF1D644450001B61CA /* AboutusViewController.h */,
+				723D96F01D644450001B61CA /* AboutusViewController.m */,
+				723D96F11D644450001B61CA /* AboutusViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -774,6 +802,7 @@
 				F8BE8EB71D5D61C60053D464 /* MassageViewController.xib in Resources */,
 				F8BE8E861D5D5EC90053D464 /* denglu@2x.png in Resources */,
 				F8BE8E8D1D5D5EC90053D464 /* zhifu@2x.png in Resources */,
+				723D96F91D64480C001B61CA /* tubiao@2x.png in Resources */,
 				723D96991D62F45E001B61CA /* duanxin@2x.png in Resources */,
 				F8BE8E681D5D5EC90053D464 /* guanyuwomen@2x.png in Resources */,
 				7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */,
@@ -797,6 +826,7 @@
 				F8BE8E8C1D5D5EC90053D464 /* yinhang@2x.png in Resources */,
 				F8BE8EFC1D5DCE0E0053D464 /* FunctionCollectionViewCell.xib in Resources */,
 				F8BE8E691D5D5EC90053D464 /* huiyuanzhongxin@2x.png in Resources */,
+				723D96ED1D640619001B61CA /* AgreementViewController.xib in Resources */,
 				F8BE8E871D5D5EC90053D464 /* gengxin@2x.png in Resources */,
 				723D96881D62ADFC001B61CA /* AddViewController.xib in Resources */,
 				F8BE8E611D5D5EC90053D464 /* yinlian.png in Resources */,
@@ -804,12 +834,16 @@
 				F8BE8E8A1D5D5EC90053D464 /* touxiang@2x.png in Resources */,
 				723D96711D619D39001B61CA /* IdentityViewController.xib in Resources */,
 				F8BE8E661D5D5EC90053D464 /* bangzhu@2x.png in Resources */,
+				723D970F1D659880001B61CA /* duihaohuise@2x.png in Resources */,
 				723D96951D62F2D7001B61CA /* BackViewController.xib in Resources */,
 				F8BE8E781D5D5EC90053D464 /* luobo2.png in Resources */,
 				723D96831D62A1A6001B61CA /* BankcardViewController.xib in Resources */,
 				F8BE8E881D5D5EC90053D464 /* jiesuan@2x.png in Resources */,
 				F8837DB31D61552B0056148C /* TopUpViewController.xib in Resources */,
+				723D96FB1D645CCF001B61CA /* shoufuyi@2x.png in Resources */,
 				7202E4C41D5C2497003A75EB /* Main.storyboard in Resources */,
+				723D96F31D644450001B61CA /* AboutusViewController.xib in Resources */,
+				723D97111D659885001B61CA /* duihao@2x.png in Resources */,
 				F8BE8EB91D5D61C60053D464 /* MoreViewController.xib in Resources */,
 				F8BE8E6A1D5D5EC90053D464 /* tuiguang@2x.png in Resources */,
 				F8BE8EB31D5D61C60053D464 /* CollectionViewController.xib in Resources */,
@@ -894,6 +928,7 @@
 				723D96A31D62FD25001B61CA /* ZFViewController.m in Sources */,
 				F8BE8EB21D5D61C60053D464 /* CollectionViewController.m in Sources */,
 				723D96821D62A1A6001B61CA /* BankcardViewController.m in Sources */,
+				723D96EC1D640619001B61CA /* AgreementViewController.m in Sources */,
 				F81EA0BF1D5C887300214663 /* ViewController.m in Sources */,
 				F8BE8EEF1D5DBBE80053D464 /* WebViewController.m in Sources */,
 				723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */,
@@ -902,6 +937,7 @@
 				723D96941D62F2D7001B61CA /* BackViewController.m in Sources */,
 				F8BE8EB61D5D61C60053D464 /* MassageViewController.m in Sources */,
 				7202E4BB1D5C2497003A75EB /* main.m in Sources */,
+				723D96F21D644450001B61CA /* AboutusViewController.m in Sources */,
 				723D96871D62ADFC001B61CA /* AddViewController.m in Sources */,
 				723D96701D619D39001B61CA /* IdentityViewController.m in Sources */,
 				723D969E1D62FBC7001B61CA /* PaymentViewController.m in Sources */,

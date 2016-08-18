@@ -12,6 +12,7 @@
 #import "BankcardViewController.h"
 #import "PayPasswordViewController.h"
 #import "PaymentViewController.h"
+#import "ViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCALE SCREEN_WIDTH/375.0
@@ -167,10 +168,7 @@
         make.right.equalTo(view1.mas_right).offset(-screenWidth*0.08);
         make.top.equalTo(_headImage.mas_bottom).offset(25*SCALE);
         make.width.equalTo(@(screenWidth*0.2));
-        
         make.height.equalTo(@(15));
-        
-        
     }];
     
     
@@ -336,6 +334,13 @@
                 break;
         }
     }
+    if (indexPath.section==2&&indexPath.row==0) {
+        
+        ViewController *vi = [[ViewController alloc]init];
+            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        window.rootViewController =vi;
+        return;
+        }
     
     [self.navigationController pushViewController:vc animated:YES];
 }
