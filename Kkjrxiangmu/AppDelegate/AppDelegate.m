@@ -14,6 +14,7 @@
 //#import "CollectionViewController.h"
 #import "ViewController.h"
 //#define SCALE screenWidth/375.0
+
 @interface AppDelegate ()<UIAlertViewDelegate>
 
 @end
@@ -24,9 +25,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-      self.window.rootViewController = [[ViewController alloc]init];
-    [self.window makeKeyWindow];//makeKeyAndVisible];
+    
+    ViewController *vi = [[ViewController alloc]init];
+      UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
+    
+    self.window.rootViewController =nav;
+    [self.window makeKeyAndVisible];
 
+  
+    //    window.rootViewController = nav;
+    //    [window makeKeyWindow];
+    
 //    _imageView = [[UIImageView alloc]init];
 //    _imageView.image = [UIImage imageNamed:@"shoufuyi.png"];
 //    [self.window addSubview:_imageView];

@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self interface];
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    
+    self.navigationItem.title = @"密码找回";
+    //   self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    
     UITableView *_tablview = [[UITableView alloc]initWithFrame:CGRectMake(0, 186, screenWidth, screenHeight-186) style:UITableViewStylePlain];
     _tablview.delegate = self;
     _tablview.dataSource = self;

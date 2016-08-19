@@ -263,6 +263,7 @@
         return 0;
     }
 }
+
 //TODO:线条未实现
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static  NSString *cellIdentfier = @"Cell";
@@ -279,7 +280,6 @@
             [cell.contentView addSubview:view1];
         }
     }
-    
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
@@ -303,6 +303,7 @@
     
     return 20;
 }
+
 //单元格点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIViewController*vc= nil;

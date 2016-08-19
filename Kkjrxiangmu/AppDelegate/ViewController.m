@@ -13,6 +13,8 @@
 #import "MassageViewController.h"
 #import "UserViewController.h"
 #import "CollectionViewController.h"
+#import "ForgetViewController.h"
+#import "BackViewController.h"
 
 #define SCALE screenWidth/375.0
 
@@ -30,6 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    
+    self.navigationItem.title = @"密码找回";
+    //   self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     libraryPath =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
     NSLog(@"%@",libraryPath);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -86,7 +95,7 @@
     }];
     _textFile = [[UITextField alloc]init];
     _textFile.placeholder = @"请输入您的手机号";
-    _textFile.font = [UIFont systemFontOfSize:10];
+    _textFile.font = [UIFont systemFontOfSize:12];
     NSData *phoneNumber = [userDefaults objectForKey:@"Zhanghao"];
     NSString *string = [[NSString alloc]initWithData:phoneNumber encoding:NSUTF8StringEncoding];
     if (string == nil) {
@@ -114,7 +123,7 @@
     }else{
         _textFile1.text = str;
     }
-    _textFile1.font = [UIFont systemFontOfSize:10];
+    _textFile1.font = [UIFont systemFontOfSize:12];
       [self.view addSubview:_textFile1];
     [_textFile1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_Mlab.mas_centerY);
@@ -135,9 +144,16 @@
         make.top.equalTo(view2.mas_bottom).offset(30*SCALE);
         make.height.mas_equalTo(40*SCALE);
     }];
-    
     JZbutton = [[UIButton alloc]init];
-    [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
+    BOOL bi = [[userDefaults objectForKey:@"bool"] boolValue];
+    isDown = bi;
+    if (bi == NO) {
+        [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
+    }else{
+        [JZbutton setImage:[UIImage imageNamed:@"duihao.png"] forState:UIControlStateNormal];
+
+    }
+    
     [self.view addSubview:JZbutton];
     [JZbutton addTarget:self action:@selector(JZbuttoncilick) forControlEvents:UIControlEventTouchUpInside];
     [JZbutton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -158,37 +174,98 @@
         make.width.mas_equalTo(110*SCALE);
         make.height.mas_equalTo(40*SCALE);
     }];
+    
+    UIButton *Wjbutton = [[UIButton alloc]init];
+    [Wjbutton setTitle:@"忘记密码 ？" forState:UIControlStateNormal];
+    Wjbutton.titleLabel.font=[UIFont systemFontOfSize:10];
+   [Wjbutton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.view addSubview:Wjbutton];
+    [Wjbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+        make.right.mas_equalTo(self.view.mas_right).offset(10*SCALE);
+        make.width.mas_equalTo(110*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+        make.centerY.mas_equalTo(JZlab.mas_centerY);
+        }];
+    [Wjbutton addTarget:self action:@selector(Wjbuttoncilick) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *ZHlab = [[UILabel alloc]init];
+    ZHlab.text = @"还没有账户";
+    ZHlab.font = [UIFont systemFontOfSize:11];
+    [self.view addSubview:ZHlab];
+    ZHlab.textAlignment = UITextAlignmentCenter;
+    [ZHlab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(button.mas_bottom).offset(40*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX).offset(-40*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+        make.width.mas_equalTo(80*SCALE);
+    }];
+    
+    UIButton *Zbutton = [[UIButton alloc]init];
+    [Zbutton setTitle:@"立即注册" forState:UIControlStateNormal];
+    Zbutton.titleLabel.font = [UIFont systemFontOfSize:10];
+    [Zbutton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.view addSubview:Zbutton];
+    [Zbutton addTarget:self action:@selector(Zbuttonwithcilick) forControlEvents:UIControlEventTouchUpInside];
+    [Zbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX).offset(20*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+        make.width.mas_equalTo(80*SCALE);
+        make.top.mas_equalTo(button.mas_bottom).offset(40*SCALE);
+    }];
+    
+    
+}
+-(void)Wjbuttoncilick{
+
+    BackViewController*back = [[BackViewController alloc]init];
+//    [self.navigationController pushViewController:back animated:YES];
+    [self presentViewController:back animated:YES completion:nil];
+}
+-(void)Zbuttonwithcilick{
+//    NSLog(@"qqq");
+       ForgetViewController *forget = [[ForgetViewController alloc]init];
+    
+    [self presentViewController:forget animated:YES completion:nil];
+   // [self.navigationController pushViewController:forget animated:YES];
+
 }
 -(void)JZbuttoncilick{
-      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (isDown == NO) {
-        [JZbutton setImage:[UIImage imageNamed:@"duihao.png"] forState:UIControlStateNormal];
-        NSString *mima = _textFile1.text;
-        NSString *zhanghao = _textFile.text;
-        NSData *dataOen = [mima dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
-        [userDefaults setObject:dataOen forKey:@"passWord"];
-        [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
-        [userDefaults synchronize];
-    }else{
-        NSString *path =  [NSTemporaryDirectory() stringByAppendingPathComponent:@"passWord"];
-        NSString *pathish = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Zhanghao"];
-        NSLog(@"1111111%@",pathish);
-        NSFileManager *manager = [NSFileManager defaultManager];
-        [manager removeItemAtPath:path error:nil];
-        [manager removeItemAtPath:pathish error:nil];
-        
-        [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
-
-    }
     isDown =! isDown;
-   
+    //NO
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //YES
+    if (isDown == NO) {
+        [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [JZbutton setImage:[UIImage imageNamed:@"duihao.png"] forState:UIControlStateNormal];
+    }
+    
+    
+    
 }
+
 -(void)buttonClick{
     NSString *yongHiMing = _textFile.text;
     NSString *shuRuMiMa = _textFile1.text;
+      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([yongHiMing isEqualToString:@"111111"]&& [shuRuMiMa isEqualToString:@"123456"])
     {
+        
+        NSString *mima = _textFile1.text;
+        NSData *dataOen = [mima dataUsingEncoding:NSUTF8StringEncoding];
+        [userDefaults setObject:dataOen forKey:@"passWord"];
+
+         NSString *zhanghao = _textFile.text;
+        NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
+        [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
+        [userDefaults setObject:@(isDown) forKey:@"bool"];
+
+        [userDefaults synchronize];
+
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         
         UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
@@ -204,6 +281,8 @@
         
         MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
         _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:[UIImage imageNamed:@"xiaoxi@2x"] tag:0];
+        UINavigationController *massageViewNAV = [[UINavigationController alloc]initWithRootViewController:_massageViewcontroll];
+        
         
         CollectionViewController *_collectionViewcontroll = [[CollectionViewController alloc]init];
         _collectionViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"收款" image:[UIImage imageNamed:@"shoukuan@2x"] tag:0];
@@ -216,7 +295,7 @@
         UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
         
         
-        _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,userviewCNAV,moreNavConrtoll];
+        _tabbarcontroll.viewControllers = @[homepageNAV,massageViewNAV,collectionNAV,userviewCNAV,moreNavConrtoll];
         
         _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
@@ -226,7 +305,12 @@
     }
     else
     {
-        
+        NSString *zhanghao = _textFile.text;
+        NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
+        [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
+        [userDefaults synchronize];
+
+
         UIAlertView *alertView1 = [[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView1 show];
     }
