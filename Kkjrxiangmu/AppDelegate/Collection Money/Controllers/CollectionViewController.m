@@ -7,13 +7,17 @@
 //
 
 #import "CollectionViewController.h"
-#import "KeyboardvView.h"
+#import "PayWayView.h"
+#import "RateTableViewCell.h"
 #import "KeyCollectionViewCell.h"
 
-@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (nonatomic,strong)KeyboardvView *keyboardV;
+@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong)UIWindow *window;
+@property (nonatomic,strong)UIViewController *viewcontroll;
+@property (nonatomic,strong)UITableView *tableview;
+@property (nonatomic,strong)PayWayView *paywayView;
 
 @property (weak, nonatomic) IBOutlet UIView *keyView;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
@@ -22,6 +26,14 @@
 @end
 
 @implementation CollectionViewController
+{
+    float collectionVCWidth;
+    float collectionVCHeight;
+    float butX;
+    float butY;
+    float butHeight;
+    float butWidth;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,33 +57,47 @@
 
 - (void)customKeyboard {
     
-    //    self.keyboardV = [[KeyboardvView alloc]init];
-    //
-    //
-    //
-    //    [self.view  addSubview:self.keyboardV];
-    //    [self.keyboardV numberbut:^{
-    //        NSLog(@"11");
-    //    }];
-    
-    
-    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
-    layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 - 1, 90);
+    if (screenHeight == 667) {
+        layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 - 1, 90);
+        
+        collectionVCWidth = self.keyView.frame.size.width - 2;
+        collectionVCHeight = self.keyView.frame.size.height - 66;
+        butX = screenWidth - self.keyView.frame.size.width/4 - 30;
+        butY = 180;
+        butHeight = 179;
+        butWidth = self.keyView.frame.size.width/4 - 1;
+        //NSLog(@"667 %f  %f", screenHeight ,collectionVCHeight);
+    }else if (screenHeight == 736) {
+        layout.itemSize = CGSizeMake(self.keyView.frame.size.width/4 + 8, 108);
+        collectionVCWidth = self.keyView.frame.size.width  + 35;
+        collectionVCHeight = self.keyView.frame.size.height + 2.5;
+        
+        butX = screenWidth - self.keyView.frame.size.width/4 - 40;
+        butY = 217;
+        butHeight = 210;
+        butWidth = self.keyView.frame.size.width/4 + 8;
+        
+        //NSLog(@"736");
+        
+    }
+    
+    
     
     layout.minimumInteritemSpacing = 0; // 左右间距
     layout.minimumLineSpacing = 1; //上下的间距 可以设置0看下效果
     
     //layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
     
-    UICollectionView *keyCollectionview = [[UICollectionView alloc]initWithFrame:CGRectMake(1, 1, self.keyView.frame.size.width - 2, self.keyView.frame.size.height - 63) collectionViewLayout:layout];
     
+    UICollectionView *keyCollectionview = [[UICollectionView alloc]initWithFrame:CGRectMake(1, 1, collectionVCWidth, collectionVCHeight) collectionViewLayout:layout];
+    
+    NSLog(@"%f  %f", keyCollectionview.frame.size.height , self.keyView.frame.size.height);
     keyCollectionview.delegate = self;
     
     keyCollectionview.dataSource =self;
-    
+    keyCollectionview.scrollEnabled = NO;
     keyCollectionview.showsVerticalScrollIndicator = NO;
     
     keyCollectionview.backgroundColor = qiangrayColor;
@@ -82,7 +108,7 @@
     NSArray *buttit = @[@"",@"确定"];
     for (int i = 0; i < 2; i++) {
         UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        but.frame = CGRectMake(screenWidth - self.keyView.frame.size.width/4 - 30, 2 + (180 + 1) * i, self.keyView.frame.size.width/4 - 1, 180);
+        but.frame = CGRectMake(butX, 2 + (butY + 1) * i, butWidth, butHeight);
         but.backgroundColor = [UIColor whiteColor];
         [but setImage:[UIImage imageNamed:butimage[i]] forState:UIControlStateNormal];
         [but setTitle:buttit[i] forState:UIControlStateNormal];
@@ -94,6 +120,7 @@
     }
     
     [keyCollectionview registerNib:[UINib nibWithNibName:@"KeyCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"keycell"];
+    
     
     
 }
@@ -208,6 +235,8 @@
 - (void)sureCancelButAction:(UIButton *)sender {
     if ([sender.titleLabel.text isEqual:@"确定"]) {
         NSLog(@"确定");
+        [self paymentAction];
+        
     }else {
         
         NSRange range = {0 , self.mutString.length};
@@ -217,6 +246,88 @@
         self.numberLabel.text = @"0";
     }
 }
+
+
+
+- (void)paymentAction {
+    _window = [UIApplication sharedApplication].keyWindow;
+    UIView *blackview = [[UIView alloc]initWithFrame:self.view.frame];
+    blackview.backgroundColor = [UIColor blackColor];
+    blackview.alpha = 0.4;
+    [_window addSubview:blackview];
+    
+    self.paywayView = [[[NSBundle mainBundle]loadNibNamed:@"PayWayView" owner:self options:nil]firstObject];
+    _paywayView.frame = CGRectMake(0, screenHeight - 400, screenWidth, 400);
+    
+    self.viewcontroll = [[UIViewController alloc]init];
+    
+    [self.viewcontroll.view addSubview:_paywayView];
+    [_window addSubview:self.viewcontroll.view];
+    
+    [self cusmotTableView];
+    
+    [_paywayView backbut:^{
+        
+        blackview.hidden = YES;
+        self.viewcontroll.view.hidden = YES;
+        
+//        __weak typeof(self) mySelf = self;
+        
+        [UIView animateWithDuration:0.2f animations:^{
+//            mySelf.payView.frame = CGRectMake(0 , screenHeight - 400, screenWidth, 400);
+//            mySelf.viewVC.view.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
+            
+        }];
+        
+        
+    }];
+    
+    
+}
+
+
+- (void)cusmotTableView {
+    
+    self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 56, self.paywayView.frame.size.width, self.paywayView.frame.size.height - 56) style:UITableViewStylePlain];
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
+    self.tableview.rowHeight = 160;
+    self.tableview.backgroundColor = qianWhite;
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [_paywayView addSubview:self.tableview];
+    
+    [self.tableview registerClass:[RateTableViewCell class] forCellReuseIdentifier:@"ratecell"];
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
+    
+}
+
+
+#pragma mark -- UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 2;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ratecell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = qianWhite;
+    
+    return cell;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

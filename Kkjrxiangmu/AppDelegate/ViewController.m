@@ -271,7 +271,7 @@
         UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
         //首页
         HomePageViewController*_homepageViewcontroll = [[HomePageViewController alloc]init];
-        _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shou@3x.png"] tag:0];
+        _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
         UINavigationController *homepageNAV = [[UINavigationController alloc]initWithRootViewController:_homepageViewcontroll];
         
         //更多
