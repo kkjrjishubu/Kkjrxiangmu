@@ -8,6 +8,11 @@
 
 #import "MoreViewController.h"
 #import "Masonry.h"
+#import "HelpViewController.h"
+#import "AgreementViewController.h"
+#import "AboutusViewController.h"
+#import "addPhotoViewController.h"
+#import "MerchantsViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define View_HEIGH 125
@@ -21,12 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    self.navigationItem.title = @"用户";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     [self oncilck];
 }
 -(void)oncilck{
     
-    UIView *_navView = [[UIView alloc]init];//WithFrame:CGRectMake(0, 22,SCREEN_WIDTH, 44)];
-    _navView.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
+    UIView *_navView = [[UIView alloc]init];
     [self.view addSubview:_navView];
     [_navView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -34,22 +42,8 @@
         make.width.equalTo(@(screenWidth));
         make.height.equalTo(@44.0);
     }];
-    UILabel *_lab = [[UILabel alloc]init];
-    _lab.frame = CGRectMake(0, 0, 40, 20);
-    _lab.center=CGPointMake(_navView.center.x, _navView.center.y-20);
-    _lab.textColor =[UIColor whiteColor];
-    _lab.font = [UIFont systemFontOfSize:20];
-    _lab.text = @"用户";
-    _lab.textAlignment = UITextAlignmentCenter;
-    [_navView addSubview:_lab];
-    [_lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(_lab.superview.center.x);
-        make.centerY.mas_equalTo(_lab.superview.center.y);
-        make.width.mas_equalTo(40.0);
-        make.height.mas_equalTo(20.0);
-    }];
     //两个方块
-    UIView *view=[[UIView alloc]init];//WithFrame:CGRectMake(20,86, View_WIDTH, View_HEIGH)];
+    UIView *view=[[UIView alloc]init];
     view.backgroundColor = [UIColor colorWithRed:243.0/225.0 green:197.0/225.0 blue:45.0/225.0 alpha:100];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 20.0;
@@ -113,7 +107,7 @@
         
     }];
 
-    UIImageView *_imageView2 = [[UIImageView alloc]initWithFrame:CGRectMake(60, 60, 40, 50)];
+    UIImageView *_imageView2 = [[UIImageView alloc]init];
     
     _imageView2.image = [UIImage imageNamed:@"tuiguang.png"];
     [view1 addSubview:_imageView2];
@@ -160,6 +154,24 @@
         
     }];
     
+    
+    UILabel *DJlab = [[UILabel alloc]init];
+    DJlab.text = @"大家一起赚";
+    [_view1 addSubview:DJlab];
+    DJlab.textAlignment = UITextAlignmentCenter;
+    DJlab.font=[UIFont systemFontOfSize:12];
+    DJlab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+
+    [DJlab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_view1.mas_top).offset(10*SCALE);
+       // make.left.mas_equalTo(_view1.mas_left).offset(150*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(100*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+    }];
+    
+    
+    
     //放图片的View  下级商户
     UIView *_imView = [[UIView alloc]initWithFrame:CGRectMake(15, _view1.center.y+50, 200, 150)];
     _imView.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:100];
@@ -170,6 +182,17 @@
         make.width.mas_equalTo(199.5*SCALE);
         make.height.mas_equalTo(149.7*SCALE);
     }];
+    //下级商户按钮
+    UIButton *Xbutton = [[UIButton alloc]init];
+    [Xbutton addTarget:self action:@selector(Xbuttoncilock) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:Xbutton];
+    [Xbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_view1.mas_bottom).offset(21.2*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(15.3*SCALE);
+        make.width.mas_equalTo(199.5*SCALE);
+        make.height.mas_equalTo(149.7*SCALE);
+    }];
+    
     //下级商户
     UIImageView *_MerchantsImage = [[UIImageView alloc]init];
     _MerchantsImage.image = [UIImage imageNamed:@"xiaji.png"];
@@ -203,6 +226,15 @@
         make.width.mas_equalTo(SCALE*170.3);
         make.height.mas_equalTo(SCALE*70.5);
     }];
+    UIButton *yJbutton = [[UIButton alloc]init];
+    [yJbutton addTarget:self action:@selector(yJbuttoncilik) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:yJbutton];
+    [yJbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_view1.mas_bottom).offset(21.2*SCALE);
+        make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
+        make.width.mas_equalTo(SCALE*170.3);
+        make.height.mas_equalTo(SCALE*70.5);
+    }];
     //意见反馈Image
     UIImageView *_OpinionView = [[UIImageView alloc]init];
     _OpinionView.image = [UIImage imageNamed:@"fankui.png"];
@@ -231,14 +263,21 @@
     }];
     
     
-    
-    
     //使用帮助
     UIView *_imView2 = [[UIView  alloc]init];//WithFrame:CGRectMake(230, _view1.center.y+130, 170, 70)];
     
     _imView2.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:100];
     [self.view addSubview:_imView2];
     [_imView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_imView1.mas_bottom).offset(9.3*SCALE);
+        make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
+        make.width.mas_equalTo(SCALE*170.3);
+        make.height.mas_equalTo(SCALE*70.5);
+    }];
+    UIButton *BangZhuButton = [[UIButton alloc]init];
+    [self.view addSubview:BangZhuButton];
+    [BangZhuButton addTarget:self action:@selector(cilickBangzhu) forControlEvents:UIControlEventTouchUpInside];
+    [BangZhuButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_imView1.mas_bottom).offset(9.3*SCALE);
         make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
         make.width.mas_equalTo(SCALE*170.3);
@@ -257,9 +296,6 @@
         make.height.mas_equalTo(32.0*SCALE);
         make.width.mas_equalTo(29.0*SCALE);
     }];
-    
-    
-
     
     
     UILabel *Xlab2= [[UILabel alloc]init];
@@ -285,6 +321,22 @@
         make.width.mas_equalTo(screenWidth);
         make.height.mas_equalTo(60.5*SCALE);
     }];
+    
+    UILabel *AQlab = [[UILabel alloc]init];
+    AQlab.text = @"安全 便捷";
+    [_viewhui addSubview:AQlab];
+    AQlab.textAlignment = UITextAlignmentCenter;
+    AQlab.font=[UIFont systemFontOfSize:12];
+    AQlab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [AQlab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_viewhui.mas_top).offset(10*SCALE);
+        // make.left.mas_equalTo(_view1.mas_left).offset(150*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(100*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+    }];
+    
+
 
     UIView *_XxianView = [[UIView alloc]init];
     _XxianView.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
@@ -360,6 +412,15 @@
         make.width.mas_equalTo(75.2*SCALE);
         make.height.mas_equalTo(23.2*SCALE);
     }];
+    UIButton*agreementButton = [[UIButton alloc]init];
+    [self.view addSubview:agreementButton];
+    [agreementButton addTarget:self action:@selector(agreementcilick) forControlEvents:UIControlEventTouchUpInside];
+    [agreementButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_viewhui.mas_bottom).offset(0);
+        make.width.mas_equalTo(screenWidth);
+        make.bottom.mas_equalTo(_fenGView.mas_top).offset(0);
+    }];
+
     UILabel*Zlab1 = [[UILabel alloc]init];
     Zlab1.text = @"关于我们";
     Zlab1.font = [UIFont systemFontOfSize:13];
@@ -370,7 +431,40 @@
         make.width.mas_equalTo(75.2*SCALE);
         make.height.mas_equalTo(23.2*SCALE);
     }];
+    UIButton*aAboutusButton = [[UIButton alloc]init];
+    [self.view addSubview:aAboutusButton];
+   // aAboutusButton.backgroundColor =[UIColor redColor];
+    [aAboutusButton addTarget:self action:@selector(aAboutuscilick) forControlEvents:UIControlEventTouchUpInside];
+    [aAboutusButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_fenGView.mas_bottom).offset(0);
+        make.width.mas_equalTo(screenWidth);
+       // make.bottom.mas_equalTo(_fenGView.mas_top).offset(0);
+        make.height.mas_equalTo(60*SCALE);
+    }];
+
+}
+-(void)cilickBangzhu{
+    HelpViewController *help = [[HelpViewController alloc]init];
+    [self.navigationController pushViewController:help animated:YES];
+   
+}
+-(void)agreementcilick{
+    AgreementViewController *agreement = [[AgreementViewController alloc]init];
+    [self.navigationController pushViewController:agreement animated:YES];
+}
+-(void)aAboutuscilick{
+    AboutusViewController *about = [[AboutusViewController alloc]init];
+    [self.navigationController pushViewController:about animated:YES];
     
+}
+-(void)yJbuttoncilik{
+    addPhotoViewController *addphotp = [[addPhotoViewController alloc]init];
+    [self.navigationController pushViewController:addphotp animated:YES];
+}
+//TODO:下级商户
+-(void)Xbuttoncilock{
+    MerchantsViewController *vc = [[MerchantsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

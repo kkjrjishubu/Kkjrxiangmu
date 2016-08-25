@@ -1,47 +1,35 @@
 //
-//  PayPasswordViewController.m
+//  ForgetViewController.m
 //  Kkjrxiangmu
 //
-//  Created by 贾增辉 on 16/8/16.
+//  Created by 贾增辉 on 16/8/19.
 //  Copyright © 2016年 kkjr. All rights reserved.
 //
 
-#import "PayPasswordViewController.h"
+#import "ForgetViewController.h"
+#import "AgreementViewController.h"
 #define SCALE screenWidth/375.0
-#import "BackViewController.h"
-@interface PayPasswordViewController ()
-
+@interface ForgetViewController ()
+{
+    BOOL isDown;
+    UIButton *buttonyuan;
+}
 @end
 
-@implementation PayPasswordViewController
+@implementation ForgetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"实名认证";
-    UILabel *lab = [[UILabel alloc]init];
-    lab.text = @"为了您的账号安全,修改密码前请填写原密码";
-    lab.textColor = [UIColor grayColor];
-    lab.font = [UIFont systemFontOfSize:12];
-    //  lab.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:lab];
-    [lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(80*SCALE);
-        make.left.equalTo(self.view.mas_left).offset(40*SCALE);
-        make.height.mas_equalTo(30*SCALE);
-        make.width.mas_equalTo(screenWidth);
-    }];
-    //图片1
     UIImageView *imageView1 = [[UIImageView alloc]init];
     [self.view addSubview:imageView1];
-    imageView1.image = [UIImage imageNamed:@"mima.png"];
+
+    imageView1.image = [UIImage imageNamed:@"shouji.png"];
     [imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(130*SCALE);
         make.left.equalTo(self.view.mas_left).offset(40*SCALE);
         make.height.mas_equalTo(24*SCALE);
-        make.width.mas_equalTo(21*SCALE);
+        make.width.mas_equalTo(20*SCALE);
     }];
-    //线条1
     UIView *Xview1 = [[UIView alloc]init];
     Xview1.backgroundColor = xianClole;
     [self.view addSubview:Xview1];
@@ -54,13 +42,13 @@
     //图片2
     UIImageView *imageView2 = [[UIImageView alloc]init];
     [self.view addSubview:imageView2];
-    imageView2.image = [UIImage imageNamed:@"mima.png"];
+    imageView2.image = [UIImage imageNamed:@"duanxin.png"];
     [imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerX.equalTo(imageView1.mas_centerX).offset(0);
-        make.height.mas_equalTo(24*SCALE);
-        make.width.mas_equalTo(21*SCALE);
-        make.top.equalTo(imageView1.mas_top).offset(80*SCALE);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(24*SCALE);
+        make.top.equalTo(imageView1.mas_top).offset(60*SCALE);
     }];
     //线条2
     UIView *Xview2 = [[UIView alloc]init];
@@ -93,47 +81,87 @@
         make.height.mas_equalTo(1);
         make.top.mas_equalTo(imageView3.mas_top).offset(45*SCALE);
     }];
+    
+    //图片3
+    UIImageView *imageView4 = [[UIImageView alloc]init];
+    [self.view addSubview:imageView4];
+    imageView4.image = [UIImage imageNamed:@"shouji.png"];
+    
+    [imageView4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left).offset(40*SCALE);
+        make.height.mas_equalTo(24*SCALE);
+        make.width.mas_equalTo(21*SCALE);
+        make.top.equalTo(imageView3.mas_top).offset(60*SCALE);
+    }];
+
+    //线条4
+    UIView *Xview4 = [[UIView alloc]init];
+    Xview4.backgroundColor = xianClole;
+    [self.view addSubview:Xview4];
+    [Xview4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.width.mas_equalTo(screenWidth);
+        make.height.mas_equalTo(1);
+        make.top.mas_equalTo(imageView4.mas_top).offset(45*SCALE);
+    }];
+
     //输入框
     UITextField *Textfiled = [[UITextField alloc]init];
-    Textfiled.placeholder = @"请输入您的原密码";
+    Textfiled.placeholder = @"请输入您的手机号";
     Textfiled.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled];
     [Textfiled mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView1.mas_centerY).offset(0);
-        make.left.equalTo(imageView1.mas_left).offset(60*SCALE);
+        make.left.equalTo(imageView1.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
     UITextField *Textfiled1 = [[UITextField alloc]init];
-    Textfiled1.placeholder = @"请输入您的新密码";
+    Textfiled1.placeholder = @"请输入短信验证码";
     Textfiled1.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled1];
     [Textfiled1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView2.mas_centerY).offset(0);
-        make.left.equalTo(imageView2.mas_left).offset(60*SCALE);
-        make.right.equalTo(self.view.mas_right).offset(0);
+        make.left.equalTo(imageView2.mas_left).offset(40*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(-120*SCALE);
     }];
     UITextField *Textfiled2 = [[UITextField alloc]init];
-    Textfiled2.placeholder = @"请再次输入密码确认";
+    Textfiled2.placeholder = @"请输入您的密码";
     Textfiled2.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled2];
     [Textfiled2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView3.mas_centerY).offset(0);
-        make.left.equalTo(imageView3.mas_left).offset(60*SCALE);
+        make.left.equalTo(imageView3.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
+    
+    UITextField *Textfiled3 = [[UITextField alloc]init];
+    Textfiled3.placeholder = @"请输入邀请人手机号";
+    Textfiled3.font = [UIFont systemFontOfSize:12];
+    [self.view addSubview:Textfiled3];
+    [Textfiled3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(imageView4.mas_centerY).offset(0);
+        make.left.equalTo(imageView4.mas_left).offset(40*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(0);
+    }];
+
+    
     UIButton *button =[[UIButton alloc]init];
-    [self.view addSubview:button];
+    button.backgroundColor = qianblue;
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
     [button addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    button.layer.cornerRadius = 5;
+    button.layer.masksToBounds = YES;
+    [button setTitle:@"获取验证码" forState:UIControlStateNormal];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(Xview1.mas_bottom).offset(5*SCALE);
-        make.left.equalTo(self.view.mas_left).offset(50*SCALE);
-        make.height.mas_equalTo(20*SCALE);
-        make.width.mas_equalTo(100*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(-10*SCALE);
+        make.left.equalTo(Textfiled1.mas_right).offset(10*SCALE);
+        make.bottom.equalTo(Xview2.mas_top).offset(-10*SCALE);
     }];
     UIButton*Completebutton = [[UIButton alloc]init];
     Completebutton.backgroundColor = qianblue;
     [Completebutton addTarget:self action:@selector(completebcilick) forControlEvents:UIControlEventTouchUpInside];
-    [Completebutton setTitle:@"确认修改" forState:UIControlStateNormal];
+    [Completebutton setTitle:@"注册" forState:UIControlStateNormal];
     [self.view addSubview:Completebutton];
     Completebutton.layer.cornerRadius = 10*SCALE;
     Completebutton.layer.masksToBounds = YES;
@@ -142,30 +170,44 @@
         make.left.equalTo(self.view.mas_left).offset(50*SCALE);
         make.right.equalTo(self.view.mas_right).offset(-50*SCALE);
         make.height.mas_equalTo(35*SCALE);
-        make.top.equalTo(Xview3.mas_bottom).offset(20*SCALE);
+        make.top.equalTo(Xview4.mas_bottom).offset(20*SCALE);
     }];
+    buttonyuan = [[UIButton alloc]init];
+    [self.view addSubview:buttonyuan];
+    [buttonyuan setImage:[UIImage imageNamed:@"duihaoyuanhuise.png"] forState:UIControlStateNormal];
+    [buttonyuan addTarget:self action:@selector(buttonyuancilick) forControlEvents:UIControlEventTouchUpInside];
+    [buttonyuan mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(Completebutton.mas_bottom).offset(20*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(30*SCALE);
+        make.height.mas_equalTo(18*SCALE);
+        make.width.mas_equalTo(18*SCALE);
+    }];
+    UILabel *labZCX = [[UILabel alloc]init];
+    labZCX.text = @"注册协议";
+//    labZCX.text
+}
 
-    UILabel *Mlab = [[UILabel alloc]init];
-    [self.view addSubview:Mlab];
-    Mlab.textColor = [UIColor grayColor];
-    Mlab.text = @"忘记密码 ？";
-    Mlab.font =[UIFont systemFontOfSize:12];
-    [Mlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(Xview1.mas_bottom).offset(5*SCALE);
-        make.left.equalTo(self.view.mas_left).offset(50*SCALE);
-        make.height.mas_equalTo(20*SCALE);
-        make.width.mas_equalTo(100*SCALE);
-    }];
+-(void)buttonyuancilick{
+    if (isDown == NO) {
+        [buttonyuan setImage:[UIImage imageNamed:@"duihaoyuan.png"] forState:UIControlStateNormal];
+        AgreementViewController *agree = [[AgreementViewController alloc]init];
+        [self presentViewController:agree animated:YES completion:nil];
+    }else{
+        [buttonyuan setImage:[UIImage imageNamed:@"duihaoyuanhuise.png"] forState:UIControlStateNormal];
+
+    }
+    isDown =! isDown;
 }
 -(void)cilick{
-    BackViewController *Back = [[BackViewController alloc]init];
-    [self.navigationController pushViewController:Back animated:YES];
+    NSLog(@"验证码是888888888");
 }
 -(void)completebcilick{
-
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
+   // NSLog(@"确定");
+   // [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

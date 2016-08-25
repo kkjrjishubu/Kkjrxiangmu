@@ -17,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barTintColor = qianblue;
+    
+    self.navigationItem.title = @"密码找回";
+    //   self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     UIImageView *imageView1 = [[UIImageView alloc]init];
     [self.view addSubview:imageView1];
     imageView1.image = [UIImage imageNamed:@"shouji.png"];
@@ -140,6 +145,7 @@
     NSLog(@"验证码是888888888");
 }
 -(void)completebcilick{
+    NSLog(@"确定");
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

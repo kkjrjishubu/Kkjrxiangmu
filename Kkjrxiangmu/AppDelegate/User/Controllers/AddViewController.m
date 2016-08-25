@@ -22,7 +22,7 @@
     self.navigationItem.title = @"银行卡添加";
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"互联网支付必须经过实名验证,请填写您的真实信息";
-    lab.textColor = [UIColor redColor];
+    lab.textColor = [UIColor grayColor];
     lab.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -33,7 +33,7 @@
     button.layer.masksToBounds = YES;
     UILabel *lab =[[UILabel alloc]init];
     lab.textColor = qiangrayColor;
-    lab.font = [UIFont systemFontOfSize:12];
+    lab.font = [UIFont systemFontOfSize:13];
     lab.text = @"账户还未绑定银行卡";
     lab.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:lab];

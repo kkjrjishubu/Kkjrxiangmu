@@ -21,7 +21,7 @@
     self.navigationItem.title = @"实名认证";
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"互联网支付必须经过实名验证,请填写您的真实信息";
-    lab.textColor = [UIColor redColor];
+    lab.textColor = [UIColor grayColor];
     lab.font = [UIFont systemFontOfSize:12];
   //  lab.backgroundColor = [UIColor blueColor];
     [self.view addSubview:lab];
@@ -33,7 +33,7 @@
     }];
     
     UILabel *Zlab = [[UILabel alloc]init];
-    Zlab.textColor = [UIColor redColor];
+    //Zlab.textColor = [UIColor redColor];
     Zlab.text = @"账号";
     Zlab.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:Zlab];
@@ -45,7 +45,7 @@
     }];
     UILabel*Xlab = [[UILabel alloc]init];
     Xlab.text = @"姓名";
-    Xlab.textColor = [UIColor redColor];
+   // Xlab.textColor = [UIColor redColor];
     Xlab.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:Xlab];
     [Xlab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,7 +58,7 @@
     
     UILabel*Slab = [[UILabel alloc]init];
     Slab.text = @"身份证";
-    Slab.textColor = [UIColor redColor];
+  //  Slab.textColor = [UIColor redColor];
     Slab.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:Slab];
     [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,7 +67,7 @@
         make.width.mas_equalTo(50*SCALE);
         make.top.equalTo(Xlab.mas_top).offset(60*SCALE);
     }];
-//三条线
+    //三条线
     UIView *Xview1 = [[UIView alloc]init];
     Xview1.backgroundColor = xianClole;
     [self.view addSubview:Xview1];
@@ -137,8 +137,11 @@
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(Xview3.mas_bottom).offset(50*SCALE);
         make.centerX.equalTo(self.view.mas_centerX).offset(0);
-        make.height.mas_equalTo(50*SCALE);
-        make.width.mas_equalTo(200*SCALE);
+        make.height.mas_equalTo(40*SCALE);
+        //make.width.mas_equalTo(200*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(40*SCALE);
+        make.right.mas_equalTo(self.view.mas_right).offset(-40*SCALE);
+
     }];
     [button addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
     

@@ -12,6 +12,8 @@
 #import "BankcardViewController.h"
 #import "PayPasswordViewController.h"
 #import "PaymentViewController.h"
+#import "ViewController.h"
+#import "SettlementViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCALE SCREEN_WIDTH/375.0
@@ -66,9 +68,7 @@
 }
 -(void)xianTiao{
     //蓝色到航条
-    UIView *_Naview = [[UIView alloc]init];//WithFrame:CGRectMake(0, 22, SCREEN_WIDTH,44)];
-   // _Naview.backgroundColor = [UIColor colorWithRed:30.0/225.0 green:185.0/225.0 blue:211.0/225.0 alpha:100];
-    
+    UIView *_Naview = [[UIView alloc]init];
     [self.view addSubview:_Naview];
     
     [_Naview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -122,7 +122,7 @@
     UIView *view =[[UIView alloc]init];
     
     lineView = view;
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(0);
@@ -131,7 +131,7 @@
         
         make.right.equalTo(self.view.mas_right).offset(0);
         
-        make.height.equalTo(@2);
+        make.height.equalTo(@1);
     }];
     
     //上面的两个线条
@@ -141,7 +141,7 @@
     [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(view1.superview.mas_left).offset(screenWidth*0.33);
         make.bottom.equalTo(view.mas_bottom).offset(0);
-        make.width.equalTo(@2);
+        make.width.equalTo(@1);
         make.height.equalTo(@(33*SCALE));
     }];
     
@@ -154,7 +154,7 @@
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(view2.superview.mas_right).offset(-screenWidth*0.33);
         make.bottom.equalTo(view.mas_bottom).offset(0);
-        make.width.equalTo(@2);
+        make.width.equalTo(@1);
         make.height.equalTo(@(33*SCALE));
     }];
     
@@ -169,10 +169,7 @@
         make.right.equalTo(view1.mas_right).offset(-screenWidth*0.08);
         make.top.equalTo(_headImage.mas_bottom).offset(25*SCALE);
         make.width.equalTo(@(screenWidth*0.2));
-        
         make.height.equalTo(@(15));
-        
-        
     }];
     
     
@@ -244,7 +241,7 @@
     [Ylab2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.right.equalTo(view2.mas_right).offset(screenWidth*0.22);
-        make.height.equalTo(@15);
+        make.height.mas_equalTo(@15);
         make.top.equalTo(lab1.mas_bottom).offset(3);
         
         
@@ -267,13 +264,14 @@
         return 0;
     }
 }
+
 //TODO:线条未实现
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static  NSString *cellIdentfier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentfier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentfier];
-        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 1)];
+        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 0.5)];
         view2.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
         view2.tag = 2015;
         [cell.contentView addSubview:view2];
@@ -283,7 +281,6 @@
             [cell.contentView addSubview:view1];
         }
     }
-    
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
@@ -307,13 +304,14 @@
     
     return 20;
 }
+
 //单元格点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIViewController*vc= nil;
     if (indexPath.section==0) {
         switch (indexPath.row) {
             case 0:
-                NSLog(@"1111");
+                vc = [[SettlementViewController alloc]init];
                 break;
             case 1:
                 
@@ -338,6 +336,13 @@
                 break;
         }
     }
+    if (indexPath.section==2&&indexPath.row==1) {
+        
+        ViewController *vi = [[ViewController alloc]init];
+            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        window.rootViewController =vi;
+        return;
+        }
     
     [self.navigationController pushViewController:vc animated:YES];
 }
