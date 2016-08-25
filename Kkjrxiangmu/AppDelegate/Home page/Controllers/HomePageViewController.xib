@@ -9,7 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomePageViewController">
             <connections>
-                <outlet property="scrollview" destination="Fo0-et-pCv" id="PB1-G0-RCH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewy" destination="wos-Ev-A0Y" id="Zbv-nV-yCA"/>
             </connections>
@@ -59,6 +58,9 @@
                                     <include reference="gVk-Z6-yBy"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="settlement:" destination="-1" eventType="touchUpInside" id="hVh-Qu-gsZ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结算记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70I-8d-Exx">
                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -84,15 +86,27 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbN-aJ-O0N">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <connections>
+                                <action selector="Sweeptheyard:" destination="-1" eventType="touchUpInside" id="M46-l8-xbC"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rG7-yn-1tq">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <connections>
+                                <action selector="billAction:" destination="-1" eventType="touchUpInside" id="YAy-9n-gXD"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xF-sW-aYU">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <connections>
+                                <action selector="financialAction:" destination="-1" eventType="touchUpInside" id="g15-em-SbB"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgl-ag-LGe">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <connections>
+                                <action selector="reimbursement:" destination="-1" eventType="touchUpInside" id="OLh-Bm-Jh5"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saoyisao@2x(2).png" translatesAutoresizingMaskIntoConstraints="NO" id="sR3-mP-i3a">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -213,6 +227,9 @@
                                     <include reference="idL-Zm-8SC"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="rateAction:" destination="-1" eventType="touchUpInside" id="Be9-uC-b8U"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.11764705882352941" green="0.72549019607843135" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
@@ -388,41 +405,18 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wos-Ev-A0Y">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luobo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-et-pCv">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                        </imageView>
-                    </subviews>
                     <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Fo0-et-pCv" secondAttribute="bottom" id="0sG-Mi-ZpQ"/>
-                        <constraint firstItem="Fo0-et-pCv" firstAttribute="leading" secondItem="wos-Ev-A0Y" secondAttribute="leading" id="7OP-06-a4x"/>
                         <constraint firstAttribute="width" secondItem="wos-Ev-A0Y" secondAttribute="height" multiplier="75:29" id="Ybf-KV-vul"/>
-                        <constraint firstAttribute="trailing" secondItem="Fo0-et-pCv" secondAttribute="trailing" id="ghN-yR-m6J"/>
-                        <constraint firstItem="Fo0-et-pCv" firstAttribute="top" secondItem="wos-Ev-A0Y" secondAttribute="top" id="m2u-FT-73v"/>
                     </constraints>
                     <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="Fo0-et-pCv"/>
-                        </mask>
                         <mask key="constraints">
                             <exclude reference="Ybf-KV-vul"/>
-                            <exclude reference="0sG-Mi-ZpQ"/>
-                            <exclude reference="7OP-06-a4x"/>
-                            <exclude reference="ghN-yR-m6J"/>
-                            <exclude reference="m2u-FT-73v"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="subviews">
-                            <include reference="Fo0-et-pCv"/>
-                        </mask>
                         <mask key="constraints">
                             <include reference="Ybf-KV-vul"/>
-                            <include reference="0sG-Mi-ZpQ"/>
-                            <include reference="7OP-06-a4x"/>
-                            <include reference="ghN-yR-m6J"/>
-                            <include reference="m2u-FT-73v"/>
                         </mask>
                     </variation>
                 </view>
@@ -473,8 +467,7 @@
     </objects>
     <resources>
         <image name="feilv@2x1.png" width="32" height="36"/>
-        <image name="jiesuan@2x(1).png" width="30" height="36"/>
-        <image name="luobo2.png" width="1080" height="354"/>
+        <image name="jiesuan@2x(1).png" width="10" height="19"/>
         <image name="saoyisao@2x(2).png" width="71" height="70"/>
         <image name="xinyongka@2x(2).png" width="73" height="71"/>
         <image name="yuelicai@2x(2).png" width="77" height="71"/>

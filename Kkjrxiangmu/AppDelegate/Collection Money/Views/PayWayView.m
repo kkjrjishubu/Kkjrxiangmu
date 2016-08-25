@@ -10,6 +10,19 @@
 
 @implementation PayWayView
 
+
+- (void)backbut:(ButtonBlock)block {
+    self.butblock = block;
+}
+
+- (IBAction)backButAction:(id)sender {
+    if (self.butblock) {
+        self.butblock();
+        
+    }
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -46,7 +46,7 @@
                                 <constraint firstAttribute="height" constant="55" id="qMx-Pz-gwY"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xY-Uq-QBs">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678900" placeholder="输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xY-Uq-QBs">
                             <rect key="frame" x="30" y="15" width="150" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="V1n-Rj-Gbb"/>

@@ -7,13 +7,17 @@
 //
 
 #import "CollectionViewController.h"
-#import "KeyboardvView.h"
+#import "PayWayView.h"
+#import "RateTableViewCell.h"
 #import "KeyCollectionViewCell.h"
 
-@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (nonatomic,strong)KeyboardvView *keyboardV;
+@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong)UIWindow *window;
+@property (nonatomic,strong)UIViewController *viewcontroll;
+@property (nonatomic,strong)UITableView *tableview;
+@property (nonatomic,strong)PayWayView *paywayView;
 
 @property (weak, nonatomic) IBOutlet UIView *keyView;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
@@ -52,17 +56,6 @@
 }
 
 - (void)customKeyboard {
-    
-    //    self.keyboardV = [[KeyboardvView alloc]init];
-    //
-    //
-    //
-    //    [self.view  addSubview:self.keyboardV];
-    //    [self.keyboardV numberbut:^{
-    //        NSLog(@"11");
-    //    }];
-    
-    
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
@@ -127,7 +120,7 @@
     }
     
     [keyCollectionview registerNib:[UINib nibWithNibName:@"KeyCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"keycell"];
-
+    
     
     
 }
@@ -242,6 +235,8 @@
 - (void)sureCancelButAction:(UIButton *)sender {
     if ([sender.titleLabel.text isEqual:@"确定"]) {
         NSLog(@"确定");
+        [self paymentAction];
+        
     }else {
         
         NSRange range = {0 , self.mutString.length};
@@ -251,6 +246,88 @@
         self.numberLabel.text = @"0";
     }
 }
+
+
+
+- (void)paymentAction {
+    _window = [UIApplication sharedApplication].keyWindow;
+    UIView *blackview = [[UIView alloc]initWithFrame:self.view.frame];
+    blackview.backgroundColor = [UIColor blackColor];
+    blackview.alpha = 0.4;
+    [_window addSubview:blackview];
+    
+    self.paywayView = [[[NSBundle mainBundle]loadNibNamed:@"PayWayView" owner:self options:nil]firstObject];
+    _paywayView.frame = CGRectMake(0, screenHeight - 400, screenWidth, 400);
+    
+    self.viewcontroll = [[UIViewController alloc]init];
+    
+    [self.viewcontroll.view addSubview:_paywayView];
+    [_window addSubview:self.viewcontroll.view];
+    
+    [self cusmotTableView];
+    
+    [_paywayView backbut:^{
+        
+        blackview.hidden = YES;
+        self.viewcontroll.view.hidden = YES;
+        
+//        __weak typeof(self) mySelf = self;
+        
+        [UIView animateWithDuration:0.2f animations:^{
+//            mySelf.payView.frame = CGRectMake(0 , screenHeight - 400, screenWidth, 400);
+//            mySelf.viewVC.view.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
+            
+        }];
+        
+        
+    }];
+    
+    
+}
+
+
+- (void)cusmotTableView {
+    
+    self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 56, self.paywayView.frame.size.width, self.paywayView.frame.size.height - 56) style:UITableViewStylePlain];
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
+    self.tableview.rowHeight = 160;
+    self.tableview.backgroundColor = qianWhite;
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [_paywayView addSubview:self.tableview];
+    
+    [self.tableview registerClass:[RateTableViewCell class] forCellReuseIdentifier:@"ratecell"];
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
+    
+}
+
+
+#pragma mark -- UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 2;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ratecell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = qianWhite;
+    
+    return cell;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

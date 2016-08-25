@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PayWayView : UIView
+typedef void(^ButtonBlock)();
+@property (nonatomic,copy)ButtonBlock butblock;
 
-
+- (void)backbut:(ButtonBlock)block;
 
 @end

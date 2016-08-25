@@ -10,4 +10,6 @@
 
 @interface TopUpViewController : UIViewController
 
+@property (nonatomic,strong)NSString *navtit;
+
 @end

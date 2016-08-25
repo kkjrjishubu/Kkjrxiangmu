@@ -47,37 +47,37 @@
 @implementation NSString (HUD)
 
 
-//+ (void)addMBProgressHUDImage:(NSString *)strMBP showHUDToView:(UIView *)view{
-//    // 快速显示一个提示信息
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-//    hud.labelText = strMBP;
-//    // 设置图片
-//    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Sign-inwarning"]];
-//    // 再设置模式
-//    hud.mode = MBProgressHUDModeCustomView;
-//    // 隐藏时候从父控件中移除
-//    hud.removeFromSuperViewOnHide = YES;
-//    hud.alpha = 0.5;
-//    // 1秒之后再消失
-//    [hud hide:YES afterDelay:2.0];
-//}
-//
-//
-//+ (void)addMBProgressHUD:(NSString *)strMBP showHUDToView:(UIView *)view {
-//    // 快速显示一个提示信息
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-//    hud.labelText = strMBP;
-//    // 设置图片
-//    //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Sign-inwarning"]];
-//    // 再设置模式
-//    hud.mode = MBProgressHUDModeCustomView;
-//    // 隐藏时候从父控件中移除
-//    hud.removeFromSuperViewOnHide = YES;
-//    hud.alpha = 0.7;
-//    // 1秒之后再消失
-//    [hud hide:YES afterDelay:2.0];
++ (void)addMBProgressHUDImage:(NSString *)strMBP showHUDToView:(UIView *)view{
+    // 快速显示一个提示信息
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.labelText = strMBP;
+    // 设置图片
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Sign-inwarning"]];
+    // 再设置模式
+    hud.mode = MBProgressHUDModeCustomView;
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    hud.alpha = 0.5;
+    // 1秒之后再消失
+    [hud hide:YES afterDelay:2.0];
+}
 
-//}
+
++ (void)addMBProgressHUD:(NSString *)strMBP showHUDToView:(UIView *)view {
+    // 快速显示一个提示信息
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.labelText = strMBP;
+    // 设置图片
+    //hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Sign-inwarning"]];
+    // 再设置模式
+    hud.mode = MBProgressHUDModeCustomView;
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    hud.alpha = 0.7;
+    // 1秒之后再消失
+    [hud hide:YES afterDelay:2.0];
+
+}
 
 @end
 

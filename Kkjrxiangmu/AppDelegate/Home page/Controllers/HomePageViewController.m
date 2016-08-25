@@ -9,10 +9,24 @@
 #import "HomePageViewController.h"
 #import "FunctionCollectionViewCell.h"
 #import "TopUpViewController.h"
+#import "ErweimaViewController.h"
+#import "BillTableViewController.h"
+#import "BalanceTableViewController.h"
+#import "ManageViewController.h"
+#import "RateTableViewController.h"
+#import "CreditTableViewController.h"
+#import "TrafficViewController.h"
+#import "ComeNoViewController.h"
+#import "SocialViewController.h"
+#import "PayCostViewController.h"
+#import "GameViewController.h"
+#import "XRCarouselView.h"
 
 
-@interface HomePageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UIImageView *scrollview;
+@interface HomePageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
+@property (nonatomic, strong) XRCarouselView *carouselView;
+
+
 @property (nonatomic,strong)UICollectionView *momentCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *viewy;
 
@@ -26,6 +40,7 @@
     float butX;
     float butY;
     float butHeight;
+    float viewyHeight;
     
 }
 
@@ -34,9 +49,8 @@
     // Do any additional setup after loading the view from its nib.
     
     [self collectioncustom];
-    
-    
-    
+
+    [self customXRCarouselView];
     
     
 }
@@ -48,6 +62,58 @@
     self.tabBarController.tabBar.hidden = NO;
 
 }
+
+// 轮播
+- (void)customXRCarouselView {
+    NSArray *arr = @[
+                     [UIImage imageNamed:@"lunbo1"],[UIImage imageNamed:@"luobo2.png"],//本地图片，传image，不能传名称 //网络gif图片 //本地gif使用gifImageNamed(name)函数创建
+                     ];
+    if (screenHeight == 667) {
+        viewyHeight = 16;
+    }else if (screenHeight == 736) {
+        viewyHeight = 32;
+    }
+    
+    /**
+     *  通过代码创建
+     */
+    self.carouselView = [[XRCarouselView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, self.viewy.frame.size.height + viewyHeight)];
+    
+    //设置占位图片,须在设置图片数组之前设置,不设置则为默认占位图
+    //_carouselView.placeholderImage = [UIImage imageNamed:@"placeholderImage.jpg"];
+
+    //设置图片及描述数组
+    _carouselView.imageArray = arr;
+    
+    //用代理处理图片点击
+    _carouselView.delegate = self;
+    
+    //设置每张图片的停留时间，默认值为5s，最少为2s
+    _carouselView.time = 2;
+    
+    //设置分页控件的图片,不设置则为系统默认
+    //[_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentPageImage:[UIImage imageNamed:@"current"]];
+    
+    //设置分页控件的位置，默认为PositionBottomCenter
+    //_carouselView.pagePosition = PositionBottomRight;
+    
+    [self.viewy addSubview:_carouselView];
+
+    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //清除缓存
+    [XRCarouselView clearDiskCache];
+}
+
+
+#pragma mark XRCarouselViewDelegate
+- (void)carouselView:(XRCarouselView *)carouselView clickImageAtIndex:(NSInteger)index {
+    NSLog(@"点击了第%ld张图片", index);
+}
+
+
 
 
 
@@ -136,21 +202,44 @@
         TopUpViewController *topupViewc = [[TopUpViewController alloc]init];
         self.navigationController.navigationBar.hidden = NO;
         self.tabBarController.tabBar.hidden = YES;
-        
+        topupViewc.navtit = @"手机充值";
         [self.navigationController pushViewController:topupViewc animated:YES];
         
-        NSLog(@"手机充值");
+        
     }else if (indexPath.row == 1) {
         // 流量
+        TopUpViewController *topupViewc = [[TopUpViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
+        topupViewc.navtit = @"流量充值";
+        [self.navigationController pushViewController:topupViewc animated:YES];
+
         
     }else if (indexPath.row == 2) {
         // 社保
+        SocialViewController *socialVC = [[SocialViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
+        
+        [self.navigationController pushViewController:socialVC animated:YES];
+
+        
         
     }else if (indexPath.row == 3) {
         // 交通
+        TrafficViewController *traffivVC = [[TrafficViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
+        
+        [self.navigationController pushViewController:traffivVC animated:YES];
         
     }else if (indexPath.row == 4) {
         // 加油卡
+        ComeNoViewController *comenoVC = [[ComeNoViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
+        
+        [self.navigationController pushViewController:comenoVC animated:YES];
         
     }else if (indexPath.row == 5) {
         // 超值
@@ -165,19 +254,74 @@
         
     }else if (indexPath.row == 7) {
         // 生活缴费
+        PayCostViewController *paycomeVC = [[PayCostViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
         
+        [self.navigationController pushViewController:paycomeVC animated:YES];
+
     }else if (indexPath.row == 8) {
         // 游戏
+        GameViewController *gameVC = [[GameViewController alloc]init];
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = YES;
         
+        [self.navigationController pushViewController:gameVC animated:YES];
     }else if (indexPath.row == 9) {
         // 理财
         
     }else if (indexPath.row == 10) {
         // 更多
-        
+        [NSString addMBProgressHUD:@"敬请期待" showHUDToView:self.view];
     }
 }
 
+
+- (IBAction)Sweeptheyard:(id)sender {
+    ErweimaViewController *erweimaVC = [[ErweimaViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:erweimaVC animated:YES];
+}
+- (IBAction)billAction:(id)sender {
+    BillTableViewController *billTVC = [[BillTableViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:billTVC animated:YES];
+    
+}
+- (IBAction)financialAction:(id)sender {
+    ManageViewController *manageVC = [[ManageViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    
+    [self.navigationController pushViewController:manageVC animated:YES];
+    
+}
+- (IBAction)reimbursement:(id)sender {
+    CreditTableViewController *creditTVC = [[CreditTableViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    
+    [self.navigationController pushViewController:creditTVC animated:YES];
+
+    
+}
+- (IBAction)settlement:(id)sender {
+    BalanceTableViewController *balanceTVC = [[BalanceTableViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:balanceTVC animated:YES];
+    
+}
+- (IBAction)rateAction:(id)sender {
+    
+    RateTableViewController *rateTVC = [[RateTableViewController alloc]init];
+    self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:rateTVC animated:YES];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

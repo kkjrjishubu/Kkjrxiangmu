@@ -50,7 +50,7 @@
     UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
     
     
-    _tabbarcontroll.viewControllers = @[homepageNAV,_massageViewcontroll,collectionNAV,userviewCNAV,_moreViewcontroll];
+    _tabbarcontroll.viewControllers = @[homepageNAV,collectionNAV,_massageViewcontroll,userviewCNAV,_moreViewcontroll];
     
     _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
     self.window.rootViewController = _tabbarcontroll;
