@@ -92,13 +92,73 @@
     }];
     UILabel *zLabel = [[UILabel alloc]init];
     zLabel.text = @"下级";
-    [withView addSubview:Slabel];
+    [withView addSubview:zLabel];
+    zLabel.font =[UIFont systemFontOfSize:14];
+    zLabel.textColor =[UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:100];
     [zLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(imageView.mas_left);
+        make.left.mas_equalTo(imageView.mas_right).offset(20*SCALE);
         make.centerY.mas_equalTo(imageView.mas_centerY);
+        make.height.mas_equalTo(80*SCALE);
+    }];
+    
+    UILabel *directlyLabel = [[UILabel alloc]init];
+    directlyLabel.text = @"直接 :";
+    directlyLabel.font = [UIFont systemFontOfSize:14];
+    directlyLabel.textColor = [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:100];
+    [withView addSubview:directlyLabel];
+    [directlyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_right).offset(-100*SCALE);
+        make.top.mas_equalTo(withView.mas_top).offset(10*SCALE);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(60*SCALE);
+    }];
+    
+    UILabel *indirectLabel = [[UILabel alloc]init];
+    indirectLabel.textColor = [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:100];
+    indirectLabel.text = @"间接 :";
+    indirectLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:indirectLabel];
+    [indirectLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_right).offset(-100*SCALE);
+        make.top.mas_equalTo(directlyLabel.mas_top).offset(20*SCALE);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(60*SCALE);
         
-        
-        
+    }];
+    UILabel*direShuLabel = [[UILabel alloc]init];
+    direShuLabel.text = @"11";
+    direShuLabel.font = [UIFont systemFontOfSize:14];
+    direShuLabel.textColor = [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:100];
+    [withView addSubview:direShuLabel];
+    [direShuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(directlyLabel.mas_right).offset(5*SCALE);
+        make.centerY.mas_equalTo(directlyLabel.mas_centerY);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(40*SCALE);
+    }];
+    UILabel*indirShuLabel = [[UILabel alloc]init];
+    indirShuLabel.text = @"11";
+    indirShuLabel.font = [UIFont systemFontOfSize:14];
+    indirShuLabel.textColor = [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:100];
+    [withView addSubview:indirShuLabel];
+    [indirShuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(indirectLabel.mas_right).offset(5*SCALE);
+        make.centerY.mas_equalTo(indirectLabel.mas_centerY);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(40*SCALE);
+    }];
+    UILabel *promptLabel = [[UILabel alloc]init];
+    promptLabel.text = @"提示：由于设置商户的隐私问题，您只能看到您的直属商户";
+    promptLabel.textColor = qiangrayColor;
+    promptLabel.numberOfLines = 0;
+    promptLabel.font =[UIFont systemFontOfSize:13];
+    [self.view addSubview:promptLabel];
+    [promptLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).offset(10*SCALE);
+        make.right.mas_equalTo(self.view.mas_right).offset(-10*SCALE);
+        make.top.mas_equalTo(withView.mas_bottom).offset(20*SCALE);
+        make.height.mas_equalTo(80*SCALE);
+
     }];
     
     

@@ -59,7 +59,7 @@
         make.centerX.equalTo(imageView1.mas_centerX).offset(0);
         make.height.mas_equalTo(24*SCALE);
         make.width.mas_equalTo(21*SCALE);
-        make.top.equalTo(imageView1.mas_top).offset(80*SCALE);
+        make.top.equalTo(imageView1.mas_top).offset(60*SCALE);
     }];
     //线条2
     UIView *Xview2 = [[UIView alloc]init];
@@ -141,7 +141,7 @@
         make.left.equalTo(self.view.mas_left).offset(50*SCALE);
         make.right.equalTo(self.view.mas_right).offset(-50*SCALE);
         make.height.mas_equalTo(35*SCALE);
-        make.top.equalTo(Xview3.mas_bottom).offset(20*SCALE);
+        make.top.equalTo(Xview3.mas_bottom).offset(80*SCALE);
     }];
     
     UILabel *Mlab = [[UILabel alloc]init];
@@ -150,8 +150,8 @@
     Mlab.text = @"忘记密码 ？";
     Mlab.font =[UIFont systemFontOfSize:12];
     [Mlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(Xview1.mas_bottom).offset(5*SCALE);
-        make.left.equalTo(self.view.mas_left).offset(50*SCALE);
+        make.bottom.equalTo(Completebutton.mas_top).offset(-20*SCALE);
+        make.right.equalTo(Completebutton.mas_right).offset(40*SCALE);
         make.height.mas_equalTo(20*SCALE);
         make.width.mas_equalTo(100*SCALE);
     }];
