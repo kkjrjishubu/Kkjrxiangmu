@@ -30,15 +30,15 @@
       UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
     
     
-    _tabbarcontroll.viewControllers = @[homepageNAV,collectionNAV,_massageViewcontroll,userviewCNAV,_moreViewcontroll];
-    
-    _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
-    self.window.rootViewController = _tabbarcontroll;
-    [self.window makeKeyWindow];
-
+//    _tabbarcontroll.viewControllers = @[homepageNAV,collectionNAV,_massageViewcontroll,userviewCNAV,_moreViewcontroll];
+//    
+//    _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
+//    self.window.rootViewController = _tabbarcontroll;
+//    [self.window makeKeyWindow];
+//
   
-    //    window.rootViewController = nav;
-    //    [window makeKeyWindow];
+        self.window.rootViewController = nav;
+        [self.window makeKeyWindow];
     
 //    _imageView = [[UIImageView alloc]init];
 //    _imageView.image = [UIImage imageNamed:@"shoufuyi.png"];
