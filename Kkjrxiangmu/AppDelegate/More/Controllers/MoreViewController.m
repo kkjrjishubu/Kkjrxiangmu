@@ -11,6 +11,8 @@
 #import "HelpViewController.h"
 #import "AgreementViewController.h"
 #import "AboutusViewController.h"
+#import "addPhotoViewController.h"
+#import "MerchantsViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define View_HEIGH 125
@@ -180,6 +182,17 @@
         make.width.mas_equalTo(199.5*SCALE);
         make.height.mas_equalTo(149.7*SCALE);
     }];
+    //下级商户按钮
+    UIButton *Xbutton = [[UIButton alloc]init];
+    [Xbutton addTarget:self action:@selector(Xbuttoncilock) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:Xbutton];
+    [Xbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_view1.mas_bottom).offset(21.2*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(15.3*SCALE);
+        make.width.mas_equalTo(199.5*SCALE);
+        make.height.mas_equalTo(149.7*SCALE);
+    }];
+    
     //下级商户
     UIImageView *_MerchantsImage = [[UIImageView alloc]init];
     _MerchantsImage.image = [UIImage imageNamed:@"xiaji.png"];
@@ -213,6 +226,15 @@
         make.width.mas_equalTo(SCALE*170.3);
         make.height.mas_equalTo(SCALE*70.5);
     }];
+    UIButton *yJbutton = [[UIButton alloc]init];
+    [yJbutton addTarget:self action:@selector(yJbuttoncilik) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:yJbutton];
+    [yJbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_view1.mas_bottom).offset(21.2*SCALE);
+        make.left.mas_equalTo(_imView.mas_right).offset(16.6*SCALE);
+        make.width.mas_equalTo(SCALE*170.3);
+        make.height.mas_equalTo(SCALE*70.5);
+    }];
     //意见反馈Image
     UIImageView *_OpinionView = [[UIImageView alloc]init];
     _OpinionView.image = [UIImage imageNamed:@"fankui.png"];
@@ -239,8 +261,6 @@
         make.height.mas_equalTo(SCALE*22);
         make.width.mas_equalTo(SCALE*73.2);
     }];
-    
-    
     
     
     //使用帮助
@@ -436,6 +456,15 @@
     AboutusViewController *about = [[AboutusViewController alloc]init];
     [self.navigationController pushViewController:about animated:YES];
     
+}
+-(void)yJbuttoncilik{
+    addPhotoViewController *addphotp = [[addPhotoViewController alloc]init];
+    [self.navigationController pushViewController:addphotp animated:YES];
+}
+//TODO:下级商户
+-(void)Xbuttoncilock{
+    MerchantsViewController *vc = [[MerchantsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

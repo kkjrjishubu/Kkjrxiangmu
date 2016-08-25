@@ -100,7 +100,7 @@
         
     }
     NSArray *titarr = @[@"手机充值",@"流量充值",@"社保代缴",@"交通罚款",@"加油卡",@"超值购",@"欢乐贷",@"生活缴费",@"游戏",@"理财工具",@"更多"];
-    NSArray *logoarr = @[@"shouji@2x",@"liuliang@2x",@"shebao@2x",@"jiaotong@2x",@"jiayouka@2x",@"yiyuanduobao@2x",@"huanledai@2x",@"shuidian@2x",@"youxi@2x",@"licaijisuan@2x",@"gengduo@2x"];
+    NSArray *logoarr = @[@"shouji@2x",@"liuliang@2x",@"shebao@2x",@"jiaotong@2x",@"jiayouka@2x",@"yiyuanduobao@2x",@"huanledai@2x",@"shuidian@2x",@"youxi@2x",@"l@3x.png",@"gengduo@2x"];
     cell.titlable.text = titarr[indexPath.row];
     cell.logoimge.image = [UIImage imageNamed:logoarr[indexPath.row]];
     

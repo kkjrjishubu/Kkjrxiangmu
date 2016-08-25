@@ -21,7 +21,7 @@
     self.navigationItem.title = @"实名认证";
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"为了您的账号安全,修改密码前请填写原密码";
-    lab.textColor = [UIColor redColor];
+    lab.textColor = [UIColor grayColor];
     lab.font = [UIFont systemFontOfSize:12];
     //  lab.backgroundColor = [UIColor blueColor];
     [self.view addSubview:lab];
@@ -147,7 +147,7 @@
 
     UILabel *Mlab = [[UILabel alloc]init];
     [self.view addSubview:Mlab];
-    Mlab.textColor = [UIColor redColor];
+    Mlab.textColor = [UIColor grayColor];
     Mlab.text = @"忘记密码 ？";
     Mlab.font =[UIFont systemFontOfSize:12];
     [Mlab mas_makeConstraints:^(MASConstraintMaker *make) {

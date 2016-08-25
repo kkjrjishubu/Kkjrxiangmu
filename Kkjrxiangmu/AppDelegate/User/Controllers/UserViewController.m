@@ -13,6 +13,7 @@
 #import "PayPasswordViewController.h"
 #import "PaymentViewController.h"
 #import "ViewController.h"
+#import "SettlementViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCALE SCREEN_WIDTH/375.0
@@ -130,7 +131,7 @@
         
         make.right.equalTo(self.view.mas_right).offset(0);
         
-        make.height.equalTo(@2);
+        make.height.equalTo(@1);
     }];
     
     //上面的两个线条
@@ -140,7 +141,7 @@
     [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(view1.superview.mas_left).offset(screenWidth*0.33);
         make.bottom.equalTo(view.mas_bottom).offset(0);
-        make.width.equalTo(@2);
+        make.width.equalTo(@1);
         make.height.equalTo(@(33*SCALE));
     }];
     
@@ -153,7 +154,7 @@
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(view2.superview.mas_right).offset(-screenWidth*0.33);
         make.bottom.equalTo(view.mas_bottom).offset(0);
-        make.width.equalTo(@2);
+        make.width.equalTo(@1);
         make.height.equalTo(@(33*SCALE));
     }];
     
@@ -240,7 +241,7 @@
     [Ylab2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.right.equalTo(view2.mas_right).offset(screenWidth*0.22);
-        make.height.equalTo(@15);
+        make.height.mas_equalTo(@15);
         make.top.equalTo(lab1.mas_bottom).offset(3);
         
         
@@ -270,7 +271,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentfier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentfier];
-        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 1)];
+        UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 0.5)];
         view2.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
         view2.tag = 2015;
         [cell.contentView addSubview:view2];
@@ -310,7 +311,7 @@
     if (indexPath.section==0) {
         switch (indexPath.row) {
             case 0:
-                NSLog(@"1111");
+                vc = [[SettlementViewController alloc]init];
                 break;
             case 1:
                 
@@ -335,7 +336,7 @@
                 break;
         }
     }
-    if (indexPath.section==2&&indexPath.row==0) {
+    if (indexPath.section==2&&indexPath.row==1) {
         
         ViewController *vi = [[ViewController alloc]init];
             UIWindow *window = [[[UIApplication sharedApplication] delegate] window];

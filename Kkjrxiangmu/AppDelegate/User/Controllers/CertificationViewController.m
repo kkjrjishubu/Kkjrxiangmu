@@ -21,7 +21,7 @@
     self.navigationItem.title = @"实名认证";
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"互联网支付必须经过实名验证,请填写您的真实信息";
-    lab.textColor = [UIColor redColor];
+    lab.textColor = [UIColor grayColor];
     lab.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -144,7 +144,7 @@
     UILabel*Tishilab = [[UILabel alloc]init];
     Tishilab.text=@"      请确保在光线充足的环境下拍摄,如果信息显示不清晰可能会导致审核不通过,敬请谅解";
     Tishilab.numberOfLines=0;
-    Tishilab.textColor = [UIColor redColor];
+    Tishilab.textColor = [UIColor grayColor];
     Tishilab.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Tishilab];
     [Tishilab mas_makeConstraints:^(MASConstraintMaker *make) {

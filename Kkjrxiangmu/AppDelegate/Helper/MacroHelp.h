@@ -21,5 +21,4 @@
 #define backViewColor [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:242.0/255.0 alpha:100];
 #import "Masonry.h"
 
-
 #endif /* MacroHelp_h */

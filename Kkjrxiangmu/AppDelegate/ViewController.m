@@ -35,7 +35,7 @@
     
     self.navigationController.navigationBar.barTintColor = qianblue;
     
-    self.navigationItem.title = @"密码找回";
+    self.navigationItem.title = @"登录";
     //   self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
@@ -167,7 +167,7 @@
     JZlab.text = @"记住密码";
     JZlab.font = [UIFont systemFontOfSize:10];
     [self.view addSubview:JZlab];
-    JZlab.textColor = [UIColor redColor];
+    JZlab.textColor = [UIColor grayColor];
     [JZlab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(JZbutton.mas_centerY);
         make.left.mas_equalTo(JZbutton.mas_left).offset(30*SCALE);
@@ -178,7 +178,7 @@
     UIButton *Wjbutton = [[UIButton alloc]init];
     [Wjbutton setTitle:@"忘记密码 ？" forState:UIControlStateNormal];
     Wjbutton.titleLabel.font=[UIFont systemFontOfSize:10];
-   [Wjbutton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+   [Wjbutton setTitleColor:[UIColor colorWithRed:4.0/255.0 green:175.0/255.0 blue:200.0/255.0 alpha:100] forState:UIControlStateNormal];
     [self.view addSubview:Wjbutton];
     [Wjbutton mas_makeConstraints:^(MASConstraintMaker *make) {
     
@@ -204,7 +204,7 @@
     UIButton *Zbutton = [[UIButton alloc]init];
     [Zbutton setTitle:@"立即注册" forState:UIControlStateNormal];
     Zbutton.titleLabel.font = [UIFont systemFontOfSize:10];
-    [Zbutton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [Zbutton setTitleColor:[UIColor colorWithRed:4.0/255.0 green:175.0/255.0 blue:200.0/255.0 alpha:100] forState:UIControlStateNormal];
     [self.view addSubview:Zbutton];
     [Zbutton addTarget:self action:@selector(Zbuttonwithcilick) forControlEvents:UIControlEventTouchUpInside];
     [Zbutton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -271,12 +271,12 @@
         UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
         //首页
         HomePageViewController*_homepageViewcontroll = [[HomePageViewController alloc]init];
-        _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
+        _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shou@3x.png"] tag:0];
         UINavigationController *homepageNAV = [[UINavigationController alloc]initWithRootViewController:_homepageViewcontroll];
         
         //更多
         MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
-        _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"gengduo1@2x"] tag:0];
+        _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
         UINavigationController *moreNavConrtoll = [[UINavigationController alloc]initWithRootViewController:_moreViewcontroll];
         
         MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
