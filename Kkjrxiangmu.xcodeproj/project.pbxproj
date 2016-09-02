@@ -124,6 +124,7 @@
 		F8BE8EFC1D5DCE0E0053D464 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8EFA1D5DCE0E0053D464 /* FunctionCollectionViewCell.xib */; };
 		F8C30BA41D6AE73500E659B5 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C30BA21D6AE73500E659B5 /* XRCarouselView.m */; };
 		F8C30BA51D6AE73500E659B5 /* XRPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C30BA31D6AE73500E659B5 /* XRPlaceholder.png */; };
+		F8CFAAD31D795DB200424630 /* NetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CFAAD21D795DB200424630 /* NetWorkHelper.m */; };
 		F8F492361D63F508007A8024 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D969C1D62FBC7001B61CA /* PaymentViewController.m */; };
 		F8F492371D63F520007A8024 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96851D62ADFC001B61CA /* AddViewController.m */; };
 		F8F492381D63F537007A8024 /* IdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D966E1D619D39001B61CA /* IdentityViewController.m */; };
@@ -331,6 +332,8 @@
 		F8C30BA11D6AE73500E659B5 /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
 		F8C30BA21D6AE73500E659B5 /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
 		F8C30BA31D6AE73500E659B5 /* XRPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XRPlaceholder.png; sourceTree = "<group>"; };
+		F8CFAAD11D795DB200424630 /* NetWorkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkHelper.h; sourceTree = "<group>"; };
+		F8CFAAD21D795DB200424630 /* NetWorkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkHelper.m; sourceTree = "<group>"; };
 		F8F4923D1D63FBB7007A8024 /* ErweimaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErweimaViewController.h; sourceTree = "<group>"; };
 		F8F4923E1D63FBB7007A8024 /* ErweimaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErweimaViewController.m; sourceTree = "<group>"; };
 		F8F4923F1D63FBB7007A8024 /* SHBQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBQRView.h; sourceTree = "<group>"; };
@@ -1056,6 +1059,8 @@
 				F8BE8EE81D5DBBE80053D464 /* Alert.h */,
 				F8BE8EE91D5DBBE80053D464 /* Alert.m */,
 				F8BE8EEA1D5DBBE80053D464 /* Alert.xib */,
+				F8CFAAD11D795DB200424630 /* NetWorkHelper.h */,
+				F8CFAAD21D795DB200424630 /* NetWorkHelper.m */,
 				F8BE8EEB1D5DBBE80053D464 /* WebViewController.h */,
 				F8BE8EEC1D5DBBE80053D464 /* WebViewController.m */,
 				F8BE8EBF1D5D6C310053D464 /* MacroHelp.h */,
@@ -1537,6 +1542,7 @@
 				F888F97F1D6E9C9700400E71 /* BankcardViewController.m in Sources */,
 				F8AF0A671D66E7B6006268E3 /* ComeNoViewController.m in Sources */,
 				F8ADD1B31D65CA270022CFE0 /* AddView.m in Sources */,
+				F8CFAAD31D795DB200424630 /* NetWorkHelper.m in Sources */,
 				F8ADD1B81D65D19E0022CFE0 /* RateView.m in Sources */,
 				F8ADD17E1D6554B80022CFE0 /* TPPasswordTextView.m in Sources */,
 				723D96A31D62FD25001B61CA /* ZFViewController.m in Sources */,

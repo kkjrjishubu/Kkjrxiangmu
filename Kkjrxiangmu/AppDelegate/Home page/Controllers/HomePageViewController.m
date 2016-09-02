@@ -23,6 +23,7 @@
 #import "XRCarouselView.h"
 
 
+
 @interface HomePageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XRCarouselViewDelegate>
 @property (nonatomic, strong) XRCarouselView *carouselView;
 
@@ -69,9 +70,9 @@
                      [UIImage imageNamed:@"lunbo1"],[UIImage imageNamed:@"luobo2.png"],//本地图片，传image，不能传名称 //网络gif图片 //本地gif使用gifImageNamed(name)函数创建
                      ];
     if (screenHeight == 667) {
-        viewyHeight = 16;
+        viewyHeight = 17;
     }else if (screenHeight == 736) {
-        viewyHeight = 32;
+        viewyHeight = 33;
     }
     
     /**
@@ -129,11 +130,11 @@
     layout.sectionInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     
     if (screenHeight == 667) {
-        collectionVCY =  self.viewy.frame.size.height * 3 - 40;
-        collectionVCHeigth = 265;
+        collectionVCY =  self.viewy.frame.size.height * 3 - 50;
+        collectionVCHeigth = 275;
     }else if (screenHeight == 736) {
-        collectionVCY =  self.viewy.frame.size.height * 3 - 10;
-        collectionVCHeigth = 300;
+        collectionVCY =  self.viewy.frame.size.height * 3 - 20;
+        collectionVCHeigth = 310;
         //NSLog(@"736");
         
     }
