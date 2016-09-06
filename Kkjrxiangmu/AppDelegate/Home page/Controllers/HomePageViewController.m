@@ -53,6 +53,25 @@
 
     [self customXRCarouselView];
     
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
+    NSDictionary *dic = @{@"action":@"bankType"};
+    NSLog(@"%@",urlStr);
+    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
+        NSLog(@"注册验证码 %@",responseObject);
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"成功: %@", string);
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    }];
+    
+    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
+        NSLog(@" %@",responseObject);
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"成功: %@", string);
+    } failur:^(id error) {
+        
+    }];
+    
     
 }
 

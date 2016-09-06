@@ -33,3 +33,28 @@
 #import "NetWorkHelper.h"
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
+
+
+// 服务器
+#define  SFYSERVER "http://api.sfy.95yes.cn"
+
+// 用户
+#define SFYLOGON "/ashx/user.ashx"
+
+// 枚举
+#define SFYBIANMA "/ashx/Enum.ashx"
+
+// 银行卡管理
+#define SFYBANKCARD "/ashx/BankCard.ashx"
+
+
+
+
+
+
+
+
+
+
+
+

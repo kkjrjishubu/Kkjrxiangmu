@@ -23,8 +23,25 @@
 
 - (void)PostRequestNetInfoWithURLStrViaNet:(NSString *)urlStr parameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failur:(void (^)(id error))failur {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
+    [manager POST:urlStr parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failur(error);
+    }];
     
-     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
+}
+
+- (void)PostResponseNetInfoWithURLStrViaNet:(NSString *)urlStr parameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failur:(void (^)(id error))failur {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
     [manager POST:urlStr parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

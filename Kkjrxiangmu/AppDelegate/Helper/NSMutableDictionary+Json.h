@@ -12,6 +12,7 @@
 
 // 字符串转换为字典
 + (NSMutableDictionary *)dictionaryWithJsonString:(NSString *)jsonStr;
+
 // json转换
 + (NSMutableDictionary *)responseToDic:(id)data;
 
