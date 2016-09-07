@@ -25,9 +25,11 @@
 
 // 提示框三方
 #import "MBProgressHUD.h"
-
 // 助手
 #import "NSMutableDictionary+Json.h"
+/** 字典转模型 */
+//#import "MJExtension.h"
+
 
 // 网络请求
 #import "NetWorkHelper.h"

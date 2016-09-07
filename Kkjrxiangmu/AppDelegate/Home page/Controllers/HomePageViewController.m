@@ -54,22 +54,37 @@
     [self customXRCarouselView];
     
     NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
-    NSDictionary *dic = @{@"action":@"bankType"};
+    NSDictionary *dic = @{@"action":@"getProvince"};
     NSLog(@"%@",urlStr);
-    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-        NSLog(@"注册验证码 %@",responseObject);
-        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"成功: %@", string);
-    } failur:^(id error) {
-        NSLog(@"%@",error);
-    }];
+//    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
+//        NSLog(@"注册验证码 %@",responseObject);
+//        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//        NSLog(@"成功: %@", string);
+//    } failur:^(id error) {
+//        NSLog(@"%@",error);
+//    }];
+   
+    
     
     [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
         NSLog(@" %@",responseObject);
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"成功: %@", string);
-    } failur:^(id error) {
+       NSLog(@"成功: %@", string);
+//        NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",data);
+//        //NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
+//        NSDictionary *dicdata = [NSMutableDictionary dictionaryWithContentsOfData:data];
+//        NSLog(@"22  %@",dicdata);
         
+        
+       // NSDictionary *dicdd = [NSMutableDictionary returnDictionaryWithDataPath:string];
+
+        //NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        
+        //NSLog(@"%@",dic);
+        
+    } failur:^(id error) {
+        NSLog(@"%@",error);
     }];
     
     

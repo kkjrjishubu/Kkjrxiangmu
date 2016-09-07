@@ -11,10 +11,18 @@
 @interface NSMutableDictionary (Json)
 
 // 字符串转换为字典
-+ (NSMutableDictionary *)dictionaryWithJsonString:(NSString *)jsonStr;
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr;
 
 // json转换
 + (NSMutableDictionary *)responseToDic:(id)data;
+
+
++ (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data;
+
++(NSDictionary*)returnDictionaryWithDataPath:(NSString*)path;
+
+
++(NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString;
 
 
 @end
