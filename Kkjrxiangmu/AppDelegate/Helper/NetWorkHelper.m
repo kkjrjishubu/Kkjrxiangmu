@@ -22,6 +22,8 @@
 }
 
 - (void)PostRequestNetInfoWithURLStrViaNet:(NSString *)urlStr parameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failur:(void (^)(id error))failur {
+    
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
@@ -66,6 +68,5 @@
 
     }];
 }
-
 
 @end

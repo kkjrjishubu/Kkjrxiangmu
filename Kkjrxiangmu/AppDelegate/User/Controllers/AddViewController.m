@@ -7,7 +7,7 @@
 //
 
 #import "AddViewController.h"
-#import "CertificationViewController.h"
+#import "YhangkaViewController.h"
 #define SCALE screenWidth/375.0
 
 @interface AddViewController ()
@@ -106,7 +106,7 @@
     }];
     
     UILabel *SKlab = [[UILabel alloc]init];
-    SKlab.text = @"收款人姓名";
+    SKlab.text = @"开户人姓名";
     SKlab.font =[UIFont systemFontOfSize:14];
     [self.view addSubview:SKlab];
     [SKlab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -239,8 +239,11 @@
 //    UIViewController *vc = [vcArray objectAtIndex:0];
 //    [self.navigationController popToViewController:vc animated:YES];
 //    NSLog(@"222");
-    CertificationViewController*vc = [[CertificationViewController alloc]init];
+    YhangkaViewController *vc = [[YhangkaViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

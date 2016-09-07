@@ -339,8 +339,11 @@
     if (indexPath.section==2&&indexPath.row==1) {
         
         ViewController *vi = [[ViewController alloc]init];
-            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-        window.rootViewController =vi;
+//            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
+//        window.rootViewController =nav;
+     //   self.modalPresentationStyle=UIModalPresentationPageSheet;
+        [self presentViewController:nav animated:NO completion:nil];
         return;
         }
     

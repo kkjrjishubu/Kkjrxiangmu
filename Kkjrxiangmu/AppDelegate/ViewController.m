@@ -216,6 +216,7 @@
     
     
 }
+
 -(void)Wjbuttoncilick{
 
     BackViewController*back = [[BackViewController alloc]init];
@@ -230,6 +231,7 @@
    // [self.navigationController pushViewController:forget animated:YES];
 
 }
+//注册
 -(void)JZbuttoncilick{
     isDown =! isDown;
     //NO
@@ -247,82 +249,130 @@
     
     
 }
-
+//登录
 -(void)buttonClick{
-    NSString *yongHiMing = _textFile.text;
-    NSString *shuRuMiMa = _textFile1.text;
-      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([yongHiMing isEqualToString:@"111111"]&& [shuRuMiMa isEqualToString:@"123456"])
-    {
-        
-        NSString *mima = _textFile1.text;
-        NSData *dataOen = [mima dataUsingEncoding:NSUTF8StringEncoding];
-        [userDefaults setObject:dataOen forKey:@"passWord"];
+    NSDictionary *dic = @{@"action":@"bankType"};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
-         NSString *zhanghao = _textFile.text;
-        NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
-        [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
-        [userDefaults setObject:@(isDown) forKey:@"bool"];
+    [manager POST:@"http://api.sfy.95yes.cn/ashx/Enum.ashx" parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSLog(@"成功   %@",responseObject);
+        
+        NSString *string = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        
+     // NSDictionary *strDic = [ViewController dataToDictionary:responseObject];
+        
+      NSLog(@"字典%@",string);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"失败 %@",error);
+        
+    }];
+    /*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
+     
+     参数说明
+     
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	login	是	固定参数 login
+     username	string	手机号	是	11位手机号
+     password	string	登录密码
+     */
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *Dic = @{@"action":@"login",@"username":_textFile.text,@"password":_textFile1.text};
+    [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:Dic success:^(id responseObject) {
+        NSLog(@"%@",responseObject[@"Success"]);
+        
+        NSString *str = responseObject[@"Token"];
+        NSLog(@"Token%@",str);
+        [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        
+         NSString *string = responseObject[@"Success"];
+        int yes = [string intValue];
+        if (yes == 1) {
+            NSLog(@"%@",responseObject[@"Msg"]);
 
-        [userDefaults synchronize];
+            NSString *mima = _textFile1.text;
+            NSData *dataOen = [mima dataUsingEncoding:NSUTF8StringEncoding];
+            [userDefaults setObject:dataOen forKey:@"passWord"];
+            
+            NSString *zhanghao = _textFile.text;
+            NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
+            [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
+            [userDefaults setObject:@(isDown) forKey:@"bool"];
+            
+            [userDefaults synchronize];
+            
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+            
+            UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
+            //首页
+            HomePageViewController*_homepageViewcontroll = [[HomePageViewController alloc]init];
+            _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
+            UINavigationController *homepageNAV = [[UINavigationController alloc]initWithRootViewController:_homepageViewcontroll];
+            
+            //更多
+            MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
+            _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
+            UINavigationController *moreNavConrtoll = [[UINavigationController alloc]initWithRootViewController:_moreViewcontroll];
+            
+            MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
+            _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:[UIImage imageNamed:@"xiaoxi@2x"] tag:0];
+            UINavigationController *massageViewNAV = [[UINavigationController alloc]initWithRootViewController:_massageViewcontroll];
+            
+            
+            CollectionViewController *_collectionViewcontroll = [[CollectionViewController alloc]init];
+            _collectionViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"收款" image:[UIImage imageNamed:@"shoukuan@2x"] tag:0];
+            UINavigationController *collectionNAV = [[UINavigationController alloc]initWithRootViewController:_collectionViewcontroll];
+            
+            UserViewController*_userViewcontroll = [[UserViewController alloc]init];
+            _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:[UIImage imageNamed:@"yonghu@2x"] tag:0];
+            UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
+            
+            
+            _tabbarcontroll.viewControllers = @[homepageNAV,massageViewNAV,collectionNAV,userviewCNAV,moreNavConrtoll];
+            
+            _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
+            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+            
+            window.rootViewController = _tabbarcontroll;
+            [window makeKeyWindow];
+        }
+        if (yes == 0) {
+            UIAlertView *alertView1 = [[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+            [alertView1 show];
 
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        }
         
-        UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
-        //首页
-        HomePageViewController*_homepageViewcontroll = [[HomePageViewController alloc]init];
-        _homepageViewcontroll.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"首页" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
-        UINavigationController *homepageNAV = [[UINavigationController alloc]initWithRootViewController:_homepageViewcontroll];
-        
-        //更多
-        MoreViewController *_moreViewcontroll = [[MoreViewController alloc]init];
-        _moreViewcontroll.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"更多" image:[UIImage imageNamed:@"shouye@2x"] tag:0];
-        UINavigationController *moreNavConrtoll = [[UINavigationController alloc]initWithRootViewController:_moreViewcontroll];
-        
-        MassageViewController *_massageViewcontroll = [[MassageViewController alloc]init];
-        _massageViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"消息中心" image:[UIImage imageNamed:@"xiaoxi@2x"] tag:0];
-        UINavigationController *massageViewNAV = [[UINavigationController alloc]initWithRootViewController:_massageViewcontroll];
-        
-        
-        CollectionViewController *_collectionViewcontroll = [[CollectionViewController alloc]init];
-        _collectionViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"收款" image:[UIImage imageNamed:@"shoukuan@2x"] tag:0];
-        UINavigationController *collectionNAV = [[UINavigationController alloc]initWithRootViewController:_collectionViewcontroll];
-        
-        
-        
-        UserViewController*_userViewcontroll = [[UserViewController alloc]init];
-        _userViewcontroll.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"用户中心" image:[UIImage imageNamed:@"yonghu@2x"] tag:0];
-        UINavigationController *userviewCNAV = [[UINavigationController alloc]initWithRootViewController:_userViewcontroll];
-        
-        
-        _tabbarcontroll.viewControllers = @[homepageNAV,massageViewNAV,collectionNAV,userviewCNAV,moreNavConrtoll];
-        
-        _tabbarcontroll.tabBar.selectedImageTintColor = qianblue;
-        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-
-        window.rootViewController = _tabbarcontroll;
-        [window makeKeyWindow];
-    }
-    else
-    {
+    } failur:^(id error) {
+        NSLog(@"%@",error);
         NSString *zhanghao = _textFile.text;
         NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
         [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
         [userDefaults synchronize];
 
-
-        UIAlertView *alertView1 = [[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-        [alertView1 show];
-    }
-    
+    }];
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+
++ (NSDictionary *)dataToDictionary:(NSData *)data
 {
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    
+    return [self jsonToDictionary:str];
 }
-
-- (void)didReceiveMemoryWarning {
++ (NSDictionary *)jsonToDictionary:(NSString *)jsonString
+{
+    NSDictionary *JSON;
+    if (jsonString && ![jsonString isEqual:[NSNull null]]) {
+        NSError *error;
+        JSON = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
+    }
+    return JSON;
+}- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

@@ -1,19 +1,20 @@
 //
-//  CertificationViewController.m
+//  YhangkaViewController.m
 //  Kkjrxiangmu
 //
-//  Created by 贾增辉 on 16/8/15.
+//  Created by 贾增辉 on 16/9/5.
 //  Copyright © 2016年 kkjr. All rights reserved.
 //
 
-#import "CertificationViewController.h"
+#import "YhangkaViewController.h"
 #import "Masonry.h"
 #define SCALE screenWidth/375.0
-@interface CertificationViewController ()
+
+@interface YhangkaViewController ()
 
 @end
 
-@implementation CertificationViewController
+@implementation YhangkaViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +40,7 @@
         make.left.mas_equalTo(self.view.mas_left).offset(40*SCALE);
         make.width.mas_equalTo(75*SCALE);
         make.height.mas_equalTo(48*SCALE);
+        
         
     }];
     UILabel *Zlab = [[UILabel alloc]init];
@@ -93,7 +95,6 @@
         make.top.mas_equalTo(Zlab.mas_baseline).offset(100*SCALE);
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
-        
     }];
     UIButton *button2=[[UIButton alloc]init];
     button2.backgroundColor = [UIColor whiteColor];
@@ -122,7 +123,7 @@
     [self.view addSubview:YimageView2];
     [YimageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(Flab.mas_bottom).offset(30*SCALE);
-        
+
         make.centerX.equalTo(YimageView1.mas_centerX);
         make.width.mas_equalTo(60*SCALE);
         make.height.mas_equalTo(55*SCALE);
@@ -190,15 +191,13 @@
     }];
 }
 -(void)cilickone{
-    NSLog(@"22113");
+    
 }
 -(void)cilicktwo{
-    NSLog(@"第二个按钮");
+    
 }
 -(void)cilickthree{
-
     
-
 }
 -(void)completebcilick{
     

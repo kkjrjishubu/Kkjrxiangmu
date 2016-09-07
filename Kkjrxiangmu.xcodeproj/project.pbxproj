@@ -13,6 +13,13 @@
 		7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7202E4C71D5C2497003A75EB /* LaunchScreen.storyboard */; };
 		7202E4D41D5C2497003A75EB /* KkjrxiangmuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4D31D5C2497003A75EB /* KkjrxiangmuTests.m */; };
 		7202E4DF1D5C2497003A75EB /* KkjrxiangmuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7202E4DE1D5C2497003A75EB /* KkjrxiangmuUITests.m */; };
+		7209F1BF1D7D4F9200BC9A80 /* YhangkaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209F1BD1D7D4F9200BC9A80 /* YhangkaViewController.m */; };
+		7209F1C01D7D4F9200BC9A80 /* YhangkaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1BE1D7D4F9200BC9A80 /* YhangkaViewController.xib */; };
+		7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */; };
+		7209F1C51D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */; };
+		7209F1C61D7D50AE00BC9A80 /* shouchiyinhang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */; };
+		7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */; };
+		7209F1CA1D7D73E000BC9A80 /* shenfenz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */; };
 		723D96711D619D39001B61CA /* IdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D966F1D619D39001B61CA /* IdentityViewController.xib */; };
 		723D96751D61EEDB001B61CA /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96731D61EEDB001B61CA /* CertificationViewController.m */; };
 		723D96761D61EEDB001B61CA /* CertificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96741D61EEDB001B61CA /* CertificationViewController.xib */; };
@@ -166,6 +173,14 @@
 		7202E4DA1D5C2497003A75EB /* KkjrxiangmuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KkjrxiangmuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7202E4DE1D5C2497003A75EB /* KkjrxiangmuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KkjrxiangmuUITests.m; sourceTree = "<group>"; };
 		7202E4E01D5C2497003A75EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7209F1BC1D7D4F9200BC9A80 /* YhangkaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YhangkaViewController.h; sourceTree = "<group>"; };
+		7209F1BD1D7D4F9200BC9A80 /* YhangkaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YhangkaViewController.m; sourceTree = "<group>"; };
+		7209F1BE1D7D4F9200BC9A80 /* YhangkaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YhangkaViewController.xib; sourceTree = "<group>"; };
+		7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yinhangrenzhengz@2x.png"; path = "../AppDelegate/Helper/yinhangrenzhengz@2x.png"; sourceTree = "<group>"; };
+		7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yinhangrenzhengb@2x.png"; path = "../AppDelegate/Helper/yinhangrenzhengb@2x.png"; sourceTree = "<group>"; };
+		7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shouchiyinhang@2x.png"; path = "../AppDelegate/Helper/shouchiyinhang@2x.png"; sourceTree = "<group>"; };
+		7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenb@2x.png"; sourceTree = "<group>"; };
+		7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenz@2x.png"; sourceTree = "<group>"; };
 		723D966D1D619D39001B61CA /* IdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityViewController.h; sourceTree = "<group>"; };
 		723D966E1D619D39001B61CA /* IdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityViewController.m; sourceTree = "<group>"; };
 		723D966F1D619D39001B61CA /* IdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdentityViewController.xib; sourceTree = "<group>"; };
@@ -478,6 +493,9 @@
 				723D96841D62ADFC001B61CA /* AddViewController.h */,
 				723D96851D62ADFC001B61CA /* AddViewController.m */,
 				723D96861D62ADFC001B61CA /* AddViewController.xib */,
+				7209F1BC1D7D4F9200BC9A80 /* YhangkaViewController.h */,
+				7209F1BD1D7D4F9200BC9A80 /* YhangkaViewController.m */,
+				7209F1BE1D7D4F9200BC9A80 /* YhangkaViewController.xib */,
 			);
 			name = Yinhangka;
 			sourceTree = "<group>";
@@ -935,6 +953,11 @@
 		F8BE8E281D5D5EC90053D464 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */,
+				7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */,
+				7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */,
+				7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */,
+				7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */,
 				72FDD7231D6E9096005115A1 /* xiaji1@2x.png */,
 				72E0D2CF1D6AD20200ABA2CC /* shou@3x.png */,
 				72E0D2881D6A8CD800ABA2CC /* delete@2x.png */,
@@ -1420,6 +1443,7 @@
 				723D96761D61EEDB001B61CA /* CertificationViewController.xib in Resources */,
 				72E0D28B1D6A8CD800ABA2CC /* photo_add@3x.png in Resources */,
 				F8BE8EBB1D5D61C60053D464 /* UserViewController.xib in Resources */,
+				7209F1C51D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png in Resources */,
 				723D968E1D62E4D7001B61CA /* PayPasswordViewController.xib in Resources */,
 				F8BE8E771D5D5EC90053D464 /* lunbo1.png in Resources */,
 				72E0D2D51D6C44B100ABA2CC /* SettlementViewController.xib in Resources */,
@@ -1447,7 +1471,9 @@
 				F8BE8E781D5D5EC90053D464 /* luobo2.png in Resources */,
 				723D96831D62A1A6001B61CA /* BankcardViewController.xib in Resources */,
 				F8AF0A591D669F69006268E3 /* TrafficViewController.xib in Resources */,
+				7209F1C01D7D4F9200BC9A80 /* YhangkaViewController.xib in Resources */,
 				F8BE8E881D5D5EC90053D464 /* jiesuan@2x.png in Resources */,
+				7209F1C61D7D50AE00BC9A80 /* shouchiyinhang@2x.png in Resources */,
 				F8837DB31D61552B0056148C /* TopUpViewController.xib in Resources */,
 				72FDD7241D6E9096005115A1 /* xiaji1@2x.png in Resources */,
 				723D96FB1D645CCF001B61CA /* shoufuyi@2x.png in Resources */,
@@ -1458,12 +1484,15 @@
 				723D97161D66A201001B61CA /* ForgetViewController.xib in Resources */,
 				F8BE8EB91D5D61C60053D464 /* MoreViewController.xib in Resources */,
 				F8BE8E6A1D5D5EC90053D464 /* tuiguang@2x.png in Resources */,
+				7209F1CA1D7D73E000BC9A80 /* shenfenz@2x.png in Resources */,
 				F8BE8EB31D5D61C60053D464 /* CollectionViewController.xib in Resources */,
 				F8AF0A6D1D66E993006268E3 /* GameViewController.xib in Resources */,
 				723D967C1D6204A0001B61CA /* xiang@2x.png in Resources */,
 				F8BE8E631D5D5EC90053D464 /* gonggao@2x.png in Resources */,
 				F8BE8E671D5D5EC90053D464 /* fankui@2x.png in Resources */,
+				7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */,
 				F8BE8E641D5D5EC90053D464 /* guangao.png in Resources */,
+				7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */,
 				723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */,
 				723D96E81D63EF8D001B61CA /* HelpViewController.xib in Resources */,
 			);
@@ -1547,6 +1576,7 @@
 				F8ADD17E1D6554B80022CFE0 /* TPPasswordTextView.m in Sources */,
 				723D96A31D62FD25001B61CA /* ZFViewController.m in Sources */,
 				F888F9811D6E9CE200400E71 /* ForgetViewController.m in Sources */,
+				7209F1BF1D7D4F9200BC9A80 /* YhangkaViewController.m in Sources */,
 				F8BE8EB21D5D61C60053D464 /* CollectionViewController.m in Sources */,
 				F8ADD18E1D65B4D90022CFE0 /* BalanceTableViewController.m in Sources */,
 				F8F492411D63FBB7007A8024 /* ErweimaViewController.m in Sources */,
