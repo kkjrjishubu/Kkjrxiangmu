@@ -9,10 +9,16 @@
 #import "ForgetViewController.h"
 #import "AgreementViewController.h"
 #define SCALE screenWidth/375.0
+#define Url @"http://api.sfy.95yes.cn/ashx/user.ashx"
+#import "NetWorkHelper.h"
 @interface ForgetViewController ()
 {
     BOOL isDown;
     UIButton *buttonyuan;
+    UITextField *Textfiled;
+    UITextField *Textfiled1;
+    UITextField *Textfiled2;
+    UITextField *Textfiled3;
 }
 @end
 
@@ -106,7 +112,7 @@
     }];
 
     //输入框
-    UITextField *Textfiled = [[UITextField alloc]init];
+    Textfiled = [[UITextField alloc]init];
     Textfiled.placeholder = @"请输入您的手机号";
     Textfiled.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled];
@@ -115,7 +121,7 @@
         make.left.equalTo(imageView1.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
-    UITextField *Textfiled1 = [[UITextField alloc]init];
+    Textfiled1 = [[UITextField alloc]init];
     Textfiled1.placeholder = @"请输入短信验证码";
     Textfiled1.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled1];
@@ -124,7 +130,7 @@
         make.left.equalTo(imageView2.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(-120*SCALE);
     }];
-    UITextField *Textfiled2 = [[UITextField alloc]init];
+    Textfiled2 = [[UITextField alloc]init];
     Textfiled2.placeholder = @"请输入您的密码";
     Textfiled2.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled2];
@@ -134,7 +140,7 @@
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
     
-    UITextField *Textfiled3 = [[UITextField alloc]init];
+    Textfiled3 = [[UITextField alloc]init];
     Textfiled3.placeholder = @"请输入邀请人手机号";
     Textfiled3.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled3];
@@ -198,12 +204,51 @@
     }
     isDown =! isDown;
 }
+
+
+
+/*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
+ 
+ 参数说明
+ 
+ 名称	类型	说明	是否必填	示例	默认值
+ action	string	register_sendsms	是
+ username	string	11位手机号	是*/ // 15837072274
 -(void)cilick{
-    NSLog(@"验证码是888888888");
+    NSDictionary *dic = @{@"action":@"register_sendsms"
+                          ,@"username":Textfiled.text};
+    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:dic success:^(id responseObject) {
+        NSLog(@"注册验证码%@",responseObject[@"Msg"]);
+
+    } failur:^(id error) {
+        NSLog(@"失败%@",error);
+    }];
+    
+    
+    
 }
 -(void)completebcilick{
-   // NSLog(@"确定");
-   // [self.navigationController popToRootViewControllerAnimated:YES];
+    /*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
+     
+     参数说明
+     
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	register	是	固定参数值
+     username	string	注册手机号	是
+     password	string	注册登录密码	是
+     smscode	string	注册验证码	是		
+*/
+    
+    NSDictionary *Zdic = @{@"action":@"register",@"username":Textfiled.text,@"password":Textfiled2.text,@"smscode":Textfiled1.text,@"recommendUserName":Textfiled3.text};
+    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:Zdic success:^(id responseObject) {
+        NSLog(@"注册成功%@",responseObject[@"Msg"]);
+    } failur:^(id error) {
+        NSLog(@"失败%@",error);
+    }];
+    
+    
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

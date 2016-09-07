@@ -10,7 +10,11 @@
 #define SCALE screenWidth/375.0
 #import "BackViewController.h"
 @interface PayPasswordViewController ()
-
+{
+    UITextField *Textfiled;
+    UITextField *Textfiled1;
+    UITextField *Textfiled2;
+}
 @end
 
 @implementation PayPasswordViewController
@@ -94,7 +98,7 @@
         make.top.mas_equalTo(imageView3.mas_top).offset(45*SCALE);
     }];
     //输入框
-    UITextField *Textfiled = [[UITextField alloc]init];
+    Textfiled = [[UITextField alloc]init];
     Textfiled.placeholder = @"请输入您的原密码";
     Textfiled.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled];
@@ -103,7 +107,7 @@
         make.left.equalTo(imageView1.mas_left).offset(60*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
-    UITextField *Textfiled1 = [[UITextField alloc]init];
+    Textfiled1 = [[UITextField alloc]init];
     Textfiled1.placeholder = @"请输入您的新密码";
     Textfiled1.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled1];
@@ -112,7 +116,7 @@
         make.left.equalTo(imageView2.mas_left).offset(60*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
-    UITextField *Textfiled2 = [[UITextField alloc]init];
+    Textfiled2 = [[UITextField alloc]init];
     Textfiled2.placeholder = @"请再次输入密码确认";
     Textfiled2.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled2];
@@ -130,6 +134,7 @@
         make.height.mas_equalTo(20*SCALE);
         make.width.mas_equalTo(100*SCALE);
     }];
+    //确认修改
     UIButton*Completebutton = [[UIButton alloc]init];
     Completebutton.backgroundColor = qianblue;
     [Completebutton addTarget:self action:@selector(completebcilick) forControlEvents:UIControlEventTouchUpInside];
@@ -163,7 +168,32 @@
 }
 -(void)completebcilick{
 
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    /*
+     http://api.sfy.95yes.cn/ashx/user.ashx
+     
+     参数说明
+     
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	editPassword	否
+     userName	string	11位手机号	否
+     passWord	string	当前密码	否
+     newPassWord	string	新密码	否		
+*/
+    
+    NSDictionary * dic = @{@"action":@"editPassword",@"userName":Textfiled.text,@"passWord":Textfiled1.text,@"newPassWord":Textfiled2.text};
+    [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:dic success:^(id responseObject) {
+        NSLog(@"%@",responseObject[@"Msg"]);
+        [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        
+//        if ((responseObject[@"Success"]= @"1")) {
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//  
+//        }
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
 
 }
 - (void)didReceiveMemoryWarning {

@@ -10,7 +10,11 @@
 #define SCALE screenWidth/375.0
 
 @interface BackViewController ()
-
+{
+    UITextField *Textfiled;
+    UITextField *Textfiled1;
+    UITextField *Textfiled2;
+}
 @end
 
 @implementation BackViewController
@@ -84,7 +88,7 @@
     }];
 
     //输入框
-    UITextField *Textfiled = [[UITextField alloc]init];
+    Textfiled = [[UITextField alloc]init];
     Textfiled.placeholder = @"请输入您的手机号";
     Textfiled.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled];
@@ -93,7 +97,7 @@
         make.left.equalTo(imageView1.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
-    UITextField *Textfiled1 = [[UITextField alloc]init];
+    Textfiled1 = [[UITextField alloc]init];
     Textfiled1.placeholder = @"请输入短信验证码";
     Textfiled1.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled1];
@@ -102,7 +106,7 @@
         make.left.equalTo(imageView2.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(-120*SCALE);
     }];
-    UITextField *Textfiled2 = [[UITextField alloc]init];
+    Textfiled2 = [[UITextField alloc]init];
     Textfiled2.placeholder = @"请输入您的新密码";
     Textfiled2.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled2];
@@ -141,12 +145,43 @@
     
 
 }
+//验证码
 -(void)cilick{
-    NSLog(@"验证码是888888888");
+    /*
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	editPassword_sendsms	是
+     userName	string	11位手机号	是
+     */
+    NSDictionary *dic = @{@"action":@"findPassword_sendsms",@"userName":@"15837072274"};
+    
+   
+    [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:dic success:^(id responseObject) {
+        NSLog(@"成功  %@",responseObject);
+         [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+    } failur:^(id error) {
+        NSLog(@"错误  %@",error);
+    }];
 }
+
+//确定
 -(void)completebcilick{
-    NSLog(@"确定");
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    /*
+     
+     action	string	findPassword	是
+     newPassWord	string	新密码	是
+     smsCode	string	短信验证码	是
+     userName	string	11位手机号	否
+
+     */
+    NSDictionary *dic = @{@"action":@"findPassword",@"newPassWord":Textfiled2.text,@"smsCode":Textfiled1.text,@"userName":Textfiled.text};
+    [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:dic success:^(id responseObject) {
+        [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    
+    }];
+   
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

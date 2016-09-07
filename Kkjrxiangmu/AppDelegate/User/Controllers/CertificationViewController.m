@@ -30,14 +30,24 @@
         make.height.mas_equalTo(30*SCALE);
         make.right.mas_equalTo(self.view.mas_right).offset(0);
     }];
-   
+    //银行卡图片
+    UIImageView *YimageView = [[UIImageView alloc]init];
+    YimageView.image = [UIImage imageNamed:@"yinhangrenzhengz.png"];
+    [self.view addSubview:YimageView];
+    [YimageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(lab.mas_bottom).offset(30*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(40*SCALE);
+        make.width.mas_equalTo(75*SCALE);
+        make.height.mas_equalTo(48*SCALE);
+        
+    }];
     UILabel *Zlab = [[UILabel alloc]init];
-    Zlab.text = @"身份证正面";
-    Zlab.font = [UIFont systemFontOfSize:14];
+    Zlab.text = @"银行卡正面";
+    Zlab.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:Zlab];
     [Zlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(30*SCALE);
-        make.top.equalTo(self.view.mas_top).offset(150*SCALE);
+        make.centerX.mas_equalTo(YimageView.mas_centerX).offset(11.5*SCALE);
+        make.top.equalTo(self.view.mas_top).offset(200*SCALE);
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
     }];
@@ -48,10 +58,10 @@
     button1.layer.masksToBounds = YES;
     [button1 addTarget:self action:@selector(cilickone) forControlEvents:UIControlEventTouchUpInside];
     [button1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(Zlab.mas_centerY);
-        make.left.equalTo(Zlab.mas_right).offset(30*SCALE);
-        make.right.equalTo(self.view.mas_right).offset(-40*SCALE);
-        make.height.mas_equalTo(70*SCALE);
+        make.bottom.equalTo(Zlab.mas_bottom);
+        make.left.equalTo(Zlab.mas_right).offset(50*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(-30*SCALE);
+        make.height.mas_equalTo(100*SCALE);
     }];
     
     UIImageView *_imView = [[UIImageView alloc]init];
@@ -64,16 +74,26 @@
         make.width.mas_equalTo(80*SCALE);
     }];
     
+    UIImageView *YimageView1= [[UIImageView alloc]init];
+    YimageView1.image = [UIImage imageNamed:@"yinhangrenzhengb.png"];
+    [self.view addSubview:YimageView1];
+    [YimageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(Zlab.mas_bottom).offset(30*SCALE);
+        make.left.mas_equalTo(self.view.mas_left).offset(40*SCALE);
+        make.width.mas_equalTo(75*SCALE);
+        make.height.mas_equalTo(48*SCALE);
+    }];
     UILabel *Flab = [[UILabel alloc]init];
-    Flab.text = @"身份证反面";
+    Flab.text = @"银行卡反面";
     Flab.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:Flab];
     [Flab mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerX.equalTo(Zlab.mas_centerX);
-        make.top.mas_equalTo(Zlab.mas_baseline).offset(70*SCALE);
+        make.top.mas_equalTo(Zlab.mas_baseline).offset(100*SCALE);
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
+        
     }];
     UIButton *button2=[[UIButton alloc]init];
     button2.backgroundColor = [UIColor whiteColor];
@@ -82,10 +102,10 @@
     button2.layer.masksToBounds = YES;
     [button2 addTarget:self action:@selector(cilicktwo) forControlEvents:UIControlEventTouchUpInside];
     [button2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(Flab.mas_centerY);
-        make.left.equalTo(Flab.mas_right).offset(30*SCALE);
-        make.right.equalTo(self.view.mas_right).offset(-40*SCALE);
-        make.height.mas_equalTo(70*SCALE);
+        make.bottom.equalTo(Flab.mas_bottom);
+        make.left.equalTo(Flab.mas_right).offset(50*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(-30*SCALE);
+        make.height.mas_equalTo(100*SCALE);
     }];
     UIImageView*_imView1 = [[UIImageView alloc]init];
     _imView1.image =[UIImage imageNamed:@"xiang.png"];
@@ -96,13 +116,26 @@
         make.height.mas_equalTo(60*SCALE);
         make.width.mas_equalTo(80*SCALE);
     }];
+    //银行卡图片2
+    UIImageView *YimageView2= [[UIImageView alloc]init];
+    YimageView2.image = [UIImage imageNamed:@"shouchiyinhang.png"];
+    [self.view addSubview:YimageView2];
+    [YimageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(Flab.mas_bottom).offset(30*SCALE);
+        
+        make.centerX.equalTo(YimageView1.mas_centerX);
+        make.width.mas_equalTo(60*SCALE);
+        make.height.mas_equalTo(55*SCALE);
+    }];
+    
+    
     UILabel *Slab = [[UILabel alloc]init];
-    Slab.text =@"手持身份证";
+    Slab.text =@"手持银行卡";
     Slab.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:Slab];
     [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(Zlab.mas_centerX);
-        make.top.mas_equalTo(Flab.mas_baseline).offset(70*SCALE);
+        make.top.mas_equalTo(Flab.mas_baseline).offset(100*SCALE);
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
     }];
@@ -113,11 +146,12 @@
     button3.layer.masksToBounds = YES;
     [button3 addTarget:self action:@selector(cilickthree) forControlEvents:UIControlEventTouchUpInside];
     [button3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(Slab.mas_centerY);
-        make.left.equalTo(Slab.mas_right).offset(30*SCALE);
-        make.right.equalTo(self.view.mas_right).offset(-40*SCALE);
-        make.height.mas_equalTo(70*SCALE);
+        make.bottom.equalTo(Slab.mas_bottom);
+        make.left.equalTo(Slab.mas_right).offset(50*SCALE);
+        make.right.equalTo(self.view.mas_right).offset(-30*SCALE);
+        make.height.mas_equalTo(100*SCALE);
     }];
+    //默认图片2
     UIImageView*_imView2 = [[UIImageView alloc]init];
     _imView2.image =[UIImage imageNamed:@"xiang.png"];
     [self.view addSubview:_imView2];
@@ -134,7 +168,7 @@
     [self.view addSubview:Completebutton];
     Completebutton.layer.cornerRadius = 10*SCALE;
     Completebutton.layer.masksToBounds = YES;
-
+    
     [Completebutton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(50*SCALE);
         make.right.equalTo(self.view.mas_right).offset(-50*SCALE);
@@ -156,13 +190,15 @@
     }];
 }
 -(void)cilickone{
-    
+    NSLog(@"22113");
 }
 -(void)cilicktwo{
-    
+    NSLog(@"第二个按钮");
 }
 -(void)cilickthree{
+
     
+
 }
 -(void)completebcilick{
     

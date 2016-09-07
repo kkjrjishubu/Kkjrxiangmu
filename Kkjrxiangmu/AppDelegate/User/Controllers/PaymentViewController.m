@@ -120,15 +120,17 @@
         make.left.equalTo(imageView3.mas_left).offset(60*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
+    //忘记密码
     UIButton *button =[[UIButton alloc]init];
     [self.view addSubview:button];
-    [button addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(cilickWJ) forControlEvents:UIControlEventTouchUpInside];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(Xview1.mas_bottom).offset(5*SCALE);
         make.left.equalTo(self.view.mas_left).offset(50*SCALE);
         make.height.mas_equalTo(20*SCALE);
         make.width.mas_equalTo(100*SCALE);
     }];
+    //确认修改
     UIButton*Completebutton = [[UIButton alloc]init];
     Completebutton.backgroundColor = qianblue;
     [Completebutton addTarget:self action:@selector(completebcilick) forControlEvents:UIControlEventTouchUpInside];
@@ -143,7 +145,7 @@
         make.height.mas_equalTo(35*SCALE);
         make.top.equalTo(Xview3.mas_bottom).offset(80*SCALE);
     }];
-    
+    //忘记密码文字
     UILabel *Mlab = [[UILabel alloc]init];
     [self.view addSubview:Mlab];
     Mlab.textColor = [UIColor grayColor];
@@ -155,12 +157,18 @@
         make.height.mas_equalTo(20*SCALE);
         make.width.mas_equalTo(100*SCALE);
     }];
+
 }
--(void)cilick{
+//
+-(void)cilickWJ{
        ZFViewController *Back = [[ZFViewController alloc]init];
        [self.navigationController pushViewController:Back animated:YES];
 }
+//修改密码
 -(void)completebcilick{
+    
+    
+    
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
