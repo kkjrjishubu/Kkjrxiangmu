@@ -20,6 +20,7 @@
 		7209F1C61D7D50AE00BC9A80 /* shouchiyinhang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */; };
 		7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */; };
 		7209F1CA1D7D73E000BC9A80 /* shenfenz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */; };
+		7209F1D61D80448500BC9A80 /* modelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209F1D51D80448500BC9A80 /* modelTool.m */; };
 		723D96711D619D39001B61CA /* IdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D966F1D619D39001B61CA /* IdentityViewController.xib */; };
 		723D96751D61EEDB001B61CA /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96731D61EEDB001B61CA /* CertificationViewController.m */; };
 		723D96761D61EEDB001B61CA /* CertificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96741D61EEDB001B61CA /* CertificationViewController.xib */; };
@@ -181,6 +182,8 @@
 		7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shouchiyinhang@2x.png"; path = "../AppDelegate/Helper/shouchiyinhang@2x.png"; sourceTree = "<group>"; };
 		7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenb@2x.png"; sourceTree = "<group>"; };
 		7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenz@2x.png"; sourceTree = "<group>"; };
+		7209F1D41D80448500BC9A80 /* modelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modelTool.h; sourceTree = "<group>"; };
+		7209F1D51D80448500BC9A80 /* modelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = modelTool.m; sourceTree = "<group>"; };
 		723D966D1D619D39001B61CA /* IdentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityViewController.h; sourceTree = "<group>"; };
 		723D966E1D619D39001B61CA /* IdentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityViewController.m; sourceTree = "<group>"; };
 		723D966F1D619D39001B61CA /* IdentityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdentityViewController.xib; sourceTree = "<group>"; };
@@ -496,6 +499,8 @@
 				7209F1BC1D7D4F9200BC9A80 /* YhangkaViewController.h */,
 				7209F1BD1D7D4F9200BC9A80 /* YhangkaViewController.m */,
 				7209F1BE1D7D4F9200BC9A80 /* YhangkaViewController.xib */,
+				7209F1D41D80448500BC9A80 /* modelTool.h */,
+				7209F1D51D80448500BC9A80 /* modelTool.m */,
 			);
 			name = Yinhangka;
 			sourceTree = "<group>";
@@ -1610,6 +1615,7 @@
 				F8C30BA41D6AE73500E659B5 /* XRCarouselView.m in Sources */,
 				F8AF0A6C1D66E993006268E3 /* GameViewController.m in Sources */,
 				F888F97E1D6E9C8F00400E71 /* AboutusViewController.m in Sources */,
+				7209F1D61D80448500BC9A80 /* modelTool.m in Sources */,
 				F8BE8EBA1D5D61C60053D464 /* UserViewController.m in Sources */,
 				723D96751D61EEDB001B61CA /* CertificationViewController.m in Sources */,
 				F8F4923A1D63F619007A8024 /* MoreViewController.m in Sources */,

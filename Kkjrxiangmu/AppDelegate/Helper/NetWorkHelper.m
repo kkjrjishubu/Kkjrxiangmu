@@ -68,5 +68,22 @@
 
     }];
 }
++ (NSDictionary *)dataToDictionary:(NSData *)data
+{
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    return [self jsonToDictionary:str];
+}
++ (NSDictionary *)jsonToDictionary:(NSString *)jsonString
+{
+    NSDictionary *JSON;
+    if (jsonString && ![jsonString isEqual:[NSNull null]]) {
+        NSError *error;
+        JSON = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
+    }
+    return JSON;
+}
+
+
 
 @end
