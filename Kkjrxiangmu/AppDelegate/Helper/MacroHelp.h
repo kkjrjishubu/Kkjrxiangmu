@@ -9,6 +9,13 @@
 #ifndef MacroHelp_h
 #define MacroHelp_h
 
+// 项目打包上线都不会打印日志，因此可放心。
+#ifdef DEBUG
+#define DREAMAppLog(s, ... ) NSLog( @"[%@ in line %d] ===============>%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#else
+#define DREAMAppLog(s, ... )
+#endif
+
 
 
 #define screenWidth  [UIScreen mainScreen].bounds.size.width

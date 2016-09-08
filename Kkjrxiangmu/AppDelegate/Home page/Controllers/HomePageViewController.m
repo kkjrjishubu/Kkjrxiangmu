@@ -67,21 +67,22 @@
     
     
     [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-        NSLog(@" %@",responseObject);
+        //NSLog(@" %@",responseObject);
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-       NSLog(@"成功: %@", string);
-//        NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
-//        NSLog(@"%@",data);
-//        //NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
-//        NSDictionary *dicdata = [NSMutableDictionary dictionaryWithContentsOfData:data];
-//        NSLog(@"22  %@",dicdata);
+        //NSLog(@"成功: %@", string);
         
-        
-       // NSDictionary *dicdd = [NSMutableDictionary returnDictionaryWithDataPath:string];
+        NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
+        //NSLog(@"%@",dicStr);
 
-        //NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        for (NSString *str in dicStr[@"DataList"]) {
+            //NSLog(@"遍历%@",str);
+            
+            
+           // NSString *str3 = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+           // NSString *str2 = [str stringByRemovingPercentEncoding];
+           // NSLog(@"转码%@",str2);
+        }
         
-        //NSLog(@"%@",dic);
         
     } failur:^(id error) {
         NSLog(@"%@",error);

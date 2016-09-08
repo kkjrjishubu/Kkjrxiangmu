@@ -146,10 +146,20 @@
     [button addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
     
 }
+
 -(void)cilick{
     CertificationViewController*CertificationView = [[CertificationViewController alloc]init];
     [self.navigationController pushViewController:CertificationView animated:YES];
 }
+
+
+
+
+
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
