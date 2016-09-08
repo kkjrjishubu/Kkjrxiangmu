@@ -6,6 +6,7 @@
 //  Copyright © 2016年 kkjr. All rights reserved.
 //
 
+
 #import "UserViewController.h"
 #import "Masonry.h"
 #import  "IdentityViewController.h"
@@ -28,6 +29,13 @@
     //
     UIView *lineView;
 }
+
+@property (nonatomic,strong)UILabel *IDlab1;
+@property (nonatomic,strong)UILabel *Ylab;
+@property (nonatomic,strong)UILabel *Ylab1;
+@property (nonatomic,strong)UILabel *Ylab2;
+
+
 @end
 
 @implementation UserViewController
@@ -63,9 +71,61 @@
     }];
     
     
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
+    NSLog(@"%@",urlStr);
+    [self NetworkIntercede:urlStr];
+    
+}
+
+/*
+{
+    "AccountProfit": 230, 分润余额
+    "AccountPic": "http://api.sfy.95yes.cn/ashx/user.ashx/upload/pic/120256.png", 头像
+    "IsAuthentication": false, 是否认证过身份
+    "UserName": "18137958686", 用户名
+    "IsSetPayPassword": true, 是否设置了支付密码
+    "Token": "6512bd43d9caa6e02c990b0a82652dca",
+    "Success": true,
+    "AccountAvailable": 1523, 余额
+    "AccountIn": 160, 结算金额
+    "AuthenticationState": "未认证" 认证状态文本显示
+}
+ 
+*/
+#pragma mark -- 网络请求
+- (void)NetworkIntercede:(NSString *)strUrl   {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    
+    NSDictionary *parameterdic = @{@"action":@"getUserInfo",
+                          @"token":tokenstr};
+    DREAMAppLog(@"%@",parameterdic);
+    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *infoDic = [NSMutableDictionary dictionaryWithJsonString:string];
+        
+        DREAMAppLog(@"%@",infoDic);
+        
+        _IDlab1.text = [NSString stringWithFormat:@"%@",infoDic[@"UserName"]];
+        _Ylab.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountAvailable"]];
+        _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
+        _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
+
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    }];
     
     
 }
+
+
+
+
+
+
+
 -(void)xianTiao{
     //蓝色到航条
     UIView *_Naview = [[UIView alloc]init];
@@ -103,11 +163,11 @@
         make.height.equalTo(@20);
         make.centerY.equalTo(_headImage.mas_centerY).with.offset(0);
     }];
-    UILabel *IDlab1 = [[UILabel alloc]init];
-    IDlab1.text = @"12345678901";
-    IDlab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:IDlab1];
-    [IDlab1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _IDlab1 = [[UILabel alloc]init];
+    
+    _IDlab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_IDlab1];
+    [_IDlab1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(IDlab.mas_right).offset(2);
         make.right.equalTo(self.view.mas_right).offset(0);
         make.height.equalTo(@20);
@@ -202,13 +262,13 @@
         make.left.equalTo(view2.mas_left).offset(screenWidth*0.07);
     }];
     //获取的余额
-    UILabel *Ylab= [[UILabel alloc]init];
-    Ylab.text = @"88.88";
-    Ylab.font =[UIFont systemFontOfSize:14];
-    Ylab.textAlignment = UITextAlignmentCenter;
-    Ylab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:Ylab];
-    [Ylab mas_makeConstraints:^(MASConstraintMaker *make) {
+    _Ylab= [[UILabel alloc]init];
+    _Ylab.text = @"88.88";
+    _Ylab.font =[UIFont systemFontOfSize:14];
+    _Ylab.textAlignment = UITextAlignmentCenter;
+    _Ylab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_Ylab];
+    [_Ylab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view.mas_right).offset(-screenWidth*0.8);
         make.top.equalTo(lab1.mas_bottom).offset(3);
         make.height.equalTo(@15.0);
@@ -216,13 +276,13 @@
     
     
     
-    UILabel *Ylab1= [[UILabel alloc]init];
-    Ylab1.text = @"88.88";
-    Ylab1.font =[UIFont systemFontOfSize:14];
-    Ylab1.textAlignment = UITextAlignmentCenter;
-    Ylab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:Ylab1];
-    [Ylab1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _Ylab1= [[UILabel alloc]init];
+    _Ylab1.text = @"88.88";
+    _Ylab1.font =[UIFont systemFontOfSize:14];
+    _Ylab1.textAlignment = UITextAlignmentCenter;
+    _Ylab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_Ylab1];
+    [_Ylab1 mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.right.equalTo(self.view.mas_right).offset(-screenWidth*0.45);
         make.height.equalTo(@15);
@@ -232,13 +292,13 @@
     }];
     
     
-    UILabel *Ylab2= [[UILabel alloc]init];
-    Ylab2.text = @"88.88";
-    Ylab2.font =[UIFont systemFontOfSize:14];
-    Ylab2.textAlignment = UITextAlignmentCenter;
-    Ylab2.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
-    [self.view addSubview:Ylab2];
-    [Ylab2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    _Ylab2= [[UILabel alloc]init];
+    _Ylab2.text = @"88.88";
+    _Ylab2.font =[UIFont systemFontOfSize:14];
+    _Ylab2.textAlignment = UITextAlignmentCenter;
+    _Ylab2.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    [self.view addSubview:_Ylab2];
+    [_Ylab2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.right.equalTo(view2.mas_right).offset(screenWidth*0.22);
         make.height.mas_equalTo(@15);

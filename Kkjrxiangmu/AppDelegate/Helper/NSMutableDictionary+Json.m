@@ -10,7 +10,7 @@
 
 @implementation NSMutableDictionary (Json)
 
-+ (NSMutableDictionary *)dictionaryWithJsonString:(NSString *)jsonStr {
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr {
     if (jsonStr == nil) {
         return nil;
     }
@@ -32,6 +32,55 @@
     return json;
 }
 
+
+
+
++ (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data {
+    CFPropertyListRef plist =  CFPropertyListCreateFromXMLData(kCFAllocatorDefault, (__bridge CFDataRef)data,
+                                                               kCFPropertyListImmutable,
+                                                               NULL);
+    if(plist == nil) {
+        NSLog(@"解析为空");
+        return nil;
+    }
+    if ([(__bridge id)plist isKindOfClass:[NSDictionary class]]) {
+        
+        return (__bridge NSDictionary *)plist;
+    }else {
+        CFRelease(plist);
+        NSLog(@"解析失败");
+
+        return nil;
+    }
+}
+
+
++(NSDictionary*)returnDictionaryWithDataPath:(NSString*)path
+
+{
+    
+    NSData* data = [[NSMutableData alloc]initWithContentsOfFile:path];
+    
+    NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+    
+    NSDictionary* myDictionary = [unarchiver decodeObjectForKey:@"talkData"];
+    
+    [unarchiver finishDecoding];
+    
+    //    NSLog(@"%@", myDictionary);
+    
+    
+    
+    return myDictionary;
+    
+}
+
+
++(NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString {
+    NSData *JSONData = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
+    return responseJSON;
+}
 
 
 @end

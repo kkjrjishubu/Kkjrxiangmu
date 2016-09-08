@@ -27,6 +27,9 @@
         NSString *libraryPath ;
     
 }
+
+@property (nonatomic,strong)NSUserDefaults *userDefaults;
+
 @end
 
 @implementation ViewController
@@ -42,7 +45,7 @@
     
     libraryPath =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
     NSLog(@"%@",libraryPath);
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
 
     UIImageView*_imageView = [[UIImageView alloc]init];
     _imageView.image = [UIImage imageNamed:@"shoufuyi.png"];
@@ -97,7 +100,7 @@
     _textFile = [[UITextField alloc]init];
     _textFile.placeholder = @"请输入您的手机号";
     _textFile.font = [UIFont systemFontOfSize:12];
-    NSData *phoneNumber = [userDefaults objectForKey:@"Zhanghao"];
+    NSData *phoneNumber = [_userDefaults objectForKey:@"Zhanghao"];
     NSString *string = [[NSString alloc]initWithData:phoneNumber encoding:NSUTF8StringEncoding];
     if (string == nil) {
         _textFile.placeholder = @"请输入您的手机号";
@@ -115,7 +118,7 @@
     _textFile1 = [[UITextField alloc]init];
    
     _textFile1.secureTextEntry = YES;
-    NSData *data = [userDefaults objectForKey:@"passWord"];
+    NSData *data = [_userDefaults objectForKey:@"passWord"];
     _textFile1.placeholder = @"请输入登录密码";
     NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     if (string == nil) {
@@ -146,7 +149,7 @@
         make.height.mas_equalTo(40*SCALE);
     }];
     JZbutton = [[UIButton alloc]init];
-    BOOL bi = [[userDefaults objectForKey:@"bool"] boolValue];
+    BOOL bi = [[_userDefaults objectForKey:@"bool"] boolValue];
     isDown = bi;
     if (bi == NO) {
         [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
@@ -236,7 +239,7 @@
 -(void)JZbuttoncilick{
     isDown =! isDown;
     //NO
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
     //YES
     if (isDown == NO) {
         [JZbutton setImage:[UIImage imageNamed:@"duihaohuise.png"] forState:UIControlStateNormal];
@@ -252,6 +255,8 @@
 }
 //登录
 -(void)buttonClick{
+
+
     /*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
      
      参数说明
@@ -261,14 +266,18 @@
      username	string	手机号	是	11位手机号
      password	string	登录密码
      */
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSDictionary *Dic = @{@"action":@"login",@"username":_textFile.text,@"password":_textFile1.text};
     [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:Dic success:^(id responseObject) {
         NSLog(@"%@",responseObject[@"Success"]);
         
+
        NSString* str = responseObject[@"Token"];
               NSLog(@"Token%@",str);
+      
+        // 存储
+        [self.userDefaults setObject:str forKey:@"tokenKey"];
+
         [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
         
          NSString *string = responseObject[@"Success"];
@@ -278,14 +287,14 @@
 
             NSString *mima = _textFile1.text;
             NSData *dataOen = [mima dataUsingEncoding:NSUTF8StringEncoding];
-            [userDefaults setObject:dataOen forKey:@"passWord"];
+            [_userDefaults setObject:dataOen forKey:@"passWord"];
             
             NSString *zhanghao = _textFile.text;
             NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
-            [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
-            [userDefaults setObject:@(isDown) forKey:@"bool"];
+            [_userDefaults setObject:dataTwo forKey:@"Zhanghao"];
+            [_userDefaults setObject:@(isDown) forKey:@"bool"];
             
-            [userDefaults synchronize];
+            [_userDefaults synchronize];
             
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             
@@ -332,8 +341,8 @@
         NSLog(@"111111%@",error);
         NSString *zhanghao = _textFile.text;
         NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
-        [userDefaults setObject:dataTwo forKey:@"Zhanghao"];
-        [userDefaults synchronize];
+        [_userDefaults setObject:dataTwo forKey:@"Zhanghao"];
+        [_userDefaults synchronize];
 
     }];
 }

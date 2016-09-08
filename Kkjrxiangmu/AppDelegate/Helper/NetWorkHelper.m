@@ -38,10 +38,12 @@
 }
 
 - (void)PostResponseNetInfoWithURLStrViaNet:(NSString *)urlStr parameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failur:(void (^)(id error))failur {
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
     [manager POST:urlStr parameters:parameter progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -51,7 +53,6 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failur(error);
     }];
-    
 }
 
 - (void)GetRequestNetInfoWithURLStrViaNet:(NSString *)urlStr parameters:(NSDictionary *)parameter success:(void (^)(id responseObject))success failur:(void (^)(id error))failur {
@@ -83,6 +84,12 @@
     }
     return JSON;
 }
+
+
+
+
+
+
 
 
 
