@@ -258,12 +258,7 @@
     
 }
 -(void)cilick{
-//    NSArray *vcArray = [self.navigationController viewControllers];
-//    UIViewController *vc = [vcArray objectAtIndex:0];
-//    [self.navigationController popToViewController:vc animated:YES];
-//    NSLog(@"222");
-//    YhangkaViewController *vc = [[YhangkaViewController alloc]init];
-//    [self.navigationController pushViewController:vc animated:YES];
+
     
 //TODO:输出的银行数值（nsstring）
     NSDictionary *dic = @{@"action":@"bankType"};

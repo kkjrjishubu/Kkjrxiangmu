@@ -339,7 +339,7 @@
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textColor = qianjblack
+    cell.textColor = qianjblack;
     cell.textLabel.text =[_LabArray objectAtIndex:indexPath.section][indexPath.row];
     cell.imageView.image = nil;
     cell.imageView.image = [UIImage imageNamed:[_ImageArray objectAtIndex:indexPath.section][indexPath.row]];

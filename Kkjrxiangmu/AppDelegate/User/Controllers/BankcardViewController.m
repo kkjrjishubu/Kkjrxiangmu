@@ -68,52 +68,19 @@
         make.height.mas_equalTo(40*SCALE);
     }];
     [button1 addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
-    /*接口描述：
-     数据格式：JSON
-     
-     请求方式：POST
-     
-     接口URL： http://api.sfy.95yes.cn/ashx/BankCard.ashx
-     
-     参数说明
-     
-     名称	类型	说明	是否必填	示例	默认值
-     action	string	getList	是
-     token	string	身份标识	是
-     响应示例 异常示例
-     {
-     "Token": "6512bd43d9caa6e02c990b0a82652dca",
-     "DataList": [
-     {
-     "BankType": 1,
-     "BankCity": 111100,
-     "Owner": "马三",
-     "BankCityText": "石景山区",
-     "Branch": "石景山支行",
-     "BankNo": "6222021705899658875",
-     "BankTypeText": "中国银行",
-     "ID": 1,
-     "Mobile": "18137905582",
-     "BankProvince": 110000,
-     "BankProvinceText": "北京市",
-     "AddTime": "2016-09-06 12:25:45"
-     }
-     ], 
-     "Success": true
-     
-     
-     }*/
-    
+
     
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
     NSString *myString = [userDefaultes objectForKey:@"tokenKey"];
     NSLog(@"输出的Tonkeny的值 %@",myString);
     NSDictionary * dic = @{@"action":@"getList",@"token":myString};
+    NSLog(@"入参字典 %@",dic);
     [[NetWorkHelper shareNetWorkEngine]PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/BankCard.ashx" parameters:dic success:^(id responseObject) {
         
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *responDic = [NSMutableDictionary dictionaryWithJsonString:string];
         NSString *tonkenary = responDic[@"Token"];
+        NSLog(@"qqqq   %@",responDic);
         [userDefaultes setObject:tonkenary forKey:@"tokenKey"];
         indexCont = [responDic[@"index"] integerValue]+1;
         NSLog(@"单元格个数%ld",(long)indexCont);
