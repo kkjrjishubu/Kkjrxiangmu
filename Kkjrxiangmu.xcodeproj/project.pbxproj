@@ -18,7 +18,6 @@
 		7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */; };
 		7209F1C51D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */; };
 		7209F1C61D7D50AE00BC9A80 /* shouchiyinhang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */; };
-		7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */; };
 		7209F1CA1D7D73E000BC9A80 /* shenfenz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */; };
 		7209F1D61D80448500BC9A80 /* modelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7209F1D51D80448500BC9A80 /* modelTool.m */; };
 		723D96711D619D39001B61CA /* IdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D966F1D619D39001B61CA /* IdentityViewController.xib */; };
@@ -48,6 +47,7 @@
 		723D97161D66A201001B61CA /* ForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D97141D66A201001B61CA /* ForgetViewController.xib */; };
 		723D97191D66B2B1001B61CA /* duihaoyuanhuise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D97171D66B2B1001B61CA /* duihaoyuanhuise@2x.png */; };
 		723D971A1D66B2B1001B61CA /* duihaoyuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D97181D66B2B1001B61CA /* duihaoyuan@2x.png */; };
+		723F57A51D92605400B79777 /* modeloler.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F57A41D92605400B79777 /* modeloler.m */; };
 		72E0D2841D6A89BA00ABA2CC /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E0D2831D6A89BA00ABA2CC /* PhotoCollectionViewCell.m */; };
 		72E0D28A1D6A8CD800ABA2CC /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E0D2881D6A8CD800ABA2CC /* delete@2x.png */; };
 		72E0D28B1D6A8CD800ABA2CC /* photo_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E0D2891D6A8CD800ABA2CC /* photo_add@3x.png */; };
@@ -180,7 +180,6 @@
 		7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yinhangrenzhengz@2x.png"; path = "../AppDelegate/Helper/yinhangrenzhengz@2x.png"; sourceTree = "<group>"; };
 		7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yinhangrenzhengb@2x.png"; path = "../AppDelegate/Helper/yinhangrenzhengb@2x.png"; sourceTree = "<group>"; };
 		7209F1C31D7D50AE00BC9A80 /* shouchiyinhang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shouchiyinhang@2x.png"; path = "../AppDelegate/Helper/shouchiyinhang@2x.png"; sourceTree = "<group>"; };
-		7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenb@2x.png"; sourceTree = "<group>"; };
 		7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shenfenz@2x.png"; sourceTree = "<group>"; };
 		7209F1D41D80448500BC9A80 /* modelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modelTool.h; sourceTree = "<group>"; };
 		7209F1D51D80448500BC9A80 /* modelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = modelTool.m; sourceTree = "<group>"; };
@@ -230,6 +229,8 @@
 		723D97141D66A201001B61CA /* ForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetViewController.xib; sourceTree = "<group>"; };
 		723D97171D66B2B1001B61CA /* duihaoyuanhuise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duihaoyuanhuise@2x.png"; sourceTree = "<group>"; };
 		723D97181D66B2B1001B61CA /* duihaoyuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duihaoyuan@2x.png"; sourceTree = "<group>"; };
+		723F57A31D92605400B79777 /* modeloler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modeloler.h; path = Kkjrxiangmu/AppDelegate/User/Controllers/modeloler.h; sourceTree = SOURCE_ROOT; };
+		723F57A41D92605400B79777 /* modeloler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = modeloler.m; path = Kkjrxiangmu/AppDelegate/User/Controllers/modeloler.m; sourceTree = SOURCE_ROOT; };
 		72E0D2821D6A89BA00ABA2CC /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCollectionViewCell.h; path = Kkjrxiangmu/AppDelegate/User/Controllers/PhotoCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		72E0D2831D6A89BA00ABA2CC /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCollectionViewCell.m; path = Kkjrxiangmu/AppDelegate/User/Controllers/PhotoCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		72E0D2851D6A8A5B00ABA2CC /* addPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addPhotoViewController.h; sourceTree = "<group>"; };
@@ -958,7 +959,6 @@
 		F8BE8E281D5D5EC90053D464 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7209F1C71D7D73D600BC9A80 /* shenfenb@2x.png */,
 				7209F1C91D7D73E000BC9A80 /* shenfenz@2x.png */,
 				7209F1C11D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png */,
 				7209F1C21D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png */,
@@ -1276,6 +1276,8 @@
 		F8BE8EB01D5D61C60053D464 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				723F57A31D92605400B79777 /* modeloler.h */,
+				723F57A41D92605400B79777 /* modeloler.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1387,6 +1389,7 @@
 				TargetAttributes = {
 					7202E4B51D5C2497003A75EB = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 6ME7TND45M;
 					};
 					7202E4CE1D5C2497003A75EB = {
 						CreatedOnToolsVersion = 7.2;
@@ -1497,7 +1500,6 @@
 				F8BE8E671D5D5EC90053D464 /* fankui@2x.png in Resources */,
 				7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */,
 				F8BE8E641D5D5EC90053D464 /* guangao.png in Resources */,
-				7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */,
 				723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */,
 				723D96E81D63EF8D001B61CA /* HelpViewController.xib in Resources */,
 			);
@@ -1586,6 +1588,7 @@
 				F8ADD18E1D65B4D90022CFE0 /* BalanceTableViewController.m in Sources */,
 				F8F492411D63FBB7007A8024 /* ErweimaViewController.m in Sources */,
 				F81EA0BF1D5C887300214663 /* ViewController.m in Sources */,
+				723F57A51D92605400B79777 /* modeloler.m in Sources */,
 				F8BE8EEF1D5DBBE80053D464 /* WebViewController.m in Sources */,
 				F8AF0A5D1D66E711006268E3 /* PayCostViewController.m in Sources */,
 				723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */,
@@ -1765,13 +1768,16 @@
 			baseConfigurationReference = 66EE9E7475653004018857B8 /* Pods-Kkjrxiangmu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kkjrxiangmu/Headerpch.pch";
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kk.Kkjrxiangmu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1780,13 +1786,16 @@
 			baseConfigurationReference = 898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kkjrxiangmu/Headerpch.pch";
 				INFOPLIST_FILE = Kkjrxiangmu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kk.Kkjrxiangmu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

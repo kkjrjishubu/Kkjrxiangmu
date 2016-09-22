@@ -57,7 +57,7 @@
  //   self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _ImageArray=@[@[@"jiesuan.png",@"shenfen.png",@"yinhang.png"],@[@"denglu.png",@"zhifu.png"],@[@"gengxin.png",@"tuichu.png"]];
-    _LabArray = @[@[@"结算记录",@"身份验证",@"银行卡验证"],@[@"修改登录密码",@"支付密码"],@[@"版本更新",@"退出登录"]];
+    _LabArray = @[@[@"申请结算",@"身份验证",@"银行卡验证"],@[@"修改登录密码",@"支付密码"],@[@"版本更新",@"退出登录"]];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _tableView.showsVerticalScrollIndicator =
     NO;
@@ -112,19 +112,19 @@
         _Ylab.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountAvailable"]];
         _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
         _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
+        NSString *str =[NSString stringWithFormat:@"%@",infoDic[@"Token"]];
+        NSUserDefaults *sss=[NSUserDefaults standardUserDefaults];
+        [sss setObject:str forKey:@"tokenKey"];
 
+        NSLog(@"输出的TOken%@",str);
+        
+        
     } failur:^(id error) {
         NSLog(@"%@",error);
     }];
     
     
 }
-
-
-
-
-
-
 
 -(void)xianTiao{
     //蓝色到航条
@@ -136,8 +136,6 @@
         make.top.equalTo(self.view.mas_top).offset(22.0);
         make.width.equalTo(@(screenWidth));
         make.height.equalTo(@43.0);
-        
-        
     }];
     
     //用户的头像
@@ -155,7 +153,7 @@
     //用户ID
     UILabel *IDlab = [[UILabel alloc]init];
     IDlab.text = @"ID:";
-    IDlab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    IDlab.textColor = qianjblack;
     [self.view addSubview:IDlab];
     [IDlab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImage.mas_right).offset(13*SCALE);
@@ -165,24 +163,21 @@
     }];
     _IDlab1 = [[UILabel alloc]init];
     
-    _IDlab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    _IDlab1.textColor = qianjblack;
     [self.view addSubview:_IDlab1];
     [_IDlab1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(IDlab.mas_right).offset(2);
         make.right.equalTo(self.view.mas_right).offset(0);
         make.height.equalTo(@20);
         make.centerY.equalTo(_headImage.mas_centerY).with.offset(0);
-        
-        
-        
     }];
     
-    
+//     [self.rateview.logoImage sd_setImageWithURL:[NSURL URLWithString:rateM.ChannelIcon] placeholderImage:nil];
     //线条
     UIView *view =[[UIView alloc]init];
     
     lineView = view;
-    view.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    view.backgroundColor =  [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(0);
@@ -196,7 +191,7 @@
     
     //上面的两个线条
     UIView *view1= [[UIView alloc]init];
-    view1.backgroundColor =[UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    view1.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view1];
     [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(view1.superview.mas_left).offset(screenWidth*0.33);
@@ -209,7 +204,7 @@
     
     
     UIView *view2= [[UIView alloc]init];
-    view2.backgroundColor =[UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    view2.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
     [self.view addSubview:view2];
     [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(view2.superview.mas_right).offset(-screenWidth*0.33);
@@ -221,7 +216,7 @@
     //三个lab
     UILabel*lab1 =[[UILabel alloc]init];
     lab1.font =[UIFont systemFontOfSize:14];
-    lab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    lab1.textColor = qianjblack;
     lab1.text = @"账户余额";
     lab1.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:lab1];
@@ -236,7 +231,7 @@
     
     UILabel*lab2 =[[UILabel alloc]init];
     lab2.font =[UIFont systemFontOfSize:14];
-    lab2.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    lab2.textColor = qianjblack;
     lab2.text = @"分润余额";
     lab2.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:lab2];
@@ -251,7 +246,7 @@
     
     UILabel*lab3 =[[UILabel alloc]init];
     lab3.font =[UIFont systemFontOfSize:14];
-    lab3.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    lab3.textColor = qianjblack
     lab3.text = @"结算余额";
     lab3.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:lab3];
@@ -266,13 +261,15 @@
     _Ylab.text = @"88.88";
     _Ylab.font =[UIFont systemFontOfSize:14];
     _Ylab.textAlignment = UITextAlignmentCenter;
-    _Ylab.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    _Ylab.textColor = qianjblack;
     [self.view addSubview:_Ylab];
     [_Ylab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_right).offset(-screenWidth*0.8);
+        make.left.equalTo(self.view.mas_left).offset(screenWidth*0.09);
         make.top.equalTo(lab1.mas_bottom).offset(3);
-        make.height.equalTo(@15.0);
+        make.width.mas_equalTo(50*SCALE);
+        make.height.mas_equalTo(15.0*SCALE);
     }];
+//    _Ylab.backgroundColor =[UIColor redColor];
     
     
     
@@ -280,31 +277,30 @@
     _Ylab1.text = @"88.88";
     _Ylab1.font =[UIFont systemFontOfSize:14];
     _Ylab1.textAlignment = UITextAlignmentCenter;
-    _Ylab1.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    _Ylab1.textColor = qianjblack
     [self.view addSubview:_Ylab1];
     [_Ylab1 mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.right.equalTo(self.view.mas_right).offset(-screenWidth*0.45);
+        make.left.equalTo(self.view.mas_left).offset(screenWidth*0.43);
         make.height.equalTo(@15);
-        
+        make.width.mas_equalTo(50*SCALE);
+
         make.top.equalTo(lab1.mas_bottom).offset(3);
         
     }];
-    
     
     _Ylab2= [[UILabel alloc]init];
     _Ylab2.text = @"88.88";
     _Ylab2.font =[UIFont systemFontOfSize:14];
     _Ylab2.textAlignment = UITextAlignmentCenter;
-    _Ylab2.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    _Ylab2.textColor = qianjblack;
     [self.view addSubview:_Ylab2];
     [_Ylab2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.right.equalTo(view2.mas_right).offset(screenWidth*0.22);
+        make.right.equalTo(view2.mas_right).offset(screenWidth*0.235);
         make.height.mas_equalTo(@15);
+        make.width.mas_equalTo(50*SCALE);
         make.top.equalTo(lab1.mas_bottom).offset(3);
-        
-        
     }];
     
 }
@@ -332,7 +328,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentfier];
         UIView *view2 =[[UIView alloc]initWithFrame:CGRectMake(0, 45*SCALE,SCREEN_WIDTH, 0.5)];
-        view2.backgroundColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+        view2.backgroundColor =  [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
         view2.tag = 2015;
         [cell.contentView addSubview:view2];
         if (indexPath.row==0||indexPath.row==3||indexPath.row==5) {
@@ -343,7 +339,7 @@
     }
     
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textColor = [UIColor colorWithRed:181.0/225.0 green:181.0/225.0 blue:181.0/225.0 alpha:100];
+    cell.textColor = qianjblack
     cell.textLabel.text =[_LabArray objectAtIndex:indexPath.section][indexPath.row];
     cell.imageView.image = nil;
     cell.imageView.image = [UIImage imageNamed:[_ImageArray objectAtIndex:indexPath.section][indexPath.row]];

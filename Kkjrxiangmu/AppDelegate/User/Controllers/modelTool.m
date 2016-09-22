@@ -20,7 +20,7 @@
             break;
         }
     }
-    NSLog(@"%@",bankValue);
+    NSLog(@"cccccccccc%@",bankValue);
     return bankValue;
 }
 -(NSString *)getBAnkeVacer:(NSArray *)dataArray bankSing:(NSString *)string{

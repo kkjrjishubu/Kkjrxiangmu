@@ -54,8 +54,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
     
-    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-    
+//    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+//    lhScanQCodeViewController * sqVC = [[lhScanQCodeViewController alloc]init];
+//    UINavigationController * nVC = [[UINavigationController alloc]initWithRootViewController:sqVC];
+//    [self presentViewController:nVC animated:YES completion:^{
+//        
+//    }];
+
     
 }
 

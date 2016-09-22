@@ -37,8 +37,6 @@
     [self.tableView registerClass:[RateTableViewCell class] forCellReuseIdentifier:@"ratecell"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.rowHeight = 185;
-    
-    
 }
 
 

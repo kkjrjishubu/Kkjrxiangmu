@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CertificationViewController : UIViewController
-
+@property(retain,nonatomic)NSString *stringNmae;
+@property(retain,nonatomic)NSString *stringPhoen;
 @end

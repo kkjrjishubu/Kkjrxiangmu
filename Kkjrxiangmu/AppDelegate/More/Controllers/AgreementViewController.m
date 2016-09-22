@@ -116,8 +116,6 @@
         make.right.mas_equalTo(self.view.mas_right).offset(-10*SCALE);
     }];
 
-    
-
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self dismissViewControllerAnimated:YES completion:nil];

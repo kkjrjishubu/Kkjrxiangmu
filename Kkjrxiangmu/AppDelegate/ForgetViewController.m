@@ -245,9 +245,6 @@
         NSLog(@"失败%@",error);
     }];
     
-    
-    
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

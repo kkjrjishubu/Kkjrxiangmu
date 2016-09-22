@@ -51,8 +51,6 @@
     
     
 }
-
-
 - (void)interfaceview {
     self.navigationItem.title = self.navtit;
     self.navigationController.navigationBar.translucent = NO;
@@ -68,9 +66,6 @@
     
     
 }
-
-
-
 - (IBAction)tenAction:(id)sender {
     if (self.phoneTF.text.length == 0 ) {
         
@@ -235,8 +230,6 @@
     
 }
 
-
-
 - (void)payWayAction {
     
     
@@ -296,11 +289,7 @@
     [payview passbutton:^{
         NSLog(@"忘记密码");
     }];
-    
-    
-        
 }
-
 
 - (void)cusmotTableView {
     

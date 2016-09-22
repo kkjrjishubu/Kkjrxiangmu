@@ -22,6 +22,14 @@
     NSArray *Stringarray;
     //省
     NSString *provinceString;
+    
+    UITextField *textField1;
+    
+    UITextField *textField5;
+    
+    UITextField *textField4;
+    
+    UITextField *textField6;
 }
 @end
 
@@ -29,6 +37,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    nameNumber = [[NSString alloc]init];
+//    CityString = [[NSString alloc]init];
+//    provinceString = [[NSString alloc]init];
+//    Stringarray = [[NSArray alloc]init];
     self.view.backgroundColor =backViewColor;
     self.navigationItem.title = @"银行卡添加";
     UILabel *lab = [[UILabel alloc]init];
@@ -168,7 +180,7 @@
         make.height.mas_equalTo(1);
     }];
 //TODO:输入框
-    UITextField *textField1 = [[UITextField alloc]init];
+    textField1 = [[UITextField alloc]init];
     textField1.placeholder = @"请输入正确的银行卡号";
     textField1.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField1];
@@ -179,7 +191,7 @@
     }];
     
     textField2 = [[UITextField alloc]init];
-    textField2.placeholder = @"中国工商银行";
+    textField2.placeholder = @"工商银行";
     textField2.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField2];
     [textField2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -189,7 +201,7 @@
     }];
     
     textField3 = [[UITextField alloc]init];
-    textField3.placeholder = @"河南省 郑州市";
+    textField3.placeholder = @"河南 郑州市";
     textField3.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField3];
     [textField3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -198,7 +210,7 @@
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
 
-    UITextField *textField4 = [[UITextField alloc]init];
+    textField4 = [[UITextField alloc]init];
     textField4.placeholder = @"如xx分行xx支行";
     textField4.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField4];
@@ -209,7 +221,7 @@
     }];
     
 
-    UITextField *textField5 = [[UITextField alloc]init];
+    textField5 = [[UITextField alloc]init];
     textField5.placeholder = @"银行卡姓名";
     textField5.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField5];
@@ -218,7 +230,7 @@
         make.left.equalTo(SKlab.mas_right).offset(0*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
-    UITextField *textField6 = [[UITextField alloc]init];
+    textField6 = [[UITextField alloc]init];
     textField6.placeholder = @"银行预留手机号";
     textField6.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:textField6];
@@ -250,8 +262,8 @@
 //    UIViewController *vc = [vcArray objectAtIndex:0];
 //    [self.navigationController popToViewController:vc animated:YES];
 //    NSLog(@"222");
-    YhangkaViewController *vc = [[YhangkaViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    YhangkaViewController *vc = [[YhangkaViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
     
 //TODO:输出的银行数值（nsstring）
     NSDictionary *dic = @{@"action":@"bankType"};
@@ -270,102 +282,87 @@
         modelTool *tellArray = [[modelTool alloc]init];
        nameNumber = [tellArray getBankValue:Array bankString:textField2.text];
         
+        NSDictionary *cityDic = @{@"action":@"getProvince"};
+        [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/Enum.ashx" parameters:cityDic success:^(id responseObject) {
+            NSDictionary *strDic = [NetWorkHelper dataToDictionary:responseObject];
+            
+            NSArray *Array=strDic[@"DataList"];
+            
+            NSString *str = textField3.text;
+            Stringarray = [str componentsSeparatedByString:@" "];
+            NSString *s =Stringarray[0];
+            NSLog(@"%@",s);
+            modelTool *Tool = [[modelTool alloc]init];
+            provinceString = [Tool getBAnkeVacer:Array bankSing:s];
+            NSLog(@"aaaaaaa%@",provinceString);
+            //城市
+            NSDictionary *CityCode =@{@"action":@"getCity",@"cityCode":provinceString};
+            [[NetWorkHelper shareNetWorkEngine]PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/Enum.ashx" parameters:CityCode success:^(id responseObject) {
+                NSDictionary *strDic = [NetWorkHelper dataToDictionary:responseObject];
+                // NSLog(@"str %@",strDic);
+                NSArray *Array=strDic[@"DataList"];
+                CityString = [Tool getBAnkeVacer:Array bankSing:Stringarray[1]];
+                NSLog(@"%@",CityString);
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+                //Vale
+                NSNumber *num = @([nameNumber intValue]);
+                
+                NSLog(@"11111----------%@",nameNumber);
+                NSLog(@"22222++++++++%@",num);
+                
+                //provinceString
+                NSNumber *provinceNum = @([provinceString intValue]);
+                
+                NSLog(@"33333----------%@",provinceString);
+                NSLog(@"44444++++++++%@",provinceNum);
+                
+                
+                //CityString
+                NSNumber *CityNum=@([CityString intValue]);
+                NSLog(@"555555----------%@",CityString);
+                NSLog(@"666666++++++++%@",CityNum);
+                
+                NSDictionary *TianjiaDic = @{@"action":@"add",@"token":tokenstr,@"BankType":num,@"BankNo":textField1.text,@"Owner":textField5.text,@"BankProvince":provinceNum,@"BankCity":CityNum,@"Branch":textField4.text,@"Mobile":textField6.text};
+//                NSLog(@"1%@ 2%@ 3%@ 4%@ 5%@ 6%@ 7%@ 8%@",tokenstr,num,textField1.text,textField5.text,provinceNum,CityNum,textField4.text,textField6.text);
+                NSLog(@">>>>>>>>>>>>>>>>>>%@",TianjiaDic);
+                
+                
+                [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/BankCard.ashx" parameters:TianjiaDic success:^(id responseObject) {
+                    NSLog(@"%@",responseObject[@"Msg"]);
+                } failur:^(id error) {
+                    NSLog(@"%@",error);
+                }];
+                
+                
+                
+            } failur:^(id error) {
+                
+            }];
+            
+        } failur:^(id error) {
+            NSLog(@"1111111%@",error);
+        }];
+        
+
+    
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败 %@",error);
         
     }];
-    /*http://api.sfy.95yes.cn/ashx/Enum.ashx
-     
-     参数说明
-     
-     名称	类型	说明	是否必填	示例	默认值
-     action	string	getProvince	是
-     响应示例 异常示例
-     {
-     "Success": true,
-     "DataList": [
-     {
-     "CityName": "北京",
-     "CitySimple": "BJ",
-     "CityPostCode": "110000",
-     "CityPinYin": "Bei Jing"
-     }
-     ]
-     }
-     http://api.sfy.95yes.cn/ashx/Enum.ashx
-     
-     参数说明
-     河南 商丘市
-     名称	类型	说明	是否必填	示例	默认值
-     action	string	getCity	是
-     cityCode	string	省份的城市代码	是	省份枚举CityPostCode值
-     响应示例 异常示例
-     {
-     "DataList": [
-     {
-     "CityName": "海淀区",
-     "CitySimple": "HD",
-     "CityPostCode": "111000",
-     "CityPinYin": "Hai Dian Qu"
-     }
-     ],
-     "Success": true
-     }*/
-
     
-    NSDictionary *cityDic = @{@"action":@"getProvince"};
-    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/Enum.ashx" parameters:cityDic success:^(id responseObject) {
-        NSDictionary *strDic = [NetWorkHelper dataToDictionary:responseObject];
-        
-        NSArray *Array=strDic[@"DataList"];
-
-        NSString *str = textField3.text;
-        Stringarray = [str componentsSeparatedByString:@" "];
-        NSString *s =Stringarray[0];
-        modelTool *Tool = [[modelTool alloc]init];
-      provinceString = [Tool getBAnkeVacer:Array bankSing:s];
-        NSLog(@"aaaaaaa%@",CityString);
-        //城市
-         NSDictionary *CityCode =@{@"action":@"getCity",@"cityCode":provinceString};
-        [[NetWorkHelper shareNetWorkEngine]PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/Enum.ashx" parameters:CityCode success:^(id responseObject) {
-            NSDictionary *strDic = [NetWorkHelper dataToDictionary:responseObject];
-            NSLog(@"str %@",strDic);
-            NSArray *Array=strDic[@"DataList"];
-          CityString = [Tool getBAnkeVacer:Array bankSing:Stringarray[1]];
-        } failur:^(id error) {
-            
-        }];
-
-    } failur:^(id error) {
-        NSLog(@"1111111%@",error);
-    }];
-
-    
-    /*http://api.sfy.95yes.cn/ashx/BankCard.ashx
      
-     参数说明
-     
-     名称	类型	说明	是否必填	示例	默认值
-     action	string	add	是
-     token	string	身份标识	是
-     BankType	int	银行名称	是	银行枚举Key值
-     BankNo	string	银行卡号	是
-     Owner	string	开户名	是
-     BankProvince	int	开户省份代码	是	省份枚举CityPostCode值
-     BankCity	int	开户城市代码	是	城市枚举CityPostCode值
-     Branch	string	开户支行	是
-     Mobile	string	银行预留手机号	是
-     响应示例 异常示例
-     {
-     "Msg": "添加银行卡成功", 
-     "Success": true
-     }*/
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-   
-    NSDictionary *TianjiaDic = @{@"action":@"add",@"token":@""};
     
     
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [textField2 resignFirstResponder];
+    [textField1 resignFirstResponder];
+    [textField5 resignFirstResponder];
+    [textField4 resignFirstResponder];
+    [textField6 resignFirstResponder];
+    [textField3 resignFirstResponder];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

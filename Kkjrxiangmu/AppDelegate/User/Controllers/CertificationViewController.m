@@ -8,9 +8,20 @@
 
 #import "CertificationViewController.h"
 #import "Masonry.h"
+#import "IdentityViewController.h"
 #define SCALE screenWidth/375.0
-@interface CertificationViewController ()
-
+@interface CertificationViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+    UIButton*button1;
+    UIButton*button2;
+    UIButton*button3;
+    NSInteger T;
+    UIImageView*_imView1;
+    UIImageView *_imView;
+    UIImageView*_imView2;
+    //获取的图片
+    UIImage *imageViewTice;
+}
 @end
 
 @implementation CertificationViewController
@@ -51,11 +62,12 @@
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
     }];
-    UIButton*button1 =[[UIButton alloc]init];
+    button1 =[[UIButton alloc]init];
     button1.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:button1];
     button1.layer.cornerRadius = 10*SCALE;
     button1.layer.masksToBounds = YES;
+   // button1.tag = 101;
     [button1 addTarget:self action:@selector(cilickone) forControlEvents:UIControlEventTouchUpInside];
     [button1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(Zlab.mas_bottom);
@@ -64,9 +76,9 @@
         make.height.mas_equalTo(100*SCALE);
     }];
     
-    UIImageView *_imView = [[UIImageView alloc]init];
+    _imView = [[UIImageView alloc]init];
     _imView.image = [UIImage imageNamed:@"xiang.png"];
-    [self.view addSubview:_imView];
+    [button1 addSubview:_imView];
     [_imView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(button1.mas_centerX);
         make.centerY.mas_equalTo(button1.mas_centerY);
@@ -95,11 +107,12 @@
         make.width.mas_equalTo(90*SCALE);
         
     }];
-    UIButton *button2=[[UIButton alloc]init];
+    button2=[[UIButton alloc]init];
     button2.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:button2];
     button2.layer.cornerRadius = 10*SCALE;
     button2.layer.masksToBounds = YES;
+  //  button2.tag = 102;
     [button2 addTarget:self action:@selector(cilicktwo) forControlEvents:UIControlEventTouchUpInside];
     [button2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(Flab.mas_bottom);
@@ -107,9 +120,9 @@
         make.right.equalTo(self.view.mas_right).offset(-30*SCALE);
         make.height.mas_equalTo(100*SCALE);
     }];
-    UIImageView*_imView1 = [[UIImageView alloc]init];
+    _imView1 = [[UIImageView alloc]init];
     _imView1.image =[UIImage imageNamed:@"xiang.png"];
-    [self.view addSubview:_imView1];
+    [button2 addSubview:_imView1];
     [_imView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(button2.mas_centerX);
         make.centerY.mas_equalTo(button2.mas_centerY);
@@ -139,11 +152,12 @@
         make.height.mas_equalTo(30*SCALE);
         make.width.mas_equalTo(90*SCALE);
     }];
-    UIButton *button3=[[UIButton alloc]init];
+    button3=[[UIButton alloc]init];
     button3.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:button3];
     button3.layer.cornerRadius = 10*SCALE;
     button3.layer.masksToBounds = YES;
+  //  button3.tag = 103;
     [button3 addTarget:self action:@selector(cilickthree) forControlEvents:UIControlEventTouchUpInside];
     [button3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(Slab.mas_bottom);
@@ -152,9 +166,9 @@
         make.height.mas_equalTo(100*SCALE);
     }];
     //默认图片2
-    UIImageView*_imView2 = [[UIImageView alloc]init];
+    _imView2 = [[UIImageView alloc]init];
     _imView2.image =[UIImage imageNamed:@"xiang.png"];
-    [self.view addSubview:_imView2];
+    [button3 addSubview:_imView2];
     [_imView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(button3.mas_centerX);
         make.centerY.mas_equalTo(button3.mas_centerY);
@@ -190,25 +204,194 @@
     }];
 }
 -(void)cilickone{
-    NSLog(@"22113");
+    T= 101;
+    [self fang];
+    
 }
 -(void)cilicktwo{
-    NSLog(@"第二个按钮");
+    T = 102;
+   [self fang];
 }
 -(void)cilickthree{
-
-    
-
+    T = 103;
+[self fang];
+  
 }
--(void)completebcilick{
-    
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)fang{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self photo];
+    }];
+    
+    UIAlertAction *xiangji = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self camera];
+    }];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:xiangji];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
+}
+
+
+//相册
+- (void)photo
+{
+    /**
+     
+     UIImagePickerControllerSourceTypePhotoLibrary ,//来自图库
+     UIImagePickerControllerSourceTypeCamera ,//来自相机
+     UIImagePickerControllerSourceTypeSavedPhotosAlbum //来自相册
+     */
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+//相机
+- (void)camera
+{
+    //判断是否可以打开相机，模拟器此功能无法使用
+    if (![UIImagePickerController isSourceTypeAvailable:
+          
+          UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误" message:@"没有摄像头" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    
+    imagePicker.allowsEditing = YES;
+    
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:@"public.image"]) {
+        
+        imageViewTice = [info objectForKey:UIImagePickerControllerEditedImage];
+        
+        //如果是拍摄的照片
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+            //保存在相册
+            UIImageWriteToSavedPhotosAlbum(imageViewTice, nil, nil, nil);
+        }
+        
+        
+        if (T==101) {
+            
+            [button1 setImage:imageViewTice forState:UIControlStateNormal];
+            _imView.hidden = YES;
+            
+        }else if (T==102){
+            [button2 setImage:imageViewTice forState:UIControlStateNormal];
+            _imView1.hidden = YES;
+
+        }else{
+            [button3 setImage:imageViewTice forState:UIControlStateNormal];
+            _imView2.hidden = YES;
+
+        }
+    }
+   
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+//TODO:完成按钮
+-(void)completebcilick{
+    /*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
+     
+     参数说明
+     
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	authentication	是
+     token	string	身份标识	是
+     idCardNo	string	身份证号	是
+     trueName	string	姓名	是
+     cardFrontPic	File	身份证正面照片	是
+     cardBackPic	File	身份证背面照片	是
+     cardHandPic	File	手持身份证照片	是
+     响应示例 异常示例
+     {
+     "Msg": "提交认证成功！请等待审核",
+     "Success": true
+     }*/
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    
+    NSDictionary *dicvab = @{@"action":@"authentication",@"token":tokenstr,@"idCardNo":self.stringPhoen,@"trueName":self.stringNmae};
+    
+   
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        //接收类型不一致请替换一致text/html或别的
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"image/jpeg",@"image/png",@"application/octet-stream",@"text/json",nil];
+        
+       [manager POST:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:dicvab constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            
+            //NSData *imageData = UIImageJPEGRepresentation(button2.currentImage, 1);
+             NSData *dataCardFronpic = UIImageJPEGRepresentation(button1.currentImage,1);
+             NSData *datacarBachpic= UIImageJPEGRepresentation(button2.currentImage,1);
+             NSData *datacardHandPic = UIImageJPEGRepresentation(button3.currentImage,1);
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *str = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+            
+            //上传的参数(上传图片，以文件流的格式)
+            [formData appendPartWithFileData:dataCardFronpic
+                                    name:@"cardFrontPic"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+            
+            [formData appendPartWithFileData:datacarBachpic
+                                        name:@"cardBackPic"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:datacardHandPic
+                                        name:@"cardHandPic"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            //打印下上传进度
+            NSLog(@"aaaa%@",uploadProgress);
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            //上传成功
+             NSLog(@"上传的东西%@",responseObject[@"Msg"]);
+            NSLog(@"上传的文件%@",responseObject[@"Success"]);
+            NSLog(@"成功了%@",responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            //上传失败
+            NSLog(@"失败%@",error);
+        }];
+        
+}
+
+
 
 /*
 #pragma mark - Navigation
