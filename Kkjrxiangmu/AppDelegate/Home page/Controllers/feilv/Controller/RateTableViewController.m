@@ -13,6 +13,7 @@
 @interface RateTableViewController ()
 
 @property (nonatomic,strong)RateView *rateview;
+@property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
 
@@ -22,7 +23,13 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = qianWhite;
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+    NSLog(@"费率 %@",urlStr);
+    [self RateNetworkIntercede:urlStr];
+    self.dataSource = [NSMutableArray array];
+
     [self interfaceview];
+
 
 }
 
@@ -34,12 +41,52 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
+
+    
     [self.tableView registerClass:[RateTableViewCell class] forCellReuseIdentifier:@"ratecell"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.rowHeight = 185;
     
     
 }
+
+
+#pragma mark -- 网络请求
+- (void)RateNetworkIntercede:(NSString *)strUrl {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+
+    NSDictionary *parameterdics = @{@"action":@"rate",
+                                   @"product":@"1",
+                                   @"token":tokenstr};
+    DREAMAppLog(@"%@",parameterdics);
+    [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:strUrl parameters:parameterdics success:^(id responseObject) {
+        //DREAMAppLog(@"%@",responseObject);
+        if ([responseObject[@"Success"] integerValue] == 1) {
+            // 字典转模型
+            NSArray *dataArr = [RateModel mj_objectArrayWithKeyValuesArray:responseObject[@"DataList"]];
+            [self.dataSource addObjectsFromArray:dataArr];
+
+            [userDefaults setObject:responseObject[@"Token"] forKey:@"tokenKey"];
+            [userDefaults synchronize];
+            DREAMAppLog(@"数据源 %@",self.dataSource);
+            
+            [self.tableView reloadData];
+        }else {
+            
+            [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        }
+        
+
+        
+    } failur:^(id error) {
+        DREAMAppLog(@"%@",error);
+    }];
+    
+}
+
+
+
+
 
 
 - (void)backAction {
@@ -61,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return self.dataSource.count;
 }
 
 
@@ -71,15 +118,31 @@
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = qianWhite;
     
+    RateModel *rateModel = self.dataSource[indexPath.row];
     
+    [cell getCellDataWithCreativeModel:rateModel];
+
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0;
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 140.0;
 }
 
+
+
+
+
+
+
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 0;
+//}
+//
 
 /*
 // Override to support conditional editing of the table view.

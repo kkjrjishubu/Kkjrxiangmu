@@ -10,4 +10,14 @@
 
 @interface RateView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *settlementLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
+
+
+
 @end

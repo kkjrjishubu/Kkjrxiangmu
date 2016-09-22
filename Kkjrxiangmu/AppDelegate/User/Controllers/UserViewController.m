@@ -15,12 +15,14 @@
 #import "PaymentViewController.h"
 #import "ViewController.h"
 #import "SettlementViewController.h"
+#import "SetUpPayViewController.h"
+
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define SCALE SCREEN_WIDTH/375.0
 
 
-@interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface UserViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     NSArray *_ImageArray;
     NSArray *_LabArray;
@@ -34,6 +36,11 @@
 @property (nonatomic,strong)UILabel *Ylab;
 @property (nonatomic,strong)UILabel *Ylab1;
 @property (nonatomic,strong)UILabel *Ylab2;
+@property (nonatomic,strong)UIImageView *headImage;
+@property (nonatomic,copy)NSString *payPasswstr;
+@property (nonatomic,copy) NSString *tokenstr;
+@property (nonatomic,strong)NSUserDefaults *userDefaults;
+
 
 
 @end
@@ -54,7 +61,7 @@
     self.navigationController.navigationBar.barTintColor = qianblue;
     
     self.navigationItem.title = @"用户";
- //   self.navigationController.navigationBar.translucent = NO;
+   //self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     _ImageArray=@[@[@"jiesuan.png",@"shenfen.png",@"yinhang.png"],@[@"denglu.png",@"zhifu.png"],@[@"gengxin.png",@"tuichu.png"]];
     _LabArray = @[@[@"结算记录",@"身份验证",@"银行卡验证"],@[@"修改登录密码",@"支付密码"],@[@"版本更新",@"退出登录"]];
@@ -77,6 +84,14 @@
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
+}
+
 /*
 {
     "AccountProfit": 230, 分润余额
@@ -95,11 +110,11 @@
 #pragma mark -- 网络请求
 - (void)NetworkIntercede:(NSString *)strUrl   {
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    _tokenstr = [_userDefaults objectForKey:@"tokenKey"];
     
     NSDictionary *parameterdic = @{@"action":@"getUserInfo",
-                          @"token":tokenstr};
+                          @"token":_tokenstr};
     DREAMAppLog(@"%@",parameterdic);
     [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
         
@@ -112,7 +127,16 @@
         _Ylab.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountAvailable"]];
         _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
         _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
+        self.payPasswstr = infoDic[@"IsSetPayPassword"];
+        
+        [_userDefaults setObject:infoDic[@"Token"] forKey:@"tokenKey"];
+        [_userDefaults synchronize];
+        _tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+        
 
+        NSString *picurl = [NSString stringWithFormat:@"%s%@",SFYSERVER,infoDic[@"AccountPic"]];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:picurl] placeholderImage:nil];
+        NSLog(@"%@",picurl);
     } failur:^(id error) {
         NSLog(@"%@",error);
     }];
@@ -141,8 +165,14 @@
     }];
     
     //用户的头像
-    UIImageView *_headImage = [[UIImageView alloc]init];
+    _headImage = [[UIImageView alloc]init];
     _headImage.image =[UIImage imageNamed:@"touxiang.png"];
+    _headImage.userInteractionEnabled = YES;
+    _headImage.layer.masksToBounds = YES;
+    _headImage.layer.cornerRadius = 24 * SCALE;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handletapHead)];
+    [_headImage addGestureRecognizer:tap];
     [self.view addSubview:_headImage];
     [_headImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_Naview.mas_bottom).offset(20*SCALE);
@@ -308,6 +338,137 @@
     }];
     
 }
+
+#pragma mark -- 头像
+- (void)handletapHead {
+
+    [self addAlertViewController:@""];
+
+}
+- (void)addAlertViewController:(NSString *)alertStr {
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:alertStr preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *alert = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 判断是否支持相机
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            [self addImagePickCCamera];
+        }else {
+            [NSString addMBProgressHUD:@"不支持拍照" showHUDToView:self.view];
+        }
+    }];
+    UIAlertAction *alerts = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self addImagePickCPhotosAlbum];
+    }];
+    UIAlertAction *alertss = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertC addAction:alert];
+    [alertC addAction:alerts];
+    [alertC addAction:alertss];
+    [self presentViewController:alertC animated:YES completion:nil];
+    
+    
+}
+// 从相机选择
+- (void)addImagePickCCamera {
+    //1. 创建UIImageOickerController对象 图片选择器
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    //2. 设置选择图片的来源 图片库
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //3. 设置代理人
+    imagePicker.delegate = self;
+    //4. 确定当前选择的图片是否需要剪辑
+    imagePicker.allowsEditing = YES;
+    //模态返回
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
+}
+
+// 从相册选择
+- (void)addImagePickCPhotosAlbum {
+    //1. 创建UIImageOickerController对象 图片选择器
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    //2. 设置选择图片的来源 图片库
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    //3. 设置代理人
+    imagePicker.delegate = self;
+    //4. 确定当前选择的图片是否需要剪辑
+    imagePicker.allowsEditing = YES;
+    //模态返回
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark -- UIImagePickerControllerDelegate**************
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSLog(@"完成图片的选择");
+    //取出编辑之后的图片
+    UIImage *editeImage = info[@"UIImagePickerControllerEditedImage"];
+    _headImage.image = editeImage;
+    
+    //获取HeaderView对象
+    //HeaderView *headerV = (HeaderView *)self.tableView.tableHeaderView;
+    //将编辑后的图片添加到要展示的头像上
+    //headerV.photo.image = editeImage;
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    //MainTableViewCell *cell = [self.inforTableView cellForRowAtIndexPath:indexPath];
+    //cell.headImage.image = editeImage;
+    [self imageUpload:_headImage.image];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    NSLog(@"取消图片的选择");
+    //返回上一界面
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)imageUpload:(UIImage *)image {
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
+    NSLog(@"上传文件 %@",urlStr);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
+    // png
+    //NSData *data = UIImagePNGRepresentation(image);
+    // JPG
+    NSData *dataimage = UIImageJPEGRepresentation(image,0.7);
+    
+    // 可以在上传时使用当前的系统时间作为文件名(解决重名)
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // 设置时间格式
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+    NSDictionary *dataDic = @{@"action":@"updateAvatar",
+                          @"token":_tokenstr,
+                          @"Avatar":dataimage};
+    
+    //DREAMAppLog(@"%@",dataDic);
+    [manager POST:urlStr parameters:dataDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:dataimage name:@"Avatar" fileName:fileName mimeType:@"image/jpg"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject[@"Success"] integerValue] == 1) {
+            DREAMAppLog(@"修改 %@",responseObject[@"Msg"]);
+
+        }else {
+            DREAMAppLog(@"修改不成功 %@",responseObject[@"Msg"]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DREAMAppLog(@"%@",error);
+
+    }];
+    
+}
+
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
         return 3;
@@ -390,7 +551,22 @@
                 vc = [[PayPasswordViewController alloc]init];
                 break;
                 case 1:
-                vc = [[PaymentViewController alloc]init];
+                if ([self.payPasswstr integerValue] == 0) {
+                    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
+
+                    SetUpPayViewController *setupPayVC = [[SetUpPayViewController alloc]init];
+                    setupPayVC.navtitStr = @"支付密码";
+                    setupPayVC.urlstr = urlStr;
+                    setupPayVC.actionstr = @"setPayPassword";
+                    setupPayVC.numberStr = @"setPayPassword_sendsms";
+
+                    [self.navigationController pushViewController:setupPayVC animated:YES];
+                    
+                }else {
+                    vc = [[PaymentViewController alloc]init];
+
+                }
+                
                 break;
             default:
                 break;
@@ -406,12 +582,18 @@
         [self presentViewController:nav animated:NO completion:nil];
         return;
         }
-    
+
+    self.tabBarController.tabBar.hidden = YES;
+
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
--(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
-}
+
+
+
+
+
+
 /*
 #pragma mark - Navigation
 

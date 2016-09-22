@@ -18,7 +18,7 @@
     [super viewDidLoad];
     UIImageView *imageView1 = [[UIImageView alloc]init];
     [self.view addSubview:imageView1];
-    imageView1.image = [UIImage imageNamed:@"shouji.png"];
+    imageView1.image = [UIImage imageNamed:@"shoujihao@2x"];
     [imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(130*SCALE);
         make.left.equalTo(self.view.mas_left).offset(40*SCALE);

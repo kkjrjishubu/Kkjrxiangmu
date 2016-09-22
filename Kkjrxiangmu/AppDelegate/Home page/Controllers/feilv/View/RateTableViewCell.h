@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "RateView.h"
+#import "RateModel.h"
 
 @interface RateTableViewCell : UITableViewCell
 
 @property (nonatomic,strong)RateView *rateview;
+
+- (void)getCellDataWithCreativeModel:(RateModel *)rateM;
 
 
 @end

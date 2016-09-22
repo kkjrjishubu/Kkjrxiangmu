@@ -43,7 +43,7 @@
     _scanView = [[UIImageView alloc] initWithImage:scanImage];
     
     //设置位置
-    _scanView.frame = CGRectMake((Width - 200) / 2,(Height - 200) / 2, 200, 200);
+    _scanView.frame = CGRectMake((Width - 200) / 2,(Height - 380) / 2, 200, 200);
     
     [self addSubview:self.scanView];
     

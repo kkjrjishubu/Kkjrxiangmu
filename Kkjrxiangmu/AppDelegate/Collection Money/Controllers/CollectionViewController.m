@@ -10,6 +10,8 @@
 #import "PayWayView.h"
 #import "RateTableViewCell.h"
 #import "KeyCollectionViewCell.h"
+#import "QrcodeView.h"
+#import "RateModel.h"
 
 
 @interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -18,10 +20,16 @@
 @property (nonatomic,strong)UIViewController *viewcontroll;
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)PayWayView *paywayView;
+@property (nonatomic,strong)QrcodeView *qrcodeV;
 
 @property (weak, nonatomic) IBOutlet UIView *keyView;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (nonatomic,strong)NSMutableString *mutString;
+@property (nonatomic,copy)NSString *wxpayStr;
+@property (nonatomic,copy) NSString *tokenstr;
+@property (nonatomic,strong)NSUserDefaults *userDefaults;
+@property (nonatomic,strong)NSMutableArray *dataSource;
+
 
 @end
 
@@ -38,10 +46,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    _tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+    self.dataSource = [NSMutableArray array];
     
     [self interfaceview];
-    
     [self customKeyboard];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+    NSLog(@"费率 %@",urlStr);
+    
+    [self RateNetworkIntercede:urlStr];
     
 }
 
@@ -161,7 +176,6 @@
         
         self.numberLabel.text = self.mutString;
         
-        NSLog(@"1");
     }else if (indexPath.row == 1) {
         [self.mutString appendString:@"2"];
         
@@ -265,19 +279,11 @@
     [_window addSubview:self.viewcontroll.view];
     
     [self cusmotTableView];
-    
+
     [_paywayView backbut:^{
         
         blackview.hidden = YES;
         self.viewcontroll.view.hidden = YES;
-        
-//        __weak typeof(self) mySelf = self;
-        
-        [UIView animateWithDuration:0.2f animations:^{
-//            mySelf.payView.frame = CGRectMake(0 , screenHeight - 400, screenWidth, 400);
-//            mySelf.viewVC.view.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
-            
-        }];
         
         
     }];
@@ -285,13 +291,43 @@
     
 }
 
+#pragma mark -- 网络请求
+- (void)RateNetworkIntercede:(NSString *)strUrl {
+    
+    NSDictionary *parameterdic = @{@"action":@"rate",
+                                   @"product":@"1",
+                                   @"token":_tokenstr};
+    DREAMAppLog(@"%@",parameterdic);
+    
+    [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        //DREAMAppLog(@"%@",responseObject);
+        if ([responseObject[@"Success"] integerValue] == 1) {
+            // 字典转模型
+            NSArray *dataArr = [RateModel mj_objectArrayWithKeyValuesArray:responseObject[@"DataList"]];
+            [self.dataSource addObjectsFromArray:dataArr];
+            
+            DREAMAppLog(@"数据源 %@",self.dataSource);
+        }else {
+            
+            [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        }
+        
+
+        
+    } failur:^(id error) {
+        DREAMAppLog(@"%@",error);
+    }];
+    
+}
+
+
 
 - (void)cusmotTableView {
     
     self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 56, self.paywayView.frame.size.width, self.paywayView.frame.size.height - 56) style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    self.tableview.rowHeight = 160;
+    self.tableview.rowHeight = 150;
     self.tableview.backgroundColor = qianWhite;
     self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -313,18 +349,118 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 2;
+    return self.dataSource.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     RateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ratecell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = qianWhite;
     
+    RateModel *rateModel = self.dataSource[indexPath.row];
+    [cell getCellDataWithCreativeModel:rateModel];
+    
+    
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        NSLog(@"微信");
+        
+        _wxpayStr = @"wxpay";
+        [self customQrcodeView];
+        
+        __weak typeof(self) mySelf = self;
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            mySelf.paywayView.frame = CGRectMake(-screenWidth , screenHeight - 400, screenWidth, 400);
+            mySelf.qrcodeV.frame = CGRectMake(0, screenHeight - 400, screenWidth, 400);
+            
+        }];
+        
+    }else {
+        NSLog(@"京东");
+        _wxpayStr = @"jdpay";
+        [self customQrcodeView];
+        
+        __weak typeof(self) mySelf = self;
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            mySelf.paywayView.frame = CGRectMake(-screenWidth , screenHeight - 400, screenWidth, 400);
+            mySelf.qrcodeV.frame = CGRectMake(0, screenHeight - 400, screenWidth, 400);
+            
+        }];
+        
+    }
+}
+
+
+- (void)customQrcodeView {
+    self.qrcodeV = [[[NSBundle mainBundle]loadNibNamed:@"QrcodeView" owner:self options:nil]firstObject];
+    _qrcodeV.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
+    _qrcodeV.moneyLabel.text = [NSString stringWithFormat:@"¥ %@",self.numberLabel.text];
+    
+    [self.viewcontroll.view addSubview:_qrcodeV];
+    [_window addSubview:self.viewcontroll.view];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYPAYQRCODE];
+    NSLog(@"%@",urlStr);
+    [self NetworkIntercede:urlStr];
+    
+    [_qrcodeV BackButBlockAction:^{
+        __weak typeof(self) mySelf = self;
+    
+        [UIView animateWithDuration:0.2f animations:^{
+            mySelf.paywayView.frame = CGRectMake(0 , screenHeight - 400, screenWidth, 400);
+            mySelf.qrcodeV.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
+            
+        }];
+
+    }];
+    
+    [_qrcodeV SaveButBlockAction:^{
+        NSLog(@"保存");
+    }];
+    
+    [_qrcodeV ShaveBlockAction:^{
+        NSLog(@"分享");
+    }];
+}
+
+#pragma mark -- 网络请求
+- (void)NetworkIntercede:(NSString *)strUrl   {
+    
+    int numberint = [self.numberLabel.text intValue] * 100;
+    NSDictionary *parameterdic = @{@"action":_wxpayStr,
+                                   @"amount":[NSString stringWithFormat:@"%d",numberint],
+                                   @"token":_tokenstr};
+    DREAMAppLog(@"%@",parameterdic);
+    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *infoDic = [NSMutableDictionary dictionaryWithJsonString:string];
+        if ([infoDic[@"Success"] integerValue] == 1) {
+            NSString *qrurl = infoDic[@"QRCodeAddress"];
+            [_qrcodeV.Qrimage sd_setImageWithURL:[NSURL URLWithString:qrurl] placeholderImage:nil];
+            [_userDefaults setObject:infoDic[@"Token"] forKey:@"tokenKey"];
+            [_userDefaults synchronize];
+
+        }else{
+            [NSString addMBProgressHUD:infoDic[@"Msg"] showHUDToView:_qrcodeV];
+        }
+        DREAMAppLog(@"%@ %@",infoDic,infoDic[@"Msg"]);
+
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
 }
 
 
