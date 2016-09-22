@@ -191,8 +191,7 @@
     UILabel *labZCX = [[UILabel alloc]init];
     labZCX.text = @"注册协议";
 //    labZCX.text
-}
-
+} 
 -(void)buttonyuancilick{
     if (isDown == NO) {
         [buttonyuan setImage:[UIImage imageNamed:@"duihaoyuan.png"] forState:UIControlStateNormal];

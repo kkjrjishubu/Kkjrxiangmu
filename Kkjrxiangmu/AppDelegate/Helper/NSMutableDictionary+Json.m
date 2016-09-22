@@ -27,10 +27,6 @@
     return dic;
 }
 
-
-
-
-
 + (NSMutableDictionary *)responseToDic:(id)data{
     NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     return json;

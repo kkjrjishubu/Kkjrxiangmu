@@ -25,6 +25,7 @@
         BOOL isDown;
         UIButton *JZbutton;
         NSString *libraryPath ;
+    
 }
 
 @property (nonatomic,strong)NSUserDefaults *userDefaults;
@@ -254,7 +255,8 @@
 }
 //登录
 -(void)buttonClick{
-    
+
+
     /*接口URL： http://api.sfy.95yes.cn/ashx/user.ashx
      
      参数说明
@@ -269,8 +271,10 @@
     [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:Dic success:^(id responseObject) {
         NSLog(@"%@",responseObject[@"Success"]);
         
-        NSString *str = responseObject[@"Token"];
-        NSLog(@"Token%@",str);
+
+       NSString* str = responseObject[@"Token"];
+              NSLog(@"Token%@",str);
+      
         // 存储
         [self.userDefaults setObject:str forKey:@"tokenKey"];
 
@@ -334,7 +338,7 @@
         }
         
     } failur:^(id error) {
-        NSLog(@"%@",error);
+        NSLog(@"111111%@",error);
         NSString *zhanghao = _textFile.text;
         NSData *dataTwo = [zhanghao dataUsingEncoding:NSUTF8StringEncoding];
         [_userDefaults setObject:dataTwo forKey:@"Zhanghao"];
@@ -344,21 +348,7 @@
 }
 
 
-+ (NSDictionary *)dataToDictionary:(NSData *)data
-{
-    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    return [self jsonToDictionary:str];
-}
-+ (NSDictionary *)jsonToDictionary:(NSString *)jsonString
-{
-    NSDictionary *JSON;
-    if (jsonString && ![jsonString isEqual:[NSNull null]]) {
-        NSError *error;
-        JSON = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
-    }
-    return JSON;
-}- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
