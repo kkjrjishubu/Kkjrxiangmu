@@ -34,10 +34,14 @@
 #import "MJExtension.h"
 // 提示框三方
 #import "MBProgressHUD.h"
+#import "PromptView.h"
+// 验证码倒计时
+#import "IDCountDownButton.h"
+// 刷新
+#import "MJRefresh.h"
 
 
-
-// 服务器
+// 服务器****
 #define  SFYSERVER "http://api.sfy.95yes.cn"
 
 // 用户
@@ -49,10 +53,14 @@
 // 银行卡管理
 #define SFYBANKCARD "/ashx/BankCard.ashx"
 
+// 二维码
+#define SFYPAYQRCODE "/ashx/GetPayQRCode.ashx"
 
+// 二维码数据
+#define SFYGETPAYURL "/ashx/GetPayUrl.ashx"
 
-
-
+// 账单
+#define SFYACCOUNT "/ashx/Account.ashx"
 
 
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KeyCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *titlabel;
 
 @end

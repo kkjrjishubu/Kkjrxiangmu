@@ -28,11 +28,8 @@
 		723D96881D62ADFC001B61CA /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96861D62ADFC001B61CA /* AddViewController.xib */; };
 		723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D968B1D62E4D7001B61CA /* PayPasswordViewController.m */; };
 		723D968E1D62E4D7001B61CA /* PayPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D968C1D62E4D7001B61CA /* PayPasswordViewController.xib */; };
-		723D96901D62EB35001B61CA /* mima@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D968F1D62EB35001B61CA /* mima@2x.png */; };
 		723D96941D62F2D7001B61CA /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96921D62F2D7001B61CA /* BackViewController.m */; };
 		723D96951D62F2D7001B61CA /* BackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96931D62F2D7001B61CA /* BackViewController.xib */; };
-		723D96971D62F451001B61CA /* shouji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D96961D62F451001B61CA /* shouji@2x.png */; };
-		723D96991D62F45E001B61CA /* duanxin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D96981D62F45E001B61CA /* duanxin@2x.png */; };
 		723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D969D1D62FBC7001B61CA /* PaymentViewController.xib */; };
 		723D96A31D62FD25001B61CA /* ZFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96A11D62FD25001B61CA /* ZFViewController.m */; };
 		723D96A41D62FD25001B61CA /* ZFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96A21D62FD25001B61CA /* ZFViewController.xib */; };
@@ -56,6 +53,12 @@
 		72FDD7221D6DA05D005115A1 /* MerchantsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72FDD7201D6DA05D005115A1 /* MerchantsViewController.xib */; };
 		72FDD7241D6E9096005115A1 /* xiaji1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72FDD7231D6E9096005115A1 /* xiaji1@2x.png */; };
 		E9EB12F4358C3116B2657E01 /* libPods-Kkjrxiangmu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */; };
+		F80B576E1D9225FC00E49685 /* RateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B576D1D9225FC00E49685 /* RateModel.m */; };
+		F80B57711D92625700E49685 /* BillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B57701D92625700E49685 /* BillModel.m */; };
+		F80E80DA1D88E01100D43C02 /* QrcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F80E80D91D88E01100D43C02 /* QrcodeView.m */; };
+		F80E80DC1D88E13000D43C02 /* QrcodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80E80DB1D88E13000D43C02 /* QrcodeView.xib */; };
+		F81C7DBE1D824C5C004CA753 /* PromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = F81C7DBD1D824C5C004CA753 /* PromptView.m */; };
+		F81C7DC01D824C6A004CA753 /* PromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81C7DBF1D824C6A004CA753 /* PromptView.xib */; };
 		F81EA0BE1D5C887300214663 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BB1D5C887300214663 /* AppDelegate.m */; };
 		F81EA0BF1D5C887300214663 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BD1D5C887300214663 /* ViewController.m */; };
 		F8837DB21D61552B0056148C /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8837DB01D61552B0056148C /* TopUpViewController.m */; };
@@ -71,6 +74,9 @@
 		F888F9821D6E9D0100400E71 /* MerchantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FDD71F1D6DA05D005115A1 /* MerchantsViewController.m */; };
 		F888F9831D6E9D1800400E71 /* addPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E0D2861D6A8A5B00ABA2CC /* addPhotoViewController.m */; };
 		F888F9841D6E9D3700400E71 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96EA1D640619001B61CA /* AgreementViewController.m */; };
+		F89E69BF1D814DDA00DDCB27 /* SetUpPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89E69BD1D814DDA00DDCB27 /* SetUpPayViewController.m */; };
+		F89E69C01D814DDA00DDCB27 /* SetUpPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89E69BE1D814DDA00DDCB27 /* SetUpPayViewController.xib */; };
+		F89E6A061D81647C00DDCB27 /* IDCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F89E6A051D81647C00DDCB27 /* IDCountDownButton.m */; };
 		F8ADD17E1D6554B80022CFE0 /* TPPasswordTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ADD17D1D6554B80022CFE0 /* TPPasswordTextView.m */; };
 		F8ADD1871D65B2ED0022CFE0 /* BillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ADD1861D65B2ED0022CFE0 /* BillTableViewController.m */; };
 		F8ADD18E1D65B4D90022CFE0 /* BalanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ADD18D1D65B4D90022CFE0 /* BalanceTableViewController.m */; };
@@ -133,6 +139,8 @@
 		F8C30BA41D6AE73500E659B5 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C30BA21D6AE73500E659B5 /* XRCarouselView.m */; };
 		F8C30BA51D6AE73500E659B5 /* XRPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C30BA31D6AE73500E659B5 /* XRPlaceholder.png */; };
 		F8CFAAD31D795DB200424630 /* NetWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CFAAD21D795DB200424630 /* NetWorkHelper.m */; };
+		F8E920AD1D912BD7004769ED /* BillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E920AB1D912BD7004769ED /* BillTableViewCell.m */; };
+		F8E920AE1D912BD7004769ED /* BillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8E920AC1D912BD7004769ED /* BillTableViewCell.xib */; };
 		F8F492361D63F508007A8024 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D969C1D62FBC7001B61CA /* PaymentViewController.m */; };
 		F8F492371D63F520007A8024 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96851D62ADFC001B61CA /* AddViewController.m */; };
 		F8F492381D63F537007A8024 /* IdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D966E1D619D39001B61CA /* IdentityViewController.m */; };
@@ -199,12 +207,9 @@
 		723D968A1D62E4D7001B61CA /* PayPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPasswordViewController.h; sourceTree = "<group>"; };
 		723D968B1D62E4D7001B61CA /* PayPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPasswordViewController.m; sourceTree = "<group>"; };
 		723D968C1D62E4D7001B61CA /* PayPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayPasswordViewController.xib; sourceTree = "<group>"; };
-		723D968F1D62EB35001B61CA /* mima@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mima@2x.png"; sourceTree = "<group>"; };
 		723D96911D62F2D7001B61CA /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
 		723D96921D62F2D7001B61CA /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
 		723D96931D62F2D7001B61CA /* BackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackViewController.xib; sourceTree = "<group>"; };
-		723D96961D62F451001B61CA /* shouji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shouji@2x.png"; sourceTree = "<group>"; };
-		723D96981D62F45E001B61CA /* duanxin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duanxin@2x.png"; sourceTree = "<group>"; };
 		723D969B1D62FBC7001B61CA /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		723D969C1D62FBC7001B61CA /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		723D969D1D62FBC7001B61CA /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
@@ -247,6 +252,16 @@
 		72FDD7231D6E9096005115A1 /* xiaji1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiaji1@2x.png"; sourceTree = "<group>"; };
 		898BBB094841E2FC318E053C /* Pods-Kkjrxiangmu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kkjrxiangmu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kkjrxiangmu/Pods-Kkjrxiangmu.release.xcconfig"; sourceTree = "<group>"; };
 		E1CB7E628AAE55304DE4E99F /* libPods-Kkjrxiangmu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kkjrxiangmu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80B576C1D9225FC00E49685 /* RateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateModel.h; sourceTree = "<group>"; };
+		F80B576D1D9225FC00E49685 /* RateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateModel.m; sourceTree = "<group>"; };
+		F80B576F1D92625700E49685 /* BillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillModel.h; sourceTree = "<group>"; };
+		F80B57701D92625700E49685 /* BillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillModel.m; sourceTree = "<group>"; };
+		F80E80D81D88E01100D43C02 /* QrcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrcodeView.h; sourceTree = "<group>"; };
+		F80E80D91D88E01100D43C02 /* QrcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrcodeView.m; sourceTree = "<group>"; };
+		F80E80DB1D88E13000D43C02 /* QrcodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QrcodeView.xib; sourceTree = "<group>"; };
+		F81C7DBC1D824C5C004CA753 /* PromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptView.h; sourceTree = "<group>"; };
+		F81C7DBD1D824C5C004CA753 /* PromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptView.m; sourceTree = "<group>"; };
+		F81C7DBF1D824C6A004CA753 /* PromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptView.xib; sourceTree = "<group>"; };
 		F81EA0BA1D5C887300214663 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F81EA0BB1D5C887300214663 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F81EA0BC1D5C887300214663 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -262,6 +277,11 @@
 		F887D9D11D63122900D88E0B /* PayWayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayWayView.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.h"; sourceTree = SOURCE_ROOT; };
 		F887D9D21D63122900D88E0B /* PayWayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayWayView.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.m"; sourceTree = SOURCE_ROOT; };
 		F887D9D41D63123F00D88E0B /* PayWayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayWayView.xib; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWayView.xib"; sourceTree = SOURCE_ROOT; };
+		F89E69BC1D814DDA00DDCB27 /* SetUpPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpPayViewController.h; sourceTree = "<group>"; };
+		F89E69BD1D814DDA00DDCB27 /* SetUpPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpPayViewController.m; sourceTree = "<group>"; };
+		F89E69BE1D814DDA00DDCB27 /* SetUpPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetUpPayViewController.xib; sourceTree = "<group>"; };
+		F89E6A041D81647C00DDCB27 /* IDCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCountDownButton.h; sourceTree = "<group>"; };
+		F89E6A051D81647C00DDCB27 /* IDCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCountDownButton.m; sourceTree = "<group>"; };
 		F8ADD17C1D6554B80022CFE0 /* TPPasswordTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPPasswordTextView.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/TPPasswordTextView.h"; sourceTree = SOURCE_ROOT; };
 		F8ADD17D1D6554B80022CFE0 /* TPPasswordTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPPasswordTextView.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/TPPasswordTextView.m"; sourceTree = SOURCE_ROOT; };
 		F8ADD1851D65B2ED0022CFE0 /* BillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewController.h; sourceTree = "<group>"; };
@@ -353,6 +373,9 @@
 		F8C30BA31D6AE73500E659B5 /* XRPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XRPlaceholder.png; sourceTree = "<group>"; };
 		F8CFAAD11D795DB200424630 /* NetWorkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkHelper.h; sourceTree = "<group>"; };
 		F8CFAAD21D795DB200424630 /* NetWorkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkHelper.m; sourceTree = "<group>"; };
+		F8E920AA1D912BD7004769ED /* BillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillTableViewCell.h; sourceTree = "<group>"; };
+		F8E920AB1D912BD7004769ED /* BillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillTableViewCell.m; sourceTree = "<group>"; };
+		F8E920AC1D912BD7004769ED /* BillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableViewCell.xib; sourceTree = "<group>"; };
 		F8F4923D1D63FBB7007A8024 /* ErweimaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErweimaViewController.h; sourceTree = "<group>"; };
 		F8F4923E1D63FBB7007A8024 /* ErweimaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErweimaViewController.m; sourceTree = "<group>"; };
 		F8F4923F1D63FBB7007A8024 /* SHBQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBQRView.h; sourceTree = "<group>"; };
@@ -531,6 +554,9 @@
 				72E0D2D11D6C44B100ABA2CC /* SettlementViewController.h */,
 				72E0D2D21D6C44B100ABA2CC /* SettlementViewController.m */,
 				72E0D2D31D6C44B100ABA2CC /* SettlementViewController.xib */,
+				F89E69BC1D814DDA00DDCB27 /* SetUpPayViewController.h */,
+				F89E69BD1D814DDA00DDCB27 /* SetUpPayViewController.m */,
+				F89E69BE1D814DDA00DDCB27 /* SetUpPayViewController.xib */,
 			);
 			name = "pay a new alock";
 			sourceTree = "<group>";
@@ -558,6 +584,15 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		F89E6A031D81646E00DDCB27 /* daojishi */ = {
+			isa = PBXGroup;
+			children = (
+				F89E6A041D81647C00DDCB27 /* IDCountDownButton.h */,
+				F89E6A051D81647C00DDCB27 /* IDCountDownButton.m */,
+			);
+			path = daojishi;
+			sourceTree = "<group>";
+		};
 		F8ADD1811D65B25E0022CFE0 /* zhangdan */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +615,8 @@
 		F8ADD1831D65B2A10022CFE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F80B576F1D92625700E49685 /* BillModel.h */,
+				F80B57701D92625700E49685 /* BillModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,6 +624,9 @@
 		F8ADD1841D65B2A10022CFE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F8E920AA1D912BD7004769ED /* BillTableViewCell.h */,
+				F8E920AB1D912BD7004769ED /* BillTableViewCell.m */,
+				F8E920AC1D912BD7004769ED /* BillTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -973,9 +1013,6 @@
 				723D970E1D659880001B61CA /* duihaohuise@2x.png */,
 				723D96FA1D645CCF001B61CA /* shoufuyi@2x.png */,
 				723D96F81D64480C001B61CA /* tubiao@2x.png */,
-				723D96981D62F45E001B61CA /* duanxin@2x.png */,
-				723D96961D62F451001B61CA /* shouji@2x.png */,
-				723D968F1D62EB35001B61CA /* mima@2x.png */,
 				723D967B1D6204A0001B61CA /* xiang@2x.png */,
 				F8BE8E291D5D5EC90053D464 /* collcon */,
 				F8BE8E2E1D5D5EC90053D464 /* massager */,
@@ -1065,6 +1102,8 @@
 		F8BE8E931D5D61C60053D464 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F80B576C1D9225FC00E49685 /* RateModel.h */,
+				F80B576D1D9225FC00E49685 /* RateModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1077,6 +1116,9 @@
 				F8B65A181D5F276D001270A9 /* KeyCollectionViewCell.h */,
 				F8B65A191D5F276D001270A9 /* KeyCollectionViewCell.m */,
 				F8B65A1A1D5F276D001270A9 /* KeyCollectionViewCell.xib */,
+				F80E80D81D88E01100D43C02 /* QrcodeView.h */,
+				F80E80D91D88E01100D43C02 /* QrcodeView.m */,
+				F80E80DB1D88E13000D43C02 /* QrcodeView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1087,6 +1129,9 @@
 				F8BE8EE81D5DBBE80053D464 /* Alert.h */,
 				F8BE8EE91D5DBBE80053D464 /* Alert.m */,
 				F8BE8EEA1D5DBBE80053D464 /* Alert.xib */,
+				F81C7DBC1D824C5C004CA753 /* PromptView.h */,
+				F81C7DBD1D824C5C004CA753 /* PromptView.m */,
+				F81C7DBF1D824C6A004CA753 /* PromptView.xib */,
 				F8CFAAD11D795DB200424630 /* NetWorkHelper.h */,
 				F8CFAAD21D795DB200424630 /* NetWorkHelper.m */,
 				F8BE8EEB1D5DBBE80053D464 /* WebViewController.h */,
@@ -1302,6 +1347,7 @@
 		F8F4923B1D63FBA0007A8024 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F89E6A031D81646E00DDCB27 /* daojishi */,
 				F8C30BA01D6AE73500E659B5 /* XRCarouselView */,
 				F8F4923C1D63FBB7007A8024 /* erweima */,
 			);
@@ -1430,16 +1476,14 @@
 				F8BE8E861D5D5EC90053D464 /* denglu@2x.png in Resources */,
 				F8BE8E8D1D5D5EC90053D464 /* zhifu@2x.png in Resources */,
 				723D96F91D64480C001B61CA /* tubiao@2x.png in Resources */,
-				723D96991D62F45E001B61CA /* duanxin@2x.png in Resources */,
 				F8BE8E681D5D5EC90053D464 /* guanyuwomen@2x.png in Resources */,
 				F8ADD1BA1D65D1AC0022CFE0 /* RateView.xib in Resources */,
 				7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */,
 				F8BE8E891D5D5EC90053D464 /* shenfen@2x.png in Resources */,
 				F8B65A1C1D5F276D001270A9 /* KeyCollectionViewCell.xib in Resources */,
 				F8ADD1B51D65CA3C0022CFE0 /* AddView.xib in Resources */,
+				F81C7DC01D824C6A004CA753 /* PromptView.xib in Resources */,
 				7202E4C61D5C2497003A75EB /* Assets.xcassets in Resources */,
-				723D96971D62F451001B61CA /* shouji@2x.png in Resources */,
-				723D96901D62EB35001B61CA /* mima@2x.png in Resources */,
 				F8AF0A681D66E7B6006268E3 /* ComeNoViewController.xib in Resources */,
 				F8ADD19E1D65B6E40022CFE0 /* ManageViewController.xib in Resources */,
 				F8F492581D645C84007A8024 /* PayWTableViewCell.xib in Resources */,
@@ -1483,6 +1527,7 @@
 				F8BE8E881D5D5EC90053D464 /* jiesuan@2x.png in Resources */,
 				7209F1C61D7D50AE00BC9A80 /* shouchiyinhang@2x.png in Resources */,
 				F8837DB31D61552B0056148C /* TopUpViewController.xib in Resources */,
+				F80E80DC1D88E13000D43C02 /* QrcodeView.xib in Resources */,
 				72FDD7241D6E9096005115A1 /* xiaji1@2x.png in Resources */,
 				723D96FB1D645CCF001B61CA /* shoufuyi@2x.png in Resources */,
 				7202E4C41D5C2497003A75EB /* Main.storyboard in Resources */,
@@ -1493,6 +1538,7 @@
 				F8BE8EB91D5D61C60053D464 /* MoreViewController.xib in Resources */,
 				F8BE8E6A1D5D5EC90053D464 /* tuiguang@2x.png in Resources */,
 				7209F1CA1D7D73E000BC9A80 /* shenfenz@2x.png in Resources */,
+				F89E69C01D814DDA00DDCB27 /* SetUpPayViewController.xib in Resources */,
 				F8BE8EB31D5D61C60053D464 /* CollectionViewController.xib in Resources */,
 				F8AF0A6D1D66E993006268E3 /* GameViewController.xib in Resources */,
 				723D967C1D6204A0001B61CA /* xiang@2x.png in Resources */,
@@ -1500,6 +1546,8 @@
 				F8BE8E671D5D5EC90053D464 /* fankui@2x.png in Resources */,
 				7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */,
 				F8BE8E641D5D5EC90053D464 /* guangao.png in Resources */,
+				F8E920AE1D912BD7004769ED /* BillTableViewCell.xib in Resources */,
+				7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */,
 				723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */,
 				723D96E81D63EF8D001B61CA /* HelpViewController.xib in Resources */,
 			);
@@ -1574,6 +1622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E920AD1D912BD7004769ED /* BillTableViewCell.m in Sources */,
 				F8AF0A581D669F69006268E3 /* TrafficViewController.m in Sources */,
 				F888F97F1D6E9C9700400E71 /* BankcardViewController.m in Sources */,
 				F8AF0A671D66E7B6006268E3 /* ComeNoViewController.m in Sources */,
@@ -1583,23 +1632,28 @@
 				F8ADD17E1D6554B80022CFE0 /* TPPasswordTextView.m in Sources */,
 				723D96A31D62FD25001B61CA /* ZFViewController.m in Sources */,
 				F888F9811D6E9CE200400E71 /* ForgetViewController.m in Sources */,
+				F89E69BF1D814DDA00DDCB27 /* SetUpPayViewController.m in Sources */,
 				7209F1BF1D7D4F9200BC9A80 /* YhangkaViewController.m in Sources */,
 				F8BE8EB21D5D61C60053D464 /* CollectionViewController.m in Sources */,
+				F81C7DBE1D824C5C004CA753 /* PromptView.m in Sources */,
 				F8ADD18E1D65B4D90022CFE0 /* BalanceTableViewController.m in Sources */,
 				F8F492411D63FBB7007A8024 /* ErweimaViewController.m in Sources */,
 				F81EA0BF1D5C887300214663 /* ViewController.m in Sources */,
 				723F57A51D92605400B79777 /* modeloler.m in Sources */,
+				F89E6A061D81647C00DDCB27 /* IDCountDownButton.m in Sources */,
 				F8BE8EEF1D5DBBE80053D464 /* WebViewController.m in Sources */,
 				F8AF0A5D1D66E711006268E3 /* PayCostViewController.m in Sources */,
 				723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */,
 				F8BE8EE61D5DBB040053D464 /* HomePageViewController.m in Sources */,
 				F8BE8EBE1D5D633A0053D464 /* KeyboardvView.m in Sources */,
 				F8ADD1871D65B2ED0022CFE0 /* BillTableViewController.m in Sources */,
+				F80B576E1D9225FC00E49685 /* RateModel.m in Sources */,
 				F888F9841D6E9D3700400E71 /* AgreementViewController.m in Sources */,
 				723D96941D62F2D7001B61CA /* BackViewController.m in Sources */,
 				72E0D2841D6A89BA00ABA2CC /* PhotoCollectionViewCell.m in Sources */,
 				F8BE8EB61D5D61C60053D464 /* MassageViewController.m in Sources */,
 				72E0D2D41D6C44B100ABA2CC /* SettlementViewController.m in Sources */,
+				F80B57711D92625700E49685 /* BillModel.m in Sources */,
 				7202E4BB1D5C2497003A75EB /* main.m in Sources */,
 				F887D9C31D62FCA300D88E0B /* PayMentView.m in Sources */,
 				F8F492381D63F537007A8024 /* IdentityViewController.m in Sources */,
@@ -1613,6 +1667,7 @@
 				F8BE8EFB1D5DCE0E0053D464 /* FunctionCollectionViewCell.m in Sources */,
 				F8F492571D645C84007A8024 /* PayWTableViewCell.m in Sources */,
 				F8ADD1A41D65C6120022CFE0 /* RateTableViewController.m in Sources */,
+				F80E80DA1D88E01100D43C02 /* QrcodeView.m in Sources */,
 				F8ADD1BD1D65DBC50022CFE0 /* RateTableViewCell.m in Sources */,
 				F888F9821D6E9D0100400E71 /* MerchantsViewController.m in Sources */,
 				F8C30BA41D6AE73500E659B5 /* XRCarouselView.m in Sources */,

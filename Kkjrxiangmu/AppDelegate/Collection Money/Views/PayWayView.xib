@@ -35,7 +35,7 @@
                     <rect key="frame" x="0.0" y="55" width="600" height="1.5"/>
                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1.5" id="q39-Ae-HJG"/>
+                        <constraint firstAttribute="height" constant="1" id="q39-Ae-HJG"/>
                     </constraints>
                 </view>
             </subviews>

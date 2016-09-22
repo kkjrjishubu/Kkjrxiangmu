@@ -24,7 +24,7 @@
 }
 
 - (void)interfaceView {
-    self.navigationItem.title = @"超值购";
+    self.navigationItem.title = self.navStr;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:252 / 255.0 green:100 / 255.0 blue:95 / 255.0 alpha:1.0];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -32,7 +32,7 @@
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
     
-    UIWebView *webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, screenWidth,screenHeight)];
+    UIWebView *webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, screenWidth,screenHeight- 10)];
     webview.scalesPageToFit = YES;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.weburl]];
     [self.view addSubview:webview];

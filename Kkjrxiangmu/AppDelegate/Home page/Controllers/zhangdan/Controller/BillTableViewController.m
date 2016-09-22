@@ -7,8 +7,13 @@
 //
 
 #import "BillTableViewController.h"
+#import "BillTableViewCell.h"
+#import "BillModel.h"
+
 
 @interface BillTableViewController ()
+
+@property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
 
@@ -16,11 +21,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
+
+
     [self interfaceview];
+
+    self.dataSource = [NSMutableArray array];
+
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+    NSLog(@"%@",urlStr);
+    
+    [self NetworkIntercedes:urlStr];
+
     
 }
 
@@ -30,11 +41,45 @@
     self.navigationController.navigationBar.barTintColor = qianblue;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
-    
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"BillTableViewCell" bundle:nil] forCellReuseIdentifier:@"billCell"];
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+
     
+    
+}
+
+#pragma mark -- 网络请求
+- (void)NetworkIntercedes:(NSString *)strUrl   {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    
+    NSDictionary *parameterdic = @{@"action":@"record",
+                                   @"token":tokenstr};
+    DREAMAppLog(@"%@",parameterdic);
+    [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        
+        if ([responseObject[@"Success"] integerValue] == 1) {
+            // 字典转模型
+            NSArray *dataArr = [BillModel mj_objectArrayWithKeyValuesArray:responseObject[@"DataList"]];
+            [self.dataSource addObjectsFromArray:dataArr];
+            
+            [userDefaults setObject:responseObject[@"Token"] forKey:@"tokenKey"];
+            [userDefaults synchronize];
+            DREAMAppLog(@"数据源 %@",self.dataSource);
+            [self.tableView reloadData];
+
+        }else {
+            [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        }
+        
+        
+    } failur:^(id error) {
+        DREAMAppLog(@"%@",error);
+    }];
 }
 
 
@@ -57,18 +102,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 10;
+    return self.dataSource.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    BillTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"billCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    BillModel *billM = self.dataSource[indexPath.row];
+    [cell getCellDataWithCreativeModels:billM];
+    
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 65.0;
+}
 
 /*
 // Override to support conditional editing of the table view.

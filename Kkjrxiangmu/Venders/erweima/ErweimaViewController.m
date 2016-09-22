@@ -11,6 +11,10 @@
 @interface ErweimaViewController ()<SHBQRViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong)UILabel *label;
+@property (nonatomic,strong)NSUserDefaults *userDefaults;
+@property (nonatomic,copy)NSString *payStr;
+
+
 @end
 
 @implementation ErweimaViewController
@@ -29,22 +33,19 @@
     shbqV.delegate = self;
     [self.view addSubview:shbqV];
     
-    
     //创建相机按钮
     //创建按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(120, 500, 100, 50);
-    [btn setTitle:@"相机" forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor purpleColor];
+    btn.frame = CGRectMake((screenWidth - 100) / 2,screenHeight / 2 + 50, 100, 50);
+    [btn setTitle:@"相册" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
     [btn addTarget:self action:@selector(saomaAction) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:btn];
     
-    
-    //创建label 显示扫码的内容
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 50)];
-    self.label.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:self.label];
+
+
 }
 
 - (void)interfaceview {
@@ -61,12 +62,17 @@
 //        
 //    }];
 
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+
+    
+    //创建label 显示扫码的内容
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, screenWidth - 20, 50)];
+    self.label.backgroundColor = qianblue;
+    //[self.view addSubview:self.label];
+
+    
     
 }
-
-
-
-
 
 
 
@@ -123,12 +129,14 @@
 
 
 
-
-
 #pragma  mark - 扫描成功回调的函数
 //扫描成功回调的函数
 - (void)qrView:(SHBQRView *)sender ScanResult:(NSString *)result {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"扫码结果是---%@", result] preferredStyle:UIAlertControllerStyleAlert];
+    self.payStr = result;
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYGETPAYURL];
+    NSLog(@"%@  %@",urlStr,self.payStr);
+    [self NetworkIntercede:urlStr];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [sender startScan];
@@ -140,6 +148,46 @@
     
     
 }
+
+#pragma mark -- 网络请求
+- (void)NetworkIntercede:(NSString *)strUrl   {
+    
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+    
+    NSDictionary *parameterdic = @{@"qrCodeData":_payStr,
+                                   @"token":tokenstr};
+    DREAMAppLog(@"%@",parameterdic);
+    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        //DREAMAppLog(@"%@",responseObject);
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *infoDic = [NSMutableDictionary dictionaryWithJsonString:string];
+        if ([infoDic[@"Success"] integerValue] == 1) {
+            
+            NSString *payurl = infoDic[@"PayAddress"];
+            WebViewController *webviewC = [[WebViewController alloc]init];
+            webviewC.weburl = payurl;
+            self.navigationController.navigationBar.hidden = NO;
+            self.tabBarController.tabBar.hidden = YES;
+            webviewC.navStr = @"付款";
+            
+            [self.navigationController pushViewController:webviewC animated:YES];
+            
+        }else {
+            [NSString addMBProgressHUD:infoDic[@"Msg"] showHUDToView:self.view];
+        }
+        
+        
+        DREAMAppLog(@"%@ %@",infoDic,infoDic[@"Msg"]);
+        
+    } failur:^(id error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
+}
+
+
 
 - (void)backAction {
     [self.navigationController popViewControllerAnimated:YES];

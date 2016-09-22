@@ -11,5 +11,6 @@
 @interface WebViewController : UIViewController
 
 @property (nonatomic,copy)NSString *weburl;
+@property (nonatomic,copy)NSString *navStr;
 
 @end

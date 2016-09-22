@@ -53,59 +53,32 @@
 
     [self customXRCarouselView];
     
-//    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
-//    NSDictionary *dic = @{@"action":@"bankType"};
-//    NSLog(@"%@",urlStr);
-//    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-//        NSLog(@"注册验证码 %@",responseObject);
-//    //    NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-// //       NSLog(@"成功: %@", string);
-//    } failur:^(id error) {
-//        NSLog(@"%@",error);
-//    }];
-//    
+//   NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
+//   NSDictionary *dic = @{@"action":@"getProvince"};
+//   NSLog(@"%@",urlStr);
+//  
 //    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-//        NSLog(@" %@",responseObject);
+//        //NSLog(@" %@",responseObject);
 //        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //        NSLog(@"成功: %@", string);
-//    } failur:^(id error) {
 //        
-//    }];
-
-    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
-    NSDictionary *dic = @{@"action":@"getProvince"};
-    NSLog(@"%@",urlStr);
-//    [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-//        NSLog(@"注册验证码 %@",responseObject);
-//        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//        NSLog(@"成功: %@", string);
+//        NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
+//        NSLog(@"-- %@",dicStr);
+//
+//        for (NSString *str in dicStr[@"DataList"]) {
+//            NSLog(@"遍历%@",str);
+//            
+//            
+//           // NSString *str3 = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//           // NSString *str2 = [str stringByRemovingPercentEncoding];
+//           // NSLog(@"转码%@",str2);
+//        }
+//        
+//        
 //    } failur:^(id error) {
 //        NSLog(@"%@",error);
 //    }];
-   
     
-    
-    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-        //NSLog(@" %@",responseObject);
-        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        //NSLog(@"成功: %@", string);
-        
-        NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
-        //NSLog(@"%@",dicStr);
-
-        for (NSString *str in dicStr[@"DataList"]) {
-            //NSLog(@"遍历%@",str);
-            
-            
-           // NSString *str3 = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-           // NSString *str2 = [str stringByRemovingPercentEncoding];
-           // NSLog(@"转码%@",str2);
-        }
-        
-        
-    } failur:^(id error) {
-        NSLog(@"%@",error);
-    }];
     
     
 }
@@ -302,6 +275,8 @@
         webviewC.weburl = @"http://www.yinshanglv.cc/";
         self.navigationController.navigationBar.hidden = NO;
         self.tabBarController.tabBar.hidden = YES;
+        webviewC.navStr = @"超值购";
+        
         [self.navigationController pushViewController:webviewC animated:YES];
 
     }else if (indexPath.row == 6) {
