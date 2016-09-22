@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (nonatomic,strong)NSMutableString *mutString;
 @property (nonatomic,copy)NSString *wxpayStr;
-@property (nonatomic,copy) NSString *tokenstr;
 @property (nonatomic,strong)NSUserDefaults *userDefaults;
 @property (nonatomic,strong)NSMutableArray *dataSource;
 
@@ -47,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.userDefaults = [NSUserDefaults standardUserDefaults];
-    _tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+    
     self.dataSource = [NSMutableArray array];
     
     [self interfaceview];
@@ -294,9 +293,11 @@
 #pragma mark -- 网络请求
 - (void)RateNetworkIntercede:(NSString *)strUrl {
     
+    NSString  *tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+
     NSDictionary *parameterdic = @{@"action":@"rate",
                                    @"product":@"1",
-                                   @"token":_tokenstr};
+                                   @"token":tokenstr};
     DREAMAppLog(@"%@",parameterdic);
     
     [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
@@ -306,6 +307,10 @@
             NSArray *dataArr = [RateModel mj_objectArrayWithKeyValuesArray:responseObject[@"DataList"]];
             [self.dataSource addObjectsFromArray:dataArr];
             
+            [_userDefaults setObject:responseObject[@"Token"] forKey:@"tokenKey"];
+            [_userDefaults synchronize];
+            
+            [self.tableview reloadData];
             DREAMAppLog(@"数据源 %@",self.dataSource);
         }else {
             
@@ -410,7 +415,7 @@
     [_window addSubview:self.viewcontroll.view];
     
     NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYPAYQRCODE];
-    NSLog(@"%@",urlStr);
+    NSLog(@"二维码 %@",urlStr);
     [self NetworkIntercede:urlStr];
     
     [_qrcodeV BackButBlockAction:^{
@@ -435,11 +440,12 @@
 
 #pragma mark -- 网络请求
 - (void)NetworkIntercede:(NSString *)strUrl   {
-    
+    NSString  *tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+
     int numberint = [self.numberLabel.text intValue] * 100;
     NSDictionary *parameterdic = @{@"action":_wxpayStr,
                                    @"amount":[NSString stringWithFormat:@"%d",numberint],
-                                   @"token":_tokenstr};
+                                   @"token":tokenstr};
     DREAMAppLog(@"%@",parameterdic);
     [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
         

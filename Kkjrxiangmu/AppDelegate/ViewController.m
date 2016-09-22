@@ -296,7 +296,6 @@
             
             [_userDefaults synchronize];
             
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             
             UITabBarController *_tabbarcontroll = [[UITabBarController alloc]init];
             //首页
