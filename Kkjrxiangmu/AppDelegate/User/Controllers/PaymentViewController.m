@@ -185,8 +185,7 @@
     setupPayVC.numberStr = @"findPayPassword_sendsms";
     [self.navigationController pushViewController:setupPayVC animated:YES];
     
-       //ZFViewController *Back = [[ZFViewController alloc]init];
-       //[self.navigationController pushViewController:Back animated:YES];
+    
 }
 
 //修改密码

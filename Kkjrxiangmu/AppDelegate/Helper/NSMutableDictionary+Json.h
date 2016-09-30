@@ -36,4 +36,18 @@
 + (void)addMBProgressHUD:(NSString *)strMBP showHUDToView:(UIView *)view;
 
 
+
 @end
+
+
+@interface NSString (Adaptive)
+
+// json转字符串
++ (NSString *)JSONString:(NSString *)aString;
+
+//文字自适应
++ (CGFloat )adaptiveWithText:(NSString *)text;
+
+
+@end
+

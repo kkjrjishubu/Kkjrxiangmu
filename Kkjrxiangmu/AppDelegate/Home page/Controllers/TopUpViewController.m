@@ -10,7 +10,7 @@
 #import "PayMentView.h"
 #import "PayWayView.h"
 #import "TPPasswordTextView.h"
-
+#import "SetUpPayViewController.h"
 #import "PayWTableViewCell.h"
 
 
@@ -23,6 +23,7 @@
 @property (nonatomic,strong)PayMentView *payView;
 @property (nonatomic,strong)UITableView *tableview;
 @property (nonatomic,strong)UIViewController *viewVC;
+@property (nonatomic,strong)UIView *blackview;
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;// 手机
 @property (weak, nonatomic) IBOutlet UILabel *titlabel;// 地区
@@ -183,10 +184,10 @@
 // 付款
 - (void)paymentAction {
     _window = [UIApplication sharedApplication].keyWindow;
-    UIView *blackview = [[UIView alloc]initWithFrame:self.view.frame];
-    blackview.backgroundColor = [UIColor blackColor];
-    blackview.alpha = 0.4;
-    [_window addSubview:blackview];
+    _blackview = [[UIView alloc]initWithFrame:self.view.frame];
+    _blackview.backgroundColor = [UIColor blackColor];
+    _blackview.alpha = 0.4;
+    [_window addSubview:_blackview];
     _payView = [[[NSBundle mainBundle]loadNibNamed:@"PayMentView" owner:self options:nil]firstObject];
     
     
@@ -221,7 +222,7 @@
     }];
     [_payView butBlock:^{
         NSLog(@"返回");
-        blackview.hidden = YES;
+        _blackview.hidden = YES;
         self.viewcontroll.view.hidden = YES;
         _payView.hidden = YES;
         
@@ -275,7 +276,6 @@
     [self.viewcontroll.view addSubview:payview];
     
     [_window addSubview:self.viewcontroll.view];
-    //[self.view addSubview:view1];
     payview.passwordBlock = ^(NSString *password) {
         NSLog(@"11   %@",password);
         
@@ -288,6 +288,19 @@
     
     [payview passbutton:^{
         NSLog(@"忘记密码");
+        _blackview.hidden = YES;
+        self.viewcontroll.view.hidden = YES;
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
+        
+        SetUpPayViewController *setupPayVC = [[SetUpPayViewController alloc]init];
+        setupPayVC.navtitStr = @"密码找回";
+        setupPayVC.urlstr = urlStr;
+        setupPayVC.actionstr = @"findPayPassword";
+        setupPayVC.numberStr = @"findPayPassword_sendsms";
+        [self.navigationController pushViewController:setupPayVC animated:YES];
+
+        
     }];
 }
 

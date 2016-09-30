@@ -7,17 +7,39 @@
 //
 
 #import "BalanceTableViewController.h"
+#import "BalanceTableViewCell.h"
+#import "BillModel.h"
 
 @interface BalanceTableViewController ()
+
+@property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic)NSInteger page;
+@property (nonatomic,copy)NSString *index_page;
+
 
 @end
 
 @implementation BalanceTableViewController
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        self.dataSource = [NSMutableArray array];
+        
+    }
+    return _dataSource;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.page = 1;
     
     [self interfaceview];
+
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+    NSLog(@"%@",urlStr);
+    
+    [self NetworkIntercedes:urlStr];
+    
     
 }
 
@@ -27,12 +49,81 @@
     self.navigationController.navigationBar.barTintColor = qianblue;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
-    
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"BalanceTableViewCell" bundle:nil] forCellReuseIdentifier:@"balanceCell"];
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewdata)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoredata)];
 }
+
+- (void)loadNewdata{
+    self.page = 1;
+    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+    
+    [self NetworkIntercedes:urlStr];
+}
+- (void)loadMoredata{
+    if (self.page <= [self.index_page intValue]+1) {
+        self.page += 1;
+        NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYACCOUNT];
+        
+        [self NetworkIntercedes:urlStr];
+    }else{
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }
+}
+
+
+#pragma mark -- 网络请求
+- (void)NetworkIntercedes:(NSString *)strUrl   {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    
+    NSDictionary *parameterdic = @{@"action":@"withdrawalsRecord",
+                                   @"token":tokenstr,
+                                   @"pageIndex":[NSString stringWithFormat:@"%ld",_page],
+                                   @"pageSize":@10};
+    DREAMAppLog(@"结算记录 %@",parameterdic);
+    [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:strUrl parameters:parameterdic success:^(id responseObject) {
+        DREAMAppLog(@"%@",responseObject);
+        if ([responseObject[@"Success"] integerValue] == 1) {
+            NSDictionary *listdata = [responseObject[@"DataList"] lastObject];
+            self.index_page = listdata[@"index"];
+            DREAMAppLog(@"responseObject  %@  ----  %@",[responseObject[@"DataList"] lastObject] , self.index_page);
+            
+            // 字典转模型
+            NSArray *dataArr = [BillModel mj_objectArrayWithKeyValuesArray:responseObject[@"DataList"]];
+            if (self.page == 1) {
+                [self.dataSource removeAllObjects];
+            }
+            [self.dataSource addObjectsFromArray:dataArr];
+            
+            [userDefaults setObject:responseObject[@"Token"] forKey:@"tokenKey"];
+            [userDefaults synchronize];
+            DREAMAppLog(@"数据源 %@",self.dataSource);
+            [self.tableView reloadData];
+            
+        }else {
+            [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+        }
+        
+        
+    } failur:^(id error) {
+        DREAMAppLog(@"%@",error);
+    }];
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+
+}
+
+
+
+
+
 
 
 - (void)backAction {
@@ -54,17 +145,28 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return self.dataSource.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    BalanceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"balanceCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    // Configure the cell...
+    BillModel *billM = self.dataSource[indexPath.row];
+    [cell getCellDataWithBillModels:billM];
+    
     
     return cell;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 65.0;
+}
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

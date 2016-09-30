@@ -53,31 +53,6 @@
 
     [self customXRCarouselView];
     
-//   NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYBIANMA];
-//   NSDictionary *dic = @{@"action":@"getProvince"};
-//   NSLog(@"%@",urlStr);
-//  
-//    [[NetWorkHelper shareNetWorkEngine] PostResponseNetInfoWithURLStrViaNet:urlStr parameters:dic success:^(id responseObject) {
-//        //NSLog(@" %@",responseObject);
-//        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//        NSLog(@"成功: %@", string);
-//        
-//        NSDictionary *dicStr = [NSMutableDictionary dictionaryWithJsonString:string];
-//        NSLog(@"-- %@",dicStr);
-//
-//        for (NSString *str in dicStr[@"DataList"]) {
-//            NSLog(@"遍历%@",str);
-//            
-//            
-//           // NSString *str3 = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//           // NSString *str2 = [str stringByRemovingPercentEncoding];
-//           // NSLog(@"转码%@",str2);
-//        }
-//        
-//        
-//    } failur:^(id error) {
-//        NSLog(@"%@",error);
-//    }];
     
     
     
@@ -86,6 +61,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
     self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = NO;
 

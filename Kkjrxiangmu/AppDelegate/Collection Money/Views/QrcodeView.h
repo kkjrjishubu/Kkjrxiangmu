@@ -16,6 +16,7 @@ typedef void(^ShaveBlock)();
 @property (nonatomic,copy)BackButBlock backbut;
 @property (nonatomic,copy)SaveButBlock saveBut;
 @property (nonatomic,copy)ShaveBlock shaveBut;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *Qrimage;
