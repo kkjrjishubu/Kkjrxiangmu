@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -19,8 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoujihao@2x" translatesAutoresizingMaskIntoConstraints="NO" id="WlM-gn-SmC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoujihao" translatesAutoresizingMaskIntoConstraints="NO" id="WlM-gn-SmC">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="20" y="95" width="22" height="19"/>
+                    </variation>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vbt-vJ-Dr9">
                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -35,7 +38,8 @@
                             <exclude reference="n3u-11-Arg"/>
                         </mask>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="72" y="89.5" width="278" height="30"/>
                         <mask key="constraints">
                             <include reference="n3u-11-Arg"/>
                         </mask>
@@ -58,8 +62,11 @@
                         </mask>
                     </variation>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duanxin@2x" translatesAutoresizingMaskIntoConstraints="NO" id="R5j-2f-0Q9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duanxin" translatesAutoresizingMaskIntoConstraints="NO" id="R5j-2f-0Q9">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="23" y="160.5" width="16" height="14"/>
+                    </variation>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncI-u8-yJV">
                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -74,7 +81,8 @@
                             <exclude reference="dxi-Sb-Lfd"/>
                         </mask>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="69" y="152.5" width="211" height="30"/>
                         <mask key="constraints">
                             <include reference="dxi-Sb-Lfd"/>
                         </mask>
@@ -97,8 +105,11 @@
                         </mask>
                     </variation>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mima@2x" translatesAutoresizingMaskIntoConstraints="NO" id="75u-96-nAo">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mima" translatesAutoresizingMaskIntoConstraints="NO" id="75u-96-nAo">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="23" y="223.5" width="16" height="17"/>
+                    </variation>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJm-nK-P35">
                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -113,7 +124,8 @@
                             <exclude reference="I62-My-gnV"/>
                         </mask>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="69" y="217" width="281" height="30"/>
                         <mask key="constraints">
                             <include reference="I62-My-gnV"/>
                         </mask>
@@ -313,8 +325,8 @@
         </view>
     </objects>
     <resources>
-        <image name="duanxin@2x" width="16" height="14"/>
-        <image name="mima@2x" width="16" height="17"/>
-        <image name="shoujihao@2x" width="15" height="18"/>
+        <image name="duanxin" width="16" height="14"/>
+        <image name="mima" width="16" height="17"/>
+        <image name="shoujihao" width="15" height="18"/>
     </resources>
 </document>

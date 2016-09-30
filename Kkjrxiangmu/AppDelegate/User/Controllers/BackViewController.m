@@ -21,15 +21,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIView *navView = [[UIView alloc]init];
+    [self.view addSubview:navView];
+    navView.backgroundColor = qianblue;
+    [navView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.width.mas_equalTo(self.view.frame.size.width);
+        make.height.mas_equalTo(64*SCALE);
+    }];
+    UILabel *navLabel = [[UILabel alloc]init];
+    navLabel.text = @"密码找回";
+    navLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:navLabel];
+    [navLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(80*SCALE);
+        make.height.mas_equalTo(30*SCALE);
+        make.centerY.mas_equalTo(navView.mas_centerY).offset(7*SCALE);
+    }];
+    UIButton *naVButtin = [[UIButton alloc]init];
+    [self.view addSubview:naVButtin];
+    [naVButtin setImage:[UIImage imageNamed:@"Block@2x(1).png"] forState:UIControlStateNormal];
+    [naVButtin addTarget:self action:@selector(dissmiaart) forControlEvents:UIControlEventTouchUpInside];
+    [naVButtin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).offset(10*SCALE);
+        make.top.mas_equalTo(self.view.mas_top).offset(30*SCALE);;
+        make.width.mas_equalTo(30*SCALE);
+        make.height.mas_equalTo(30*SCALE);
+    }];
+    
+    
     self.navigationController.navigationBar.barTintColor = qianblue;
     
     self.navigationItem.title = @"密码找回";
-    //   self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    UIImageView *imageView1 = [[UIImageView alloc]init];
-    [self.view addSubview:imageView1];
-    imageView1.image = [UIImage imageNamed:@"shouji.png"];
-    [imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    
+    UIImageView *abc = [[UIImageView alloc]init];
+    [self.view addSubview:abc];
+//    abc.backgroundColor = [UIColor blueColor];
+    abc.image = [UIImage imageNamed:@"shoujihao.png"];
+    [abc mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(130*SCALE);
         make.left.equalTo(self.view.mas_left).offset(40*SCALE);
         make.height.mas_equalTo(24*SCALE);
@@ -42,18 +77,20 @@
         make.left.equalTo(self.view.mas_left).offset(0);
         make.width.mas_equalTo(screenWidth);
         make.height.mas_equalTo(1);
-        make.top.mas_equalTo(imageView1.mas_top).offset(45*SCALE);
+        make.top.mas_equalTo(abc.mas_top).offset(45*SCALE);
     }];
     //图片2
     UIImageView *imageView2 = [[UIImageView alloc]init];
+//    imageView2.backgroundColor = [UIColor redColor];
+
     [self.view addSubview:imageView2];
     imageView2.image = [UIImage imageNamed:@"duanxin.png"];
     [imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.centerX.equalTo(imageView1.mas_centerX).offset(0);
+        make.centerX.equalTo(abc.mas_centerX).offset(0);
         make.height.mas_equalTo(20*SCALE);
         make.width.mas_equalTo(24*SCALE);
-        make.top.equalTo(imageView1.mas_top).offset(60*SCALE);
+        make.top.equalTo(abc.mas_top).offset(60*SCALE);
     }];
     //线条2
     UIView *Xview2 = [[UIView alloc]init];
@@ -67,6 +104,8 @@
     }];
     //图片3
     UIImageView *imageView3 = [[UIImageView alloc]init];
+//    imageView3.backgroundColor = [UIColor redColor];
+
     [self.view addSubview:imageView3];
     imageView3.image = [UIImage imageNamed:@"mima.png"];
     
@@ -91,10 +130,11 @@
     Textfiled = [[UITextField alloc]init];
     Textfiled.placeholder = @"请输入您的手机号";
     Textfiled.font = [UIFont systemFontOfSize:12];
+    Textfiled.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:Textfiled];
     [Textfiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(imageView1.mas_centerY).offset(0);
-        make.left.equalTo(imageView1.mas_left).offset(40*SCALE);
+        make.centerY.equalTo(abc.mas_centerY).offset(0);
+        make.left.equalTo(abc.mas_left).offset(40*SCALE);
         make.right.equalTo(self.view.mas_right).offset(0);
     }];
     Textfiled1 = [[UITextField alloc]init];
@@ -108,6 +148,7 @@
     }];
     Textfiled2 = [[UITextField alloc]init];
     Textfiled2.placeholder = @"请输入您的新密码";
+    Textfiled2.secureTextEntry = YES;
     Textfiled2.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:Textfiled2];
     [Textfiled2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -188,6 +229,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dissmiaart{
+  [self dismissViewControllerAnimated:YES completion:nil];   
+};
+//空白处收回键盘
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+-(void)backAction{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 /*
 #pragma mark - Navigation
 

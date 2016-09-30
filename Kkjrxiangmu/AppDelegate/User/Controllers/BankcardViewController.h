@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BankcardViewController : UIViewController
-
+@property(nonatomic,strong)UIImageView *urlImage;
+@property(nonatomic,strong)UILabel *BankText;
 @end

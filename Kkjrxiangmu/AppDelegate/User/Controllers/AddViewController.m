@@ -9,6 +9,7 @@
 #import "AddViewController.h"
 #import "YhangkaViewController.h"
 #import "modelTool.h"
+#import "UserViewController.h"
 #define SCALE screenWidth/375.0
 
 @interface AddViewController ()
@@ -37,12 +38,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    nameNumber = [[NSString alloc]init];
-//    CityString = [[NSString alloc]init];
-//    provinceString = [[NSString alloc]init];
-//    Stringarray = [[NSArray alloc]init];
+
     self.view.backgroundColor =backViewColor;
     self.navigationItem.title = @"银行卡添加";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    
+
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"互联网支付必须经过实名验证,请填写您的真实信息";
     lab.textColor = [UIColor grayColor];
@@ -258,7 +261,10 @@
     
 }
 -(void)cilick{
-
+    if (textField1.text.length==0||textField2.text.length==0||textField3.text.length==0||textField4.text.length==0||textField5.text.length==0||textField6.text.length==0) {
+        [NSString addMBProgressHUD:@"请完善信息" showHUDToView:self.view];
+        return;
+    }
     
 //TODO:输出的银行数值（nsstring）
     NSDictionary *dic = @{@"action":@"bankType"};
@@ -303,29 +309,21 @@
                 NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
                 //Vale
                 NSNumber *num = @([nameNumber intValue]);
-                
-                NSLog(@"11111----------%@",nameNumber);
-                NSLog(@"22222++++++++%@",num);
-                
                 //provinceString
                 NSNumber *provinceNum = @([provinceString intValue]);
-                
-                NSLog(@"33333----------%@",provinceString);
-                NSLog(@"44444++++++++%@",provinceNum);
-                
-                
                 //CityString
                 NSNumber *CityNum=@([CityString intValue]);
-                NSLog(@"555555----------%@",CityString);
-                NSLog(@"666666++++++++%@",CityNum);
                 
                 NSDictionary *TianjiaDic = @{@"action":@"add",@"token":tokenstr,@"BankType":num,@"BankNo":textField1.text,@"Owner":textField5.text,@"BankProvince":provinceNum,@"BankCity":CityNum,@"Branch":textField4.text,@"Mobile":textField6.text};
-//                NSLog(@"1%@ 2%@ 3%@ 4%@ 5%@ 6%@ 7%@ 8%@",tokenstr,num,textField1.text,textField5.text,provinceNum,CityNum,textField4.text,textField6.text);
-                NSLog(@">>>>>>>>>>>>>>>>>>%@",TianjiaDic);
                 
                 
                 [[NetWorkHelper shareNetWorkEngine] PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/BankCard.ashx" parameters:TianjiaDic success:^(id responseObject) {
                     NSLog(@"%@",responseObject[@"Msg"]);
+                    
+                    NSString *tonkenarystr = responseObject[@"Token"];
+                    [userDefaults setObject:tonkenarystr forKey:@"tokenKey"];
+                    [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 } failur:^(id error) {
                     NSLog(@"%@",error);
                 }];
@@ -351,13 +349,12 @@
     
     
 }
+-(void)backAction{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [textField2 resignFirstResponder];
-    [textField1 resignFirstResponder];
-    [textField5 resignFirstResponder];
-    [textField4 resignFirstResponder];
-    [textField6 resignFirstResponder];
-    [textField3 resignFirstResponder];
+
+    [self.view endEditing:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

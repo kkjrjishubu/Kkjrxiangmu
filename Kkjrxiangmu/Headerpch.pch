@@ -62,7 +62,7 @@
 // 账单
 #define SFYACCOUNT "/ashx/Account.ashx"
 
-
+//http://api.sfy.95yes.cn/ashx/Account.ashx
 
 
 

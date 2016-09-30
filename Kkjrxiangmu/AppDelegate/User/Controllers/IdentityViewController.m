@@ -22,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"实名认证";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+
     UILabel *lab = [[UILabel alloc]init];
     lab.text = @"互联网支付必须经过实名验证,请填写您的真实信息";
     lab.textColor = [UIColor grayColor];
@@ -128,14 +132,6 @@
     [self.navigationController pushViewController:CertificationView animated:YES];
 }
 
-
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -147,7 +143,9 @@
     [Textfiled1 resignFirstResponder];
     [Textfiled resignFirstResponder];
 }
-
+-(void)backAction{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 //-(void)viewWillAppear:(BOOL)animated{
 //    self.navigationController.navigationBarHidden = NO;
 //}

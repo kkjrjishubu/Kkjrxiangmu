@@ -11,11 +11,11 @@
 #import "Masonry.h"
 #import  "IdentityViewController.h"
 #import "BankcardViewController.h"
-#import "PayPasswordViewController.h"
 #import "PaymentViewController.h"
 #import "ViewController.h"
 #import "SettlementViewController.h"
 #import "SetUpPayViewController.h"
+#import "BackViewController.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
@@ -27,9 +27,11 @@
     NSArray *_ImageArray;
     NSArray *_LabArray;
     UITableView *_tableView;
-    
-    //
     UIView *lineView;
+    NSString *Abc;
+    NSString *AuthenticationState;
+    
+    
 }
 
 @property (nonatomic,strong)UILabel *IDlab1;
@@ -61,9 +63,8 @@
     self.navigationController.navigationBar.barTintColor = qianblue;
     
     self.navigationItem.title = @"用户";
-   //self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    _ImageArray=@[@[@"jiesuan.png",@"shenfen.png",@"yinhang.png"],@[@"denglu.png",@"zhifu.png"],@[@"gengxin.png",@"tuichu.png"]];
+       _ImageArray=@[@[@"jiesuan.png",@"shenfen.png",@"yinhang.png"],@[@"denglu.png",@"zhifu.png"],@[@"gengxin.png",@"tuichu.png"]];
     _LabArray = @[@[@"申请结算",@"身份验证",@"银行卡验证"],@[@"修改登录密码",@"支付密码"],@[@"版本更新",@"退出登录"]];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _tableView.showsVerticalScrollIndicator =
@@ -128,9 +129,15 @@
         _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
         _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
         NSString *str =[NSString stringWithFormat:@"%@",infoDic[@"Token"]];
+        AuthenticationState = infoDic[@"AuthenticationState"];
+        
+        
+        
         NSUserDefaults *sss=[NSUserDefaults standardUserDefaults];
         [sss setObject:str forKey:@"tokenKey"];
-
+       
+        Abc = infoDic[@"IsAuthentication"];
+        NSLog(@"输出的AAAAAAA %@",Abc);
         NSLog(@"输出的TOken%@",str);
         
         
@@ -145,6 +152,7 @@
         NSString *picurl = [NSString stringWithFormat:@"%s%@",SFYSERVER,infoDic[@"AccountPic"]];
         [_headImage sd_setImageWithURL:[NSURL URLWithString:picurl] placeholderImage:nil];
         NSLog(@"%@",picurl);
+        [_tableView reloadData];
     } failur:^(id error) {
         NSLog(@"%@",error);
     }];
@@ -501,14 +509,35 @@
         }
     }
     
+    UIImageView *cellImageView = [[UIImageView alloc]init];
+    cellImageView.image = [UIImage imageNamed:@"danyuangeaa.png"];
+    [cell.contentView addSubview:cellImageView];
+    [cellImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(10*SCALE);
+        make.right.mas_equalTo(cell.contentView.mas_right).offset(-20*SCALE);
+        make.height.mas_equalTo(20*SCALE);
+        make.width.mas_equalTo(10*SCALE);
+    }];
+    if (indexPath.section==0&&indexPath.row==1) {
+        UILabel *celltext = [[UILabel alloc]init];
+        celltext.text =AuthenticationState;
+        celltext.textColor = qianjblack;
+        celltext.font = [UIFont systemFontOfSize:14];
+        [cell.contentView addSubview:celltext];
+        [celltext mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(5*SCALE);
+            make.right.mas_equalTo(cell.contentView.mas_right).offset(-40*SCALE);
+            make.width.mas_equalTo(80*SCALE);
+            make.height.mas_equalTo(40*SCALE);
+            
+        }];
+    }
+    
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textColor = qianjblack;
     cell.textLabel.text =[_LabArray objectAtIndex:indexPath.section][indexPath.row];
     cell.imageView.image = nil;
     cell.imageView.image = [UIImage imageNamed:[_ImageArray objectAtIndex:indexPath.section][indexPath.row]];
-    
-    
-    
     
     return cell;
 }
@@ -546,8 +575,9 @@
     if (indexPath.section==1) {
         switch (indexPath.row) {
             case 0:
-                vc = [[PayPasswordViewController alloc]init];
+                vc = [[BackViewController alloc]init];
                 break;
+                
                 case 1:
                 if ([self.payPasswstr integerValue] == 0) {
                     NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
@@ -559,7 +589,7 @@
                     setupPayVC.numberStr = @"setPayPassword_sendsms";
 
                     [self.navigationController pushViewController:setupPayVC animated:YES];
-                    
+                    return;
                 }else {
                     vc = [[PaymentViewController alloc]init];
 
@@ -572,14 +602,42 @@
     }
     if (indexPath.section==2&&indexPath.row==1) {
         
-        ViewController *vi = [[ViewController alloc]init];
-//            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
-//        window.rootViewController =nav;
-     //   self.modalPresentationStyle=UIModalPresentationPageSheet;
-        [self presentViewController:nav animated:NO completion:nil];
-        return;
-        }
+        /*http://api.sfy.95yes.cn/ashx/user.ashx
+         
+         参数说明
+         
+         名称	类型	说明	是否必填	示例	默认值
+         action	string	logout	是
+         token	string	身份标识	是
+         响应示例 异常示例
+         {
+         "Msg": "用户退出成功", 
+         "Success": true
+         }*/
+//        
+//        NSString  *tokenstr = [_userDefaults objectForKey:@"tokenKey"];
+//        
+//        NSDictionary *parameterdic = @{@"action":@"rate",
+//                                       @"token":tokenstr};
+//        [[NetWorkHelper shareNetWorkEngine]GetRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:parameterdic success:^(id responseObject) {
+//            
+//            if ([responseObject[@"Success"] integerValue] == 1) {
+//                [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+//                ViewController *vi = [[ViewController alloc]init];
+//                UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
+//                [self presentViewController:nav animated:NO completion:nil];
+//                return;
+//            }else{
+//                
+//            }
+//            
+//        } failur:^(id error) {
+//            NSLog(@"error %@",error);
+//        }];
+//        
+//        
+//        
+       }
 
     self.tabBarController.tabBar.hidden = YES;
 
