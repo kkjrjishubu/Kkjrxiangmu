@@ -26,8 +26,6 @@
 		723D967C1D6204A0001B61CA /* xiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 723D967B1D6204A0001B61CA /* xiang@2x.png */; };
 		723D96831D62A1A6001B61CA /* BankcardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96811D62A1A6001B61CA /* BankcardViewController.xib */; };
 		723D96881D62ADFC001B61CA /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96861D62ADFC001B61CA /* AddViewController.xib */; };
-		723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D968B1D62E4D7001B61CA /* PayPasswordViewController.m */; };
-		723D968E1D62E4D7001B61CA /* PayPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D968C1D62E4D7001B61CA /* PayPasswordViewController.xib */; };
 		723D96941D62F2D7001B61CA /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D96921D62F2D7001B61CA /* BackViewController.m */; };
 		723D96951D62F2D7001B61CA /* BackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D96931D62F2D7001B61CA /* BackViewController.xib */; };
 		723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D969D1D62FBC7001B61CA /* PaymentViewController.xib */; };
@@ -207,9 +205,6 @@
 		723D96841D62ADFC001B61CA /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		723D96851D62ADFC001B61CA /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		723D96861D62ADFC001B61CA /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		723D968A1D62E4D7001B61CA /* PayPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPasswordViewController.h; sourceTree = "<group>"; };
-		723D968B1D62E4D7001B61CA /* PayPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPasswordViewController.m; sourceTree = "<group>"; };
-		723D968C1D62E4D7001B61CA /* PayPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayPasswordViewController.xib; sourceTree = "<group>"; };
 		723D96911D62F2D7001B61CA /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
 		723D96921D62F2D7001B61CA /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
 		723D96931D62F2D7001B61CA /* BackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackViewController.xib; sourceTree = "<group>"; };
@@ -542,9 +537,6 @@
 		723D96891D62D206001B61CA /* pay a new */ = {
 			isa = PBXGroup;
 			children = (
-				723D968A1D62E4D7001B61CA /* PayPasswordViewController.h */,
-				723D968B1D62E4D7001B61CA /* PayPasswordViewController.m */,
-				723D968C1D62E4D7001B61CA /* PayPasswordViewController.xib */,
 				723D96911D62F2D7001B61CA /* BackViewController.h */,
 				723D96921D62F2D7001B61CA /* BackViewController.m */,
 				723D96931D62F2D7001B61CA /* BackViewController.xib */,
@@ -1506,7 +1498,6 @@
 				72E0D28B1D6A8CD800ABA2CC /* photo_add@3x.png in Resources */,
 				F8BE8EBB1D5D61C60053D464 /* UserViewController.xib in Resources */,
 				7209F1C51D7D50AE00BC9A80 /* yinhangrenzhengb@2x.png in Resources */,
-				723D968E1D62E4D7001B61CA /* PayPasswordViewController.xib in Resources */,
 				F8BE8E771D5D5EC90053D464 /* lunbo1.png in Resources */,
 				72E0D2D51D6C44B100ABA2CC /* SettlementViewController.xib in Resources */,
 				F8BE8E6B1D5D5EC90053D464 /* xiaji@2x.png in Resources */,
@@ -1650,7 +1641,6 @@
 				F89E6A061D81647C00DDCB27 /* IDCountDownButton.m in Sources */,
 				F8BE8EEF1D5DBBE80053D464 /* WebViewController.m in Sources */,
 				F8AF0A5D1D66E711006268E3 /* PayCostViewController.m in Sources */,
-				723D968D1D62E4D7001B61CA /* PayPasswordViewController.m in Sources */,
 				F8BE8EE61D5DBB040053D464 /* HomePageViewController.m in Sources */,
 				F8BE8EBE1D5D633A0053D464 /* KeyboardvView.m in Sources */,
 				F8ADD1871D65B2ED0022CFE0 /* BillTableViewController.m in Sources */,

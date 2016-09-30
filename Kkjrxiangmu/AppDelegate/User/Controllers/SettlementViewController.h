@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SettlementViewController : UIViewController
-
+@property(nonatomic,strong)NSString *urlString;
+@property(nonatomic,strong)NSString *BankText;
 @end

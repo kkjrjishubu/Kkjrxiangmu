@@ -51,7 +51,7 @@
     _imageView.image = [UIImage imageNamed:@"shoufuyi.png"];
     [self.view addSubview:_imageView];
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(100*SCALE);
+        make.top.equalTo(self.view.mas_top).offset(130*SCALE);
         make.centerX.equalTo(self.view.mas_centerX);
         make.width.mas_equalTo(150*SCALE);
         make.height.mas_equalTo(50*SCALE);
@@ -62,7 +62,7 @@
     [self.view addSubview:_Zlab];
     
     [_Zlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_imageView.mas_bottom).offset(30*SCALE);
+        make.top.equalTo(_imageView.mas_bottom).offset(40*SCALE);
         make.left.equalTo(self.view.mas_left).offset(20*SCALE);
         make.width.mas_equalTo(50*SCALE);
         make.height.mas_equalTo(30*SCALE);
@@ -99,8 +99,9 @@
     }];
     _textFile = [[UITextField alloc]init];
     _textFile.placeholder = @"请输入您的手机号";
-    _textFile.font = [UIFont systemFontOfSize:12];
+    _textFile.font = [UIFont systemFontOfSize:13];
     NSData *phoneNumber = [_userDefaults objectForKey:@"Zhanghao"];
+    _textFile.keyboardType = UIKeyboardTypeNumberPad;
     NSString *string = [[NSString alloc]initWithData:phoneNumber encoding:NSUTF8StringEncoding];
     if (string == nil) {
         _textFile.placeholder = @"请输入您的手机号";
@@ -108,7 +109,6 @@
     }else{
         _textFile.text = string;
     }
-
     [self.view addSubview:_textFile];
     [_textFile mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_Zlab.mas_centerY);
@@ -136,9 +136,9 @@
     }];
     UIButton *button =[[UIButton alloc]init];
     button.backgroundColor = qianblue;
-    button.titleLabel.font =[UIFont systemFontOfSize:12];
+    button.titleLabel.font =[UIFont systemFontOfSize:15];
     [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"登录" forState:UIControlStateNormal];
+    [button setTitle:@"登 录" forState:UIControlStateNormal];
     [self.view addSubview:button];
     button.layer.cornerRadius = 10*SCALE;
     button.layer.masksToBounds = YES;
@@ -161,7 +161,7 @@
     [self.view addSubview:JZbutton];
     [JZbutton addTarget:self action:@selector(JZbuttoncilick) forControlEvents:UIControlEventTouchUpInside];
     [JZbutton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(20*SCALE);
+        make.left.equalTo(self.view.mas_left).offset(50*SCALE);
         make.width.mas_equalTo(26*SCALE);
         make.height.mas_equalTo(26*SCALE);
         make.top.mas_equalTo(button.mas_bottom).offset(30*SCALE);
@@ -186,7 +186,7 @@
     [self.view addSubview:Wjbutton];
     [Wjbutton mas_makeConstraints:^(MASConstraintMaker *make) {
     
-        make.right.mas_equalTo(self.view.mas_right).offset(10*SCALE);
+        make.right.mas_equalTo(self.view.mas_right).offset(-20*SCALE);
         make.width.mas_equalTo(110*SCALE);
         make.height.mas_equalTo(40*SCALE);
         make.centerY.mas_equalTo(JZlab.mas_centerY);
@@ -195,12 +195,12 @@
     
     UILabel *ZHlab = [[UILabel alloc]init];
     ZHlab.text = @"还没有账户";
-    ZHlab.font = [UIFont systemFontOfSize:11];
+    ZHlab.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:ZHlab];
     ZHlab.textAlignment = UITextAlignmentCenter;
     [ZHlab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(button.mas_bottom).offset(40*SCALE);
-        make.centerX.mas_equalTo(self.view.mas_centerX).offset(-40*SCALE);
+        make.top.mas_equalTo(button.mas_bottom).offset(70*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX).offset(-30*SCALE);
         make.height.mas_equalTo(40*SCALE);
         make.width.mas_equalTo(80*SCALE);
     }];
@@ -212,13 +212,26 @@
     [self.view addSubview:Zbutton];
     [Zbutton addTarget:self action:@selector(Zbuttonwithcilick) forControlEvents:UIControlEventTouchUpInside];
     [Zbutton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view.mas_centerX).offset(20*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX).offset(30*SCALE);
         make.height.mas_equalTo(40*SCALE);
         make.width.mas_equalTo(80*SCALE);
-        make.top.mas_equalTo(button.mas_bottom).offset(40*SCALE);
+        make.top.mas_equalTo(button.mas_bottom).offset(70*SCALE);
     }];
-    
-    
+
+//客服电话
+    UILabel *CustomerService = [[UILabel alloc]init];
+    CustomerService.text = @"客服电话: 400-9697-669";
+    CustomerService.textAlignment = UITextAlignmentCenter;
+    [self.view addSubview:CustomerService];
+    CustomerService.font = [UIFont systemFontOfSize:11];
+    [CustomerService  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-20*SCALE);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.height.mas_equalTo(40*SCALE);
+        make.width.mas_equalTo(200*SCALE);
+        
+        
+    }];
 }
 
 -(void)Wjbuttoncilick{
@@ -267,8 +280,11 @@
      password	string	登录密码
      */
     
+    
     NSDictionary *Dic = @{@"action":@"login",@"username":_textFile.text,@"password":_textFile1.text};
     [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/user.ashx" parameters:Dic success:^(id responseObject) {
+       
+
         NSLog(@"%@",responseObject[@"Success"]);
         
 
@@ -329,10 +345,13 @@
             
             window.rootViewController = _tabbarcontroll;
             [window makeKeyWindow];
-        }
-        if (yes == 0) {
-            UIAlertView *alertView1 = [[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-            [alertView1 show];
+        }else  {
+//            UIAlertView *alertView1 = [[UIAlertView alloc]initWithTitle:@"提示" message:@"密码错误" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+//            [alertView1 show];
+            [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+//Success
+  //          [NSString addMBProgressHUD:responseObject[@"Success"] showHUDToView:self.view];
+
 
         }
         
@@ -345,7 +364,9 @@
 
     }];
 }
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

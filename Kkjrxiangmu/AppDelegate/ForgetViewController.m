@@ -26,10 +26,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIView *navView = [[UIView alloc]init];
+    [self.view addSubview:navView];
+    navView.backgroundColor = qianblue;
+    [navView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.width.mas_equalTo(self.view.frame.size.width);
+        make.height.mas_equalTo(66*SCALE);
+    }];
+    UILabel *navLabel = [[UILabel alloc]init];
+    navLabel.text = @"立即注册";
+    navLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:navLabel];
+    [navLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(80*SCALE);
+        make.height.mas_equalTo(30*SCALE);
+        make.centerY.mas_equalTo(navView.mas_centerY).offset(7*SCALE);
+    }];
+    UIButton *naVButtin = [[UIButton alloc]init];
+    [self.view addSubview:naVButtin];
+    [naVButtin setImage:[UIImage imageNamed:@"Block@2x(1).png"] forState:UIControlStateNormal];
+    [naVButtin addTarget:self action:@selector(dissmiaart) forControlEvents:UIControlEventTouchUpInside];
+    [naVButtin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).offset(10*SCALE);
+        make.top.mas_equalTo(self.view.mas_top).offset(30*SCALE);;
+        make.width.mas_equalTo(30*SCALE);
+        make.height.mas_equalTo(30*SCALE);
+    }];
+
+    
+    
     UIImageView *imageView1 = [[UIImageView alloc]init];
     [self.view addSubview:imageView1];
-
-    imageView1.image = [UIImage imageNamed:@"shouji.png"];
+    imageView1.image = [UIImage imageNamed:@"shoujihao.png"];
     [imageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(130*SCALE);
         make.left.equalTo(self.view.mas_left).offset(40*SCALE);
@@ -91,7 +122,7 @@
     //图片3
     UIImageView *imageView4 = [[UIImageView alloc]init];
     [self.view addSubview:imageView4];
-    imageView4.image = [UIImage imageNamed:@"shouji.png"];
+    imageView4.image = [UIImage imageNamed:@"shoujihao.png"];
     
     [imageView4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(40*SCALE);
@@ -115,6 +146,8 @@
     Textfiled = [[UITextField alloc]init];
     Textfiled.placeholder = @"请输入您的手机号";
     Textfiled.font = [UIFont systemFontOfSize:12];
+    Textfiled.keyboardType = UIKeyboardTypeNumberPad;
+
     [self.view addSubview:Textfiled];
     [Textfiled mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView1.mas_centerY).offset(0);
@@ -133,6 +166,7 @@
     Textfiled2 = [[UITextField alloc]init];
     Textfiled2.placeholder = @"请输入您的密码";
     Textfiled2.font = [UIFont systemFontOfSize:12];
+     Textfiled2.secureTextEntry = YES;
     [self.view addSubview:Textfiled2];
     [Textfiled2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView3.mas_centerY).offset(0);
@@ -143,6 +177,8 @@
     Textfiled3 = [[UITextField alloc]init];
     Textfiled3.placeholder = @"请输入邀请人手机号";
     Textfiled3.font = [UIFont systemFontOfSize:12];
+    Textfiled3.keyboardType = UIKeyboardTypeNumberPad;
+
     [self.view addSubview:Textfiled3];
     [Textfiled3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(imageView4.mas_centerY).offset(0);
@@ -248,12 +284,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+-(void)dissmiaart{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 /*
 #pragma mark - Navigation
 

@@ -14,7 +14,12 @@
 #define SCALE screenWidth/375.0
 
 @interface addPhotoViewController ()<PhotoCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-
+{
+    UITextView *textView;
+    NSData *dataCardFronpic;
+    NSData *datacarBachpic;
+    NSData *datacardHandPic;
+}
 
 @property (nonatomic, strong) NSMutableArray * imageArr;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -31,7 +36,7 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
-    UITextView *textView = [[UITextView alloc]init];//WithFrame:CGRectMake(0, 100, IphoeH, IphoeW)];
+    textView = [[UITextView alloc]init];//WithFrame:CGRectMake(0, 100, IphoeH, IphoeW)];
     //textView.backgroundColor = [UIColor redColor];
     [self.view addSubview:textView];
     [textView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,6 +137,14 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"11111选择%ld",indexPath.row);
+    if (indexPath.row==3) {
+        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"最多选取三张" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *arrach = [UIAlertAction actionWithTitle:@"acb" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [self presentViewController:alertC animated:YES completion:nil];
+        [alertC addAction:arrach];
+         return ;
+    }
     if (IOS7) {
         
         UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照上传",@"相册选取", nil];
@@ -227,7 +240,106 @@
     [self.collectionView reloadData];
 }
 -(void)tJbuttoncilick{
-    NSLog(@"提交反馈信息");
+    
+    
+    NSLog(@"aaaaaaa");
+    //NSLog(@"图片 %@",_imageArr);
+    /*
+     名称	类型	说明	是否必填	示例	默认值
+     action	string	feedback	是
+     content	string	反馈内容	是
+     image1	File	图像文件1	否
+     image2	File	图像文件2	否
+     image3	File	图像文件3	否
+     token	string	身份标识	是
+     响应示例 异常示例
+     {
+     "Msg": "提交反馈成功",
+     "Token": "e10adc3949ba59abbe56e057f20f883e",
+     "Success": true
+     }*/
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *tokenstr = [userDefaults objectForKey:@"tokenKey"];
+    if (textView.text.length == 0) {
+        [NSString addMBProgressHUD:@"反馈内容为空" showHUDToView:self.view];
+        return;
+    }
+    NSDictionary *dicvab = @{@"action":@"feedback",@"token":tokenstr,@"content":textView.text};
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //接收类型不一致请替换一致text/html或别的
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"image/jpeg",@"image/png",@"text/plain",@"application/octet-stream",@"text/json",nil];
+    [manager POST:@"http://api.sfy.95yes.cn/ashx/more.ashx" parameters:dicvab constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+
+        if (_imageArr.count == 1) {
+             dataCardFronpic = UIImageJPEGRepresentation(_imageArr[0],1);
+            //上传的参数(上传图片，以文件流的格式)
+            [formData appendPartWithFileData:dataCardFronpic
+                                        name:@"image1"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+
+            
+        }else if(_imageArr.count == 2){
+            dataCardFronpic = UIImageJPEGRepresentation(_imageArr[0],1);
+            datacarBachpic= UIImageJPEGRepresentation(_imageArr[1],1);
+            [formData appendPartWithFileData:dataCardFronpic
+                                        name:@"image1"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+
+            [formData appendPartWithFileData:datacarBachpic
+                                        name:@"image2"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+
+        }else{
+            dataCardFronpic = UIImageJPEGRepresentation(_imageArr[0],1);
+            datacarBachpic= UIImageJPEGRepresentation(_imageArr[1],1);
+            datacardHandPic = UIImageJPEGRepresentation(_imageArr[2],1);
+
+            //上传的参数(上传图片，以文件流的格式)
+            [formData appendPartWithFileData:dataCardFronpic
+                                        name:@"image1"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+            
+            [formData appendPartWithFileData:datacarBachpic
+                                        name:@"image2"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:datacardHandPic
+                                        name:@"image3"
+                                    fileName:fileName
+                                    mimeType:@"image/jpeg"];
+
+        }
+        
+     
+        
+          } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //打印下上传进度
+        NSLog(@"aaaa%@",uploadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //上传成功
+        NSLog(@"上传的东西%@",responseObject[@"Msg"]);
+        NSLog(@"上传的文件%@",responseObject[@"Success"]);
+        NSLog(@"成功了%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //上传失败
+        NSLog(@"失败%@",error);
+    }];
+
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,7 @@
 #define SCALE screenWidth/375.0
 #import "AddViewController.h"
 #import "modeloler.h"
+
 #define CellHeighT 120*SCALE
 @interface BankcardViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -28,6 +29,8 @@
 // //银行卡号
 //    NSString *BankNo;
     UITableView *_tableView ;
+//model
+    modeloler *rateModel;
     
 }
 @property(nonatomic,strong)NSMutableArray *arrayDasuer;
@@ -41,6 +44,9 @@
     
    // self.view.backgroundColor = backViewColor;
     self.navigationItem.title = @"银行卡管理";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Block@2x(1)"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10*SCALE, self.view.frame.size.width, self.view.frame.size.height+54) style:UITableViewStylePlain];
     _tableView.rowHeight = CellHeighT;
@@ -67,7 +73,7 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-100*SCALE);
         make.height.mas_equalTo(40*SCALE);
     }];
-    [button1 addTarget:self action:@selector(cilick) forControlEvents:UIControlEventTouchUpInside];
+    [button1 addTarget:self action:@selector(cilickasc) forControlEvents:UIControlEventTouchUpInside];
 
     
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
@@ -80,16 +86,14 @@
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *responDic = [NSMutableDictionary dictionaryWithJsonString:string];
         NSString *tonkenary = responDic[@"Token"];
-        NSLog(@"qqqq   %@",responDic);
         [userDefaultes setObject:tonkenary forKey:@"tokenKey"];
+        
         indexCont = [responDic[@"index"] integerValue]+1;
         NSLog(@"单元格个数%ld",(long)indexCont);
         if ([responDic[@"Success"] integerValue]==1) {
             NSArray *dataArr = [modeloler mj_objectArrayWithKeyValuesArray:responDic[@"DataList"]];
-            //NSString *result  =[[ NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"输出的数组 %@",dataArr);
             [self.arrayDasuer addObjectsFromArray:dataArr];
-            
             [_tableView reloadData];
 
         }else{
@@ -99,14 +103,16 @@
         NSLog(@"错误   %@",error);
     }];
     
+    UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
+    longPressGr.minimumPressDuration = 1.0;
+    [_tableView addGestureRecognizer:longPressGr];
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{   // NSLog(@"第二次输出单元格的个数 %ld",(long)indexCont);
-    
-    
+{
+    NSLog(@"输出数组  %ld",self.arrayDasuer.count);
     return self.arrayDasuer.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -193,13 +199,14 @@
     }];
     
     //图片
-    modeloler *rateModel = self.arrayDasuer[indexPath.row];
+    rateModel = self.arrayDasuer[indexPath.row];
    [conImageView sd_setImageWithURL:[NSURL URLWithString:rateModel.BankIcon] placeholderImage:nil];
     [logoImageView sd_setImageWithURL:[NSURL URLWithString:rateModel.CardFlagIcon]placeholderImage:nil];
     backText.text = rateModel.BankTypeText;
     backType.text = rateModel.CardTypeText;
     NumberPhone.text = @"**** **** **** ";
-    NSString* sabc = [rateModel.BankNo substringToIndex:4];
+    //字符串截取
+    NSString* sabc = [rateModel.BankNo substringToIndex:1];
     numberPhone.text = sabc;
     NSLog(@"输出%@",rateModel.BankTypeText);
     NSLog(@"输出%@",rateModel.CardTypeText);
@@ -208,12 +215,31 @@
     //取消选中状态
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = backViewColor;
-
+ 
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    rateModel=self.arrayDasuer[indexPath.row];
+    if (rateModel) {
+        NSString *back_ID = rateModel.ID;
+        NSString *yinhText = rateModel.BankTypeText;
+        NSString *Tb = rateModel.BankIcon;
+        NSLog(@"银行卡的ID %@",back_ID);
+        NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+        [userDefaultes setObject:yinhText forKey:@"yinhangmingzi"];
+        [userDefaultes setObject:Tb forKey:@"yinhangtubiao"];
+        [userDefaultes setObject:back_ID forKey:@"IDnumber"];
+    }
+    [NSString addMBProgressHUD:@"设置默认银行卡成功" showHUDToView:self.view];
+    
+    [self.urlImage sd_setImageWithURL:[NSURL URLWithString:rateModel.BankIcon] placeholderImage:nil];
+    self.BankText.text = rateModel.BankTypeText;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
--(void)cilick{
+-(void)cilickasc{
     AddViewController*addview = [[AddViewController alloc]init];
     [self.navigationController pushViewController:addview animated:YES];
 }
@@ -224,7 +250,92 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = YES;
 }
+-(void)backAction{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+-(void)longPressToDo:(UILongPressGestureRecognizer *)gesture
+{
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint point = [gesture locationInView:_tableView];
+        NSIndexPath * indexPath = [_tableView indexPathForRowAtPoint:point];
+        
+        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否删除银行卡" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *arrach = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            /*数据格式：JSON
+             
+             请求方式：POST
+             
+             接口URL： http://api.sfy.95yes.cn/ashx/BankCard.ashx
+             参数说明
+             名称	类型	说明	是否必填	示例	默认值
+             action	string	delete	是
+             bankCardId	string	银行卡ID	是		
+             token	string	身份标识	是		
+             响应示例 异常示例
+             {
+             "Msg": "删除成功", 
+             "Success": true
+             }*/
+            NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+            NSString *mytokentoary = [userDefaultes objectForKey:@"tokenKey"];
+            NSLog(@"数据请求输出的   ID%@",rateModel.ID);
+            NSDictionary *dic = @{@"action":@"delete",@"bankCardId":rateModel.ID,@"token":mytokentoary};
+           [[NetWorkHelper shareNetWorkEngine]PostRequestNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/BankCard.ashx" parameters:dic success:^(id responseObject) {
+               [NSString addMBProgressHUD:responseObject[@"Msg"] showHUDToView:self.view];
+               NSString *tonkenarysadda = responseObject[@"Token"];
+               [userDefaultes setObject:tonkenarysadda forKey:@"tokenKey"];
+             //  [_tableView reloadData];
+               //
+               if(indexPath == nil) return ;
 
+               NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+               NSString *myString = [userDefaultes objectForKey:@"tokenKey"];
+               NSLog(@"输出的Tonkeny的值 %@",myString);
+               NSDictionary * dic = @{@"action":@"getList",@"token":myString};
+               NSLog(@"入参字典 %@",dic);
+               [[NetWorkHelper shareNetWorkEngine]PostResponseNetInfoWithURLStrViaNet:@"http://api.sfy.95yes.cn/ashx/BankCard.ashx" parameters:dic success:^(id responseObject) {
+                   
+                   NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                   NSDictionary *responDic = [NSMutableDictionary dictionaryWithJsonString:string];
+                   NSString *tonkenary = responDic[@"Token"];
+                   [userDefaultes setObject:tonkenary forKey:@"tokenKey"];
+                   
+                   indexCont = [responDic[@"index"] integerValue]+1;
+                   NSLog(@"单元格个数%ld",(long)indexCont);
+                   if ([responDic[@"Success"] integerValue]==1) {
+                       NSArray *dataArr = [modeloler mj_objectArrayWithKeyValuesArray:responDic[@"DataList"]];
+                       NSLog(@"输出的数组 %@",dataArr);
+                       [self.arrayDasuer addObjectsFromArray:dataArr];
+                       [_tableView reloadData];
+                       
+                   }else{
+                       [NSString addMBProgressHUD:responDic[@"Msg"] showHUDToView:self.view];
+                   }
+               } failur:^(id error) {
+                   NSLog(@"错误   %@",error);
+               }];
+
+               
+               //
+           } failur:^(id error) {
+               NSLog(@"输出的错误 %@",error);
+           }];
+            
+        }];
+        UIAlertAction *arrachad = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+        }];
+
+        [self presentViewController:alertC animated:YES completion:nil];
+        [alertC addAction:arrach];
+        [alertC addAction:arrachad];
+        
+        
+        
+    }
+}
 /*
 #pragma mark - Navigation
 
