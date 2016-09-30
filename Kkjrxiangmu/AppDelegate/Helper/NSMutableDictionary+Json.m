@@ -122,6 +122,43 @@
 
 @end
 
+@implementation NSString (Adaptive)
+
++ (CGFloat )adaptiveWithText:(NSString *)text {
+    //指定自适应过程中自适应的字体
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:17]};
+    //参数1 代表文字自适应的范围 2代表 文字自适应的方式前三种 3代表文字在自适应过程中自适应的字体大小
+    return [text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 20, 100000) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attributes context:nil].size.height;
+    
+}
+
+
++ (NSString *)JSONString:(NSString *)aString {
+    
+    NSMutableString *s = [NSMutableString stringWithString:aString];
+    
+    [s replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"/" withString:@"\\/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"\n" withString:@"\\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"\b" withString:@"\\b" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"\f" withString:@"\\f" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"\r" withString:@"\\r" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    [s replaceOccurrencesOfString:@"\t" withString:@"\\t" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+    
+    return [NSString stringWithString:s];
+    
+}
+
+
+
+
+@end
 
 
 

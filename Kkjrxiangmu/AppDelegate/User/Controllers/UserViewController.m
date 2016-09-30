@@ -40,7 +40,7 @@
 @property (nonatomic,copy)NSString *payPasswstr;
 @property (nonatomic,copy) NSString *tokenstr;
 @property (nonatomic,strong)NSUserDefaults *userDefaults;
-
+@property (nonatomic,copy) NSString *urlStr;
 
 
 @end
@@ -78,9 +78,9 @@
     }];
     
     
-    NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
-    NSLog(@"%@",urlStr);
-    [self NetworkIntercede:urlStr];
+    self.urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
+    NSLog(@"%@",_urlStr);
+    [self NetworkIntercede:_urlStr];
     
 }
 
@@ -92,21 +92,7 @@
     
 }
 
-/*
-{
-    "AccountProfit": 230, 分润余额
-    "AccountPic": "http://api.sfy.95yes.cn/ashx/user.ashx/upload/pic/120256.png", 头像
-    "IsAuthentication": false, 是否认证过身份
-    "UserName": "18137958686", 用户名
-    "IsSetPayPassword": true, 是否设置了支付密码
-    "Token": "6512bd43d9caa6e02c990b0a82652dca",
-    "Success": true,
-    "AccountAvailable": 1523, 余额
-    "AccountIn": 160, 结算金额
-    "AuthenticationState": "未认证" 认证状态文本显示
-}
- 
-*/
+
 #pragma mark -- 网络请求
 - (void)NetworkIntercede:(NSString *)strUrl   {
     
@@ -128,10 +114,6 @@
         _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
         _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
         NSString *str =[NSString stringWithFormat:@"%@",infoDic[@"Token"]];
-        NSUserDefaults *sss=[NSUserDefaults standardUserDefaults];
-        [sss setObject:str forKey:@"tokenKey"];
-
-        NSLog(@"输出的TOken%@",str);
         
         
 
@@ -139,6 +121,7 @@
         
         [_userDefaults setObject:infoDic[@"Token"] forKey:@"tokenKey"];
         [_userDefaults synchronize];
+        
         _tokenstr = [_userDefaults objectForKey:@"tokenKey"];
         
 
@@ -402,14 +385,7 @@
     //取出编辑之后的图片
     UIImage *editeImage = info[@"UIImagePickerControllerEditedImage"];
     _headImage.image = editeImage;
-    
-    //获取HeaderView对象
-    //HeaderView *headerV = (HeaderView *)self.tableView.tableHeaderView;
-    //将编辑后的图片添加到要展示的头像上
-    //headerV.photo.image = editeImage;
-    //NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-    //MainTableViewCell *cell = [self.inforTableView cellForRowAtIndexPath:indexPath];
-    //cell.headImage.image = editeImage;
+
     [self imageUpload:_headImage.image];
     
     
@@ -454,7 +430,8 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"Success"] integerValue] == 1) {
             DREAMAppLog(@"修改 %@",responseObject[@"Msg"]);
-
+            
+            
         }else {
             DREAMAppLog(@"修改不成功 %@",responseObject[@"Msg"]);
         }
@@ -464,7 +441,6 @@
     }];
     
 }
-
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -548,21 +524,21 @@
             case 0:
                 vc = [[PayPasswordViewController alloc]init];
                 break;
-                case 1:
+            case 1:
                 if ([self.payPasswstr integerValue] == 0) {
                     NSString *urlStr = [NSString stringWithFormat:@"%s%s",SFYSERVER,SFYLOGON];
-
+                    
                     SetUpPayViewController *setupPayVC = [[SetUpPayViewController alloc]init];
                     setupPayVC.navtitStr = @"支付密码";
                     setupPayVC.urlstr = urlStr;
                     setupPayVC.actionstr = @"setPayPassword";
                     setupPayVC.numberStr = @"setPayPassword_sendsms";
-
+                    
                     [self.navigationController pushViewController:setupPayVC animated:YES];
                     
                 }else {
                     vc = [[PaymentViewController alloc]init];
-
+                    
                 }
                 
                 break;
@@ -573,18 +549,47 @@
     if (indexPath.section==2&&indexPath.row==1) {
         
         ViewController *vi = [[ViewController alloc]init];
-//            UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vi];
-//        window.rootViewController =nav;
-     //   self.modalPresentationStyle=UIModalPresentationPageSheet;
-        [self presentViewController:nav animated:NO completion:nil];
+        
+        
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否确定退出" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *alert = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+            NSDictionary *parameterdic = @{@"action":@"logout",
+                                           @"token":_tokenstr};
+            
+            //DREAMAppLog(@"%@",parameterdic);
+            [[NetWorkHelper shareNetWorkEngine] GetRequestNetInfoWithURLStrViaNet:_urlStr parameters:parameterdic success:^(id responseObject) {
+                DREAMAppLog(@"退出 %@",responseObject);
+                if ([responseObject[@"Success"] integerValue] == 1) {
+                    
+                    [self presentViewController:nav animated:NO completion:nil];
+                    
+                }
+                
+            } failur:^(id error) {
+                
+            }];
+            
+        }];
+        
+        UIAlertAction *alert2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertC addAction:alert];
+        [alertC addAction:alert2];
+        
+        [self presentViewController:alertC animated:YES completion:nil];
+        
+        
+        
         return;
-        }
-
-    self.tabBarController.tabBar.hidden = YES;
-
-    [self.navigationController pushViewController:vc animated:YES];
+    }
     
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

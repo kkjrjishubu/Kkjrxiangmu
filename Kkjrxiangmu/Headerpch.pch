@@ -62,6 +62,8 @@
 // 账单
 #define SFYACCOUNT "/ashx/Account.ashx"
 
+// 消息
+#define SFYMESSAGE "/ashx/Message.ashx"
 
 
 

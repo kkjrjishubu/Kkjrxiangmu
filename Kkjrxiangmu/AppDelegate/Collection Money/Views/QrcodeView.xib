@@ -35,31 +35,17 @@
                         <constraint firstAttribute="height" constant="1" id="8lB-R5-mdZ"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-z6-leg">
-                    <rect key="frame" x="80" y="111" width="440" height="409"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biankuang@2x" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-z6-leg">
+                    <rect key="frame" x="70" y="101" width="460" height="429"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL3-lw-GVk">
-                    <rect key="frame" x="30" y="532" width="46" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="46" id="23k-dY-HGJ"/>
-                        <constraint firstAttribute="height" constant="30" id="57g-Bl-Wog"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="保存">
-                        <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="savebutton:" destination="iN0-l3-epB" eventType="touchUpInside" id="HTN-0h-ibP"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYg-v3-9Uu">
-                    <rect key="frame" x="524" y="532" width="46" height="30"/>
+                    <rect key="frame" x="505" y="550" width="65" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="fB3-tU-hsZ"/>
-                        <constraint firstAttribute="width" constant="46" id="fm2-hW-GuK"/>
+                        <constraint firstAttribute="width" constant="65" id="fm2-hW-GuK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="分享">
+                    <state key="normal">
                         <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -76,28 +62,49 @@
                     <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fJC-mQ-MXH">
+                    <rect key="frame" x="80" y="111" width="440" height="409"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL3-lw-GVk">
+                    <rect key="frame" x="535" y="15" width="60" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="M8j-hD-07V"/>
+                        <constraint firstAttribute="width" constant="60" id="xoE-PQ-kxU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="savebutton:" destination="iN0-l3-epB" eventType="touchUpInside" id="HTN-0h-ibP"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="fJC-mQ-MXH" firstAttribute="top" secondItem="bST-tt-YQm" secondAttribute="bottom" constant="60" id="0FP-go-aWA"/>
+                <constraint firstAttribute="trailing" secondItem="YL3-lw-GVk" secondAttribute="trailing" constant="5" id="0mH-fw-WhL"/>
                 <constraint firstItem="f5X-Cz-qAE" firstAttribute="centerY" secondItem="bSp-Ka-lM5" secondAttribute="centerY" id="1Zz-fH-8dI"/>
-                <constraint firstItem="YL3-lw-GVk" firstAttribute="top" secondItem="yJl-z6-leg" secondAttribute="bottom" constant="12" id="1ez-N0-s7q"/>
                 <constraint firstItem="EJT-Jd-0Sd" firstAttribute="centerX" secondItem="f5X-Cz-qAE" secondAttribute="centerX" id="2hX-OR-lZh"/>
                 <constraint firstItem="bST-tt-YQm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2oL-zW-13Y"/>
                 <constraint firstAttribute="trailing" secondItem="bST-tt-YQm" secondAttribute="trailing" id="4ak-1N-re8"/>
                 <constraint firstItem="bST-tt-YQm" firstAttribute="top" secondItem="bSp-Ka-lM5" secondAttribute="bottom" constant="5" id="5fV-Dr-L6z"/>
                 <constraint firstItem="bSp-Ka-lM5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="DYV-h3-kjM"/>
-                <constraint firstAttribute="trailing" secondItem="yJl-z6-leg" secondAttribute="trailing" constant="80" id="E2G-6N-J6f"/>
+                <constraint firstAttribute="trailing" secondItem="yJl-z6-leg" secondAttribute="trailing" constant="70" id="E2G-6N-J6f"/>
                 <constraint firstAttribute="trailing" secondItem="mYg-v3-9Uu" secondAttribute="trailing" constant="30" id="EQs-jg-DGA"/>
+                <constraint firstItem="YL3-lw-GVk" firstAttribute="centerY" secondItem="f5X-Cz-qAE" secondAttribute="centerY" id="HJ2-Um-TlS"/>
+                <constraint firstItem="fJC-mQ-MXH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="JHl-qf-Nt5"/>
                 <constraint firstItem="f5X-Cz-qAE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KAj-eG-5ME"/>
                 <constraint firstItem="bSp-Ka-lM5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="KTC-aB-iT2"/>
+                <constraint firstAttribute="bottom" secondItem="fJC-mQ-MXH" secondAttribute="bottom" constant="80" id="LOJ-2s-l3h"/>
                 <constraint firstItem="YL3-lw-GVk" firstAttribute="leading" secondItem="yJl-z6-leg" secondAttribute="leading" id="Z53-Fj-Hda"/>
-                <constraint firstItem="YL3-lw-GVk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="cFL-z0-ic8"/>
-                <constraint firstAttribute="bottom" secondItem="yJl-z6-leg" secondAttribute="bottom" constant="80" id="dZ9-Kp-Yb3"/>
-                <constraint firstItem="yJl-z6-leg" firstAttribute="top" secondItem="bST-tt-YQm" secondAttribute="bottom" constant="60" id="fhb-y6-3sY"/>
+                <constraint firstAttribute="bottom" secondItem="yJl-z6-leg" secondAttribute="bottom" constant="70" id="dZ9-Kp-Yb3"/>
+                <constraint firstItem="yJl-z6-leg" firstAttribute="top" secondItem="bST-tt-YQm" secondAttribute="bottom" constant="50" id="fhb-y6-3sY"/>
                 <constraint firstItem="EJT-Jd-0Sd" firstAttribute="top" secondItem="bST-tt-YQm" secondAttribute="bottom" constant="15" id="hZG-8i-uFU"/>
                 <constraint firstItem="mYg-v3-9Uu" firstAttribute="trailing" secondItem="yJl-z6-leg" secondAttribute="trailing" id="nph-D8-Amu"/>
-                <constraint firstItem="yJl-z6-leg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="qnc-3p-i5I"/>
-                <constraint firstItem="mYg-v3-9Uu" firstAttribute="top" secondItem="yJl-z6-leg" secondAttribute="bottom" constant="12" id="xQX-TP-zDl"/>
+                <constraint firstAttribute="trailing" secondItem="fJC-mQ-MXH" secondAttribute="trailing" constant="80" id="qbf-nM-ACc"/>
+                <constraint firstItem="yJl-z6-leg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="70" id="qnc-3p-i5I"/>
+                <constraint firstItem="mYg-v3-9Uu" firstAttribute="top" secondItem="yJl-z6-leg" secondAttribute="bottom" constant="20" id="xQX-TP-zDl"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
@@ -106,12 +113,14 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="Qrimage" destination="yJl-z6-leg" id="Aro-7G-x5o"/>
+                <outlet property="Qrimage" destination="fJC-mQ-MXH" id="yZg-PK-lzq"/>
                 <outlet property="moneyLabel" destination="EJT-Jd-0Sd" id="0Ms-qi-z1z"/>
+                <outlet property="titleLabel" destination="f5X-Cz-qAE" id="dH2-M3-xfb"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="biankuang@2x" width="200" height="201"/>
         <image name="zuojiantou@2x" width="10" height="19"/>
     </resources>
 </document>

@@ -28,6 +28,7 @@
 @property (nonatomic,copy)NSString *wxpayStr;
 @property (nonatomic,strong)NSUserDefaults *userDefaults;
 @property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic,copy)NSString *typeStr;
 
 
 @end
@@ -377,7 +378,7 @@
     
     if (indexPath.row == 0) {
         NSLog(@"微信");
-        
+        _typeStr = @"微信付款码";
         _wxpayStr = @"wxpay";
         [self customQrcodeView];
         
@@ -391,6 +392,7 @@
         
     }else {
         NSLog(@"京东");
+        _typeStr = @"收付易付款码";
         _wxpayStr = @"jdpay";
         [self customQrcodeView];
         
@@ -410,7 +412,7 @@
     self.qrcodeV = [[[NSBundle mainBundle]loadNibNamed:@"QrcodeView" owner:self options:nil]firstObject];
     _qrcodeV.frame = CGRectMake(screenWidth, screenHeight - 400, screenWidth, 400);
     _qrcodeV.moneyLabel.text = [NSString stringWithFormat:@"¥ %@",self.numberLabel.text];
-    
+    _qrcodeV.titleLabel.text = _typeStr;
     [self.viewcontroll.view addSubview:_qrcodeV];
     [_window addSubview:self.viewcontroll.view];
     
@@ -431,6 +433,9 @@
     
     [_qrcodeV SaveButBlockAction:^{
         NSLog(@"保存");
+        UIImage *imagev = _qrcodeV.Qrimage.image;
+        [self saveImageToPhotos:imagev];
+
     }];
     
     [_qrcodeV ShaveBlockAction:^{
@@ -456,6 +461,7 @@
             [_qrcodeV.Qrimage sd_setImageWithURL:[NSURL URLWithString:qrurl] placeholderImage:nil];
             [_userDefaults setObject:infoDic[@"Token"] forKey:@"tokenKey"];
             [_userDefaults synchronize];
+            
 
         }else{
             [NSString addMBProgressHUD:infoDic[@"Msg"] showHUDToView:_qrcodeV];
@@ -466,6 +472,33 @@
         NSLog(@"%@",error);
     }];
     
+    
+}
+
+// 保存图片
+- (void)saveImageToPhotos:(UIImage*)savedImage {
+    UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+    
+}
+
+// 指定回调方法
+
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
+    
+    NSString *msg = nil ;
+    if(error != NULL){
+        msg = @"保存图片失败";
+    }else{
+        msg = @"保存图片成功";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存图片结果提示"
+                                                    message:msg
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    
+    [alert show];
     
 }
 

@@ -63,6 +63,10 @@
 		F81EA0BF1D5C887300214663 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81EA0BD1D5C887300214663 /* ViewController.m */; };
 		F8837DB21D61552B0056148C /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8837DB01D61552B0056148C /* TopUpViewController.m */; };
 		F8837DB31D61552B0056148C /* TopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8837DB11D61552B0056148C /* TopUpViewController.xib */; };
+		F88466B91D9A681A00B4A048 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F88466B71D9A681A00B4A048 /* MessageTableViewCell.m */; };
+		F88466BA1D9A681A00B4A048 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88466B81D9A681A00B4A048 /* MessageTableViewCell.xib */; };
+		F88466BD1D9A6E7800B4A048 /* AnnouncementTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88466BC1D9A6E7800B4A048 /* AnnouncementTVController.m */; };
+		F88466C01D9A734000B4A048 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F88466BF1D9A734000B4A048 /* MessageModel.m */; };
 		F887D9C31D62FCA300D88E0B /* PayMentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F887D9C21D62FCA300D88E0B /* PayMentView.m */; };
 		F887D9C51D62FCCC00D88E0B /* PayMentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F887D9C41D62FCCC00D88E0B /* PayMentView.xib */; };
 		F887D9CB1D630B3A00D88E0B /* NSMutableDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = F887D9CA1D630B3A00D88E0B /* NSMutableDictionary+Json.m */; };
@@ -101,9 +105,6 @@
 		F8AF0A6D1D66E993006268E3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AF0A6B1D66E993006268E3 /* GameViewController.xib */; };
 		F8B65A1B1D5F276D001270A9 /* KeyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B65A191D5F276D001270A9 /* KeyCollectionViewCell.m */; };
 		F8B65A1C1D5F276D001270A9 /* KeyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B65A1A1D5F276D001270A9 /* KeyCollectionViewCell.xib */; };
-		F8BE8E631D5D5EC90053D464 /* gonggao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E301D5D5EC90053D464 /* gonggao@2x.png */; };
-		F8BE8E641D5D5EC90053D464 /* guangao.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E311D5D5EC90053D464 /* guangao.png */; };
-		F8BE8E651D5D5EC90053D464 /* jiantou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E321D5D5EC90053D464 /* jiantou@2x.png */; };
 		F8BE8E661D5D5EC90053D464 /* bangzhu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E341D5D5EC90053D464 /* bangzhu@2x.png */; };
 		F8BE8E671D5D5EC90053D464 /* fankui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E351D5D5EC90053D464 /* fankui@2x.png */; };
 		F8BE8E681D5D5EC90053D464 /* guanyuwomen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8BE8E361D5D5EC90053D464 /* guanyuwomen@2x.png */; };
@@ -149,6 +150,8 @@
 		F8F492421D63FBB7007A8024 /* SHBQRView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F492401D63FBB7007A8024 /* SHBQRView.m */; };
 		F8F492571D645C84007A8024 /* PayWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F492551D645C84007A8024 /* PayWTableViewCell.m */; };
 		F8F492581D645C84007A8024 /* PayWTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F492561D645C84007A8024 /* PayWTableViewCell.xib */; };
+		F8FCDFA21D9A0608001A76DD /* BalanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FCDFA01D9A0608001A76DD /* BalanceTableViewCell.m */; };
+		F8FCDFA31D9A0608001A76DD /* BalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8FCDFA11D9A0608001A76DD /* BalanceTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +272,13 @@
 		F8837DAF1D61552B0056148C /* TopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopUpViewController.h; sourceTree = "<group>"; };
 		F8837DB01D61552B0056148C /* TopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopUpViewController.m; sourceTree = "<group>"; };
 		F8837DB11D61552B0056148C /* TopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopUpViewController.xib; sourceTree = "<group>"; };
+		F88466B61D9A681A00B4A048 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		F88466B71D9A681A00B4A048 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		F88466B81D9A681A00B4A048 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		F88466BB1D9A6E7800B4A048 /* AnnouncementTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementTVController.h; sourceTree = "<group>"; };
+		F88466BC1D9A6E7800B4A048 /* AnnouncementTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementTVController.m; sourceTree = "<group>"; };
+		F88466BE1D9A734000B4A048 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		F88466BF1D9A734000B4A048 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		F887D9C11D62FCA300D88E0B /* PayMentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayMentView.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.h"; sourceTree = SOURCE_ROOT; };
 		F887D9C21D62FCA300D88E0B /* PayMentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayMentView.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.m"; sourceTree = SOURCE_ROOT; };
 		F887D9C41D62FCCC00D88E0B /* PayMentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayMentView.xib; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayMentView.xib"; sourceTree = SOURCE_ROOT; };
@@ -321,9 +331,6 @@
 		F8B65A181D5F276D001270A9 /* KeyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyCollectionViewCell.h; sourceTree = "<group>"; };
 		F8B65A191D5F276D001270A9 /* KeyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyCollectionViewCell.m; sourceTree = "<group>"; };
 		F8B65A1A1D5F276D001270A9 /* KeyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyCollectionViewCell.xib; sourceTree = "<group>"; };
-		F8BE8E301D5D5EC90053D464 /* gonggao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gonggao@2x.png"; sourceTree = "<group>"; };
-		F8BE8E311D5D5EC90053D464 /* guangao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guangao.png; sourceTree = "<group>"; };
-		F8BE8E321D5D5EC90053D464 /* jiantou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiantou@2x.png"; sourceTree = "<group>"; };
 		F8BE8E341D5D5EC90053D464 /* bangzhu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bangzhu@2x.png"; sourceTree = "<group>"; };
 		F8BE8E351D5D5EC90053D464 /* fankui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fankui@2x.png"; sourceTree = "<group>"; };
 		F8BE8E361D5D5EC90053D464 /* guanyuwomen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyuwomen@2x.png"; sourceTree = "<group>"; };
@@ -383,6 +390,9 @@
 		F8F492541D645C84007A8024 /* PayWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayWTableViewCell.h; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		F8F492551D645C84007A8024 /* PayWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayWTableViewCell.m; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		F8F492561D645C84007A8024 /* PayWTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PayWTableViewCell.xib; path = "Kkjrxiangmu/AppDelegate/Collection Money/Views/PayWTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		F8FCDF9F1D9A0608001A76DD /* BalanceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceTableViewCell.h; sourceTree = "<group>"; };
+		F8FCDFA01D9A0608001A76DD /* BalanceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceTableViewCell.m; sourceTree = "<group>"; };
+		F8FCDFA11D9A0608001A76DD /* BalanceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalanceTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -660,6 +670,9 @@
 		F8ADD18B1D65B4860022CFE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F8FCDF9F1D9A0608001A76DD /* BalanceTableViewCell.h */,
+				F8FCDFA01D9A0608001A76DD /* BalanceTableViewCell.m */,
+				F8FCDFA11D9A0608001A76DD /* BalanceTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1015,7 +1028,6 @@
 				723D96F81D64480C001B61CA /* tubiao@2x.png */,
 				723D967B1D6204A0001B61CA /* xiang@2x.png */,
 				F8BE8E291D5D5EC90053D464 /* collcon */,
-				F8BE8E2E1D5D5EC90053D464 /* massager */,
 				F8BE8E331D5D5EC90053D464 /* more */,
 				F8BE8E3B1D5D5EC90053D464 /* pagr */,
 				F8BE8E551D5D5EC90053D464 /* user */,
@@ -1028,16 +1040,6 @@
 			children = (
 			);
 			path = collcon;
-			sourceTree = "<group>";
-		};
-		F8BE8E2E1D5D5EC90053D464 /* massager */ = {
-			isa = PBXGroup;
-			children = (
-				F8BE8E301D5D5EC90053D464 /* gonggao@2x.png */,
-				F8BE8E311D5D5EC90053D464 /* guangao.png */,
-				F8BE8E321D5D5EC90053D464 /* jiantou@2x.png */,
-			);
-			path = massager;
 			sourceTree = "<group>";
 		};
 		F8BE8E331D5D5EC90053D464 /* more */ = {
@@ -1225,6 +1227,8 @@
 				F8BE8E9F1D5D61C60053D464 /* MassageViewController.h */,
 				F8BE8EA01D5D61C60053D464 /* MassageViewController.m */,
 				F8BE8EA11D5D61C60053D464 /* MassageViewController.xib */,
+				F88466BB1D9A6E7800B4A048 /* AnnouncementTVController.h */,
+				F88466BC1D9A6E7800B4A048 /* AnnouncementTVController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1232,6 +1236,8 @@
 		F8BE8EA21D5D61C60053D464 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F88466BE1D9A734000B4A048 /* MessageModel.h */,
+				F88466BF1D9A734000B4A048 /* MessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1239,6 +1245,9 @@
 		F8BE8EA31D5D61C60053D464 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F88466B61D9A681A00B4A048 /* MessageTableViewCell.h */,
+				F88466B71D9A681A00B4A048 /* MessageTableViewCell.m */,
+				F88466B81D9A681A00B4A048 /* MessageTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1476,6 +1485,7 @@
 				F8BE8E861D5D5EC90053D464 /* denglu@2x.png in Resources */,
 				F8BE8E8D1D5D5EC90053D464 /* zhifu@2x.png in Resources */,
 				723D96F91D64480C001B61CA /* tubiao@2x.png in Resources */,
+				F8FCDFA31D9A0608001A76DD /* BalanceTableViewCell.xib in Resources */,
 				F8BE8E681D5D5EC90053D464 /* guanyuwomen@2x.png in Resources */,
 				F8ADD1BA1D65D1AC0022CFE0 /* RateView.xib in Resources */,
 				7202E4C91D5C2497003A75EB /* LaunchScreen.storyboard in Resources */,
@@ -1500,7 +1510,6 @@
 				F8BE8E771D5D5EC90053D464 /* lunbo1.png in Resources */,
 				72E0D2D51D6C44B100ABA2CC /* SettlementViewController.xib in Resources */,
 				F8BE8E6B1D5D5EC90053D464 /* xiaji@2x.png in Resources */,
-				F8BE8E651D5D5EC90053D464 /* jiantou@2x.png in Resources */,
 				723D96A41D62FD25001B61CA /* ZFViewController.xib in Resources */,
 				72E0D28A1D6A8CD800ABA2CC /* delete@2x.png in Resources */,
 				F8BE8EE71D5DBB040053D464 /* HomePageViewController.xib in Resources */,
@@ -1542,12 +1551,10 @@
 				F8BE8EB31D5D61C60053D464 /* CollectionViewController.xib in Resources */,
 				F8AF0A6D1D66E993006268E3 /* GameViewController.xib in Resources */,
 				723D967C1D6204A0001B61CA /* xiang@2x.png in Resources */,
-				F8BE8E631D5D5EC90053D464 /* gonggao@2x.png in Resources */,
 				F8BE8E671D5D5EC90053D464 /* fankui@2x.png in Resources */,
+				F88466BA1D9A681A00B4A048 /* MessageTableViewCell.xib in Resources */,
 				7209F1C41D7D50AE00BC9A80 /* yinhangrenzhengz@2x.png in Resources */,
-				F8BE8E641D5D5EC90053D464 /* guangao.png in Resources */,
 				F8E920AE1D912BD7004769ED /* BillTableViewCell.xib in Resources */,
-				7209F1C81D7D73D600BC9A80 /* shenfenb@2x.png in Resources */,
 				723D969F1D62FBC7001B61CA /* PaymentViewController.xib in Resources */,
 				723D96E81D63EF8D001B61CA /* HelpViewController.xib in Resources */,
 			);
@@ -1650,6 +1657,7 @@
 				F80B576E1D9225FC00E49685 /* RateModel.m in Sources */,
 				F888F9841D6E9D3700400E71 /* AgreementViewController.m in Sources */,
 				723D96941D62F2D7001B61CA /* BackViewController.m in Sources */,
+				F88466BD1D9A6E7800B4A048 /* AnnouncementTVController.m in Sources */,
 				72E0D2841D6A89BA00ABA2CC /* PhotoCollectionViewCell.m in Sources */,
 				F8BE8EB61D5D61C60053D464 /* MassageViewController.m in Sources */,
 				72E0D2D41D6C44B100ABA2CC /* SettlementViewController.m in Sources */,
@@ -1657,6 +1665,7 @@
 				7202E4BB1D5C2497003A75EB /* main.m in Sources */,
 				F887D9C31D62FCA300D88E0B /* PayMentView.m in Sources */,
 				F8F492381D63F537007A8024 /* IdentityViewController.m in Sources */,
+				F8FCDFA21D9A0608001A76DD /* BalanceTableViewCell.m in Sources */,
 				F8ADD19D1D65B6E40022CFE0 /* ManageViewController.m in Sources */,
 				F8BE8EED1D5DBBE80053D464 /* Alert.m in Sources */,
 				F8AF0A621D66E793006268E3 /* SocialViewController.m in Sources */,
@@ -1678,12 +1687,14 @@
 				723D96751D61EEDB001B61CA /* CertificationViewController.m in Sources */,
 				F8F4923A1D63F619007A8024 /* MoreViewController.m in Sources */,
 				F8F492361D63F508007A8024 /* PaymentViewController.m in Sources */,
+				F88466B91D9A681A00B4A048 /* MessageTableViewCell.m in Sources */,
 				F8837DB21D61552B0056148C /* TopUpViewController.m in Sources */,
 				F8B65A1B1D5F276D001270A9 /* KeyCollectionViewCell.m in Sources */,
 				723D96E71D63EF8D001B61CA /* HelpViewController.m in Sources */,
 				F81EA0BE1D5C887300214663 /* AppDelegate.m in Sources */,
 				F887D9CB1D630B3A00D88E0B /* NSMutableDictionary+Json.m in Sources */,
 				F888F9831D6E9D1800400E71 /* addPhotoViewController.m in Sources */,
+				F88466C01D9A734000B4A048 /* MessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
