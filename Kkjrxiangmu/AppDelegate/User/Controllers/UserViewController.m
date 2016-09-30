@@ -16,6 +16,7 @@
 #import "SettlementViewController.h"
 #import "SetUpPayViewController.h"
 #import "BackViewController.h"
+#import "AddViewController.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
@@ -41,6 +42,7 @@
 @property (nonatomic,strong)UIImageView *headImage;
 @property (nonatomic,copy)NSString *payPasswstr;
 @property (nonatomic,copy) NSString *tokenstr;
+@property(nonatomic,copy)NSString *Banck;
 @property (nonatomic,strong)NSUserDefaults *userDefaults;
 @property (nonatomic,copy) NSString *urlStr;
 
@@ -115,8 +117,18 @@
         _Ylab1.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountProfit"]];
         _Ylab2.text = [NSString stringWithFormat:@"%@",infoDic[@"AccountIn"]];
         NSString *str =[NSString stringWithFormat:@"%@",infoDic[@"Token"]];
+        AuthenticationState = infoDic[@"AuthenticationState"];
+        _Banck = infoDic[@"BankCardCount"];
         
         
+        
+        NSUserDefaults *sss=[NSUserDefaults standardUserDefaults];
+        [sss setObject:str forKey:@"tokenKey"];
+       
+        Abc = infoDic[@"IsAuthentication"];
+        NSLog(@"输出的AAAAAAA %@",Abc);
+        NSLog(@"输出的TOken%@",str);
+
 
         self.payPasswstr = infoDic[@"IsSetPayPassword"];
         
@@ -536,7 +548,13 @@
                 vc = [[IdentityViewController alloc]init];
                 break;
             case 2:
-                vc = [[BankcardViewController alloc]init];
+                NSLog(@"_Banck %@",_Banck);
+                if ([_Banck integerValue]==0) {
+                    vc = [[AddViewController alloc]init];
+                }else{
+                     vc = [[BankcardViewController alloc]init];
+                }
+               
                 break;
             default:
                 break;
